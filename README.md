@@ -1,3 +1,55 @@
 # ProjetoLojadeAutomoveis
 CREATE DATABASE loja_automoveis;
+
 USE loja_automoveis;
+
+Create Table carros (
+id_carros INT PRIMARY KEY AUTO_INCREMENT,
+marca VARCHAR(50),
+modelo VARCHAR(50),
+ano INT,
+cor VARCHAR(30),
+preco DECIMAL(10, 2)
+ );
+
+CREATE TABLE funcionarios (
+ id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
+ nome VARCHAR(200) not null,
+ email VARCHAR(200) not null,
+ telefone VARCHAR(20) NOT NULL,
+  cargo VARCHAR(50)
+ );
+  
+ CREATE TABLE clientes (
+ id_clientes INT PRIMARY KEY AUTO_INCREMENT,
+ nome VARCHAR(200) not null,
+ email VARCHAR(200) not null,
+ telefone VARCHAR(20) NOT NULL
+ );
+ 
+ CREATE TABLE endereco (
+ id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+ id_clientes int,
+ estado varchar(100),
+ cidade varchar(100),
+ rua varchar(100),
+ numero_casa int
+ );
+ 
+ CREATE TABLE vendas (
+ id_vendas INT PRIMARY KEY AUTO_INCREMENT,
+ id_carros int,
+ id_clientes int,
+ id_funcionarios int,
+ id_endereco int,
+ data_venda TIME DEFAULT NOW() NOT NULL,
+ preco_venda decimal (10,2),
+fk_id_carros INT,
+fk_id_clientes INT,
+fk_id_funcionarios INT,
+fk_id_endereco INT,
+FOREIGN KEY (fk_id_carros) REFERENCES carros(id_carros),
+FOREIGN KEY (fk_id_clientes) REFERENCES clientes(id_clientes),
+FOREIGN KEY (fk_id_funcionarios) REFERENCES funcionarios(id_funcionarios),
+FOREIGN KEY (fk_id_endereco) REFERENCES endereco(id_endereco)
+ );
