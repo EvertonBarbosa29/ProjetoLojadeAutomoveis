@@ -1,0 +1,43 @@
+Create Table carros (
+id INT PRIMARY KEY AUTO_INCREMENT,
+marca VARCHAR(50),
+modelo VARCHAR(50),
+ano  INT,
+cor VARCHAR(30),
+preco DECIMAL(10, 2)
+ );
+ 
+ INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
+ ('Toyota','Corolla', 2022,'Preto',120000,00),
+ ('Toyota','SW4',2024,'Branco',405000,00),
+ ('Toyota','CAMRY',2011,'Prata',57000,00),
+ ('Toyota','Supra MK4',2024,'Laranja',523000,00);
+   
+   
+  INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
+ ('Hyundai','Azera', 2015,'Branco',75000,00),
+ ('Hyundai','Sonata',2013,'Preto',45000,00),
+ ('Hyundai','Creta',2024,'Prata',153000,00),
+ ('Hyundai','Santa Fé','Branca',94000,00);
+ 
+ 
+ 
+ INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
+ ('Ford','Mustang V8',
+ ('Ford','Fusion',
+ ('Ford','Edge',
+ ('Ford','Ranger',
+
+
+INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
+ ('Chevrolet',
+ ('Chevrolet',
+ ('Chevrolet',
+ ('Chevrolet',
+
+
+INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
+ ('Volkswagen','Passat B8',2018,'Preto',110000,00),
+ ('Volkswagen','Golf Gti',2018,'Branca',190000,00),
+ ('Volkswagen','Jetta Gli',2023,'Cinza Nardo',201000,00),
+ ('Volkswagen,','Gol','2014','Preto',32000,00);
