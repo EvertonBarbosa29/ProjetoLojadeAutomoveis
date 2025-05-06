@@ -26,11 +26,11 @@ INSERT INTO carros (marca, modelo, ano, cor, preco) VALUES
 ('Ford', 'Edge', 2014, 'Preto', 68.000,00), 
 ('Ford', 'Ranger', 2021, 'Azul', 160.000,00);
 
-INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
- ('Chevrolet',
- ('Chevrolet',
- ('Chevrolet',
- ('Chevrolet',
+INSERT INTO carros (marca, modelo, ano, cor, preco) VALUES
+('Chevrolet', 'Camaro V8', 2016, 'Amarelo', 399000,00), 
+('Chevrolet', 'Cruze', 2024, 'Prata', 104000,00), 
+('Chevrolet', 'Tracker', 2023, 'Vermelho', 103.000,00), 
+('Chevrolet', 'S10', 2020, 'Preto', 108.000,00);
 
 INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
  ('Volkswagen','Passat B8',2018,'Preto',110000,00),
