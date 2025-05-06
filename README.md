@@ -96,3 +96,19 @@ INSERT INTO carros (marca, modelo, ano, cor, preco) VALUES
 ('Fiat', 'Titano',2024,('vermelha'),259000,00),
 ('Fiat', 'Cronos',2023,('Prata'),103000,00),
 ('Fiat', 'Toro',2023,('Vermelha'),205000,00);
+
+/*UPDATE/*
+
+UPDATE carros
+SET preco = 499000.00
+WHERE marca = 'Toyota' AND modelo = 'Supra MK4';
+
+UPDATE carros
+SET cor = 'Vermelho'
+WHERE marca = 'Ford' AND modelo = 'Mustang V8';
+
+UPDATE carros
+SET ano = 2024
+WHERE marca = 'Fiat' AND modelo = 'Toro';
+
+/*FINAL UPDATE/*
