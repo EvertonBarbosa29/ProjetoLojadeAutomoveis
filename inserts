@@ -20,21 +20,17 @@ preco DECIMAL(10, 2)
  ('Hyundai','Creta',2024,'Prata',153000,00),
  ('Hyundai','Santa Fé','Branca',94000,00);
  
- 
- 
- INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
- ('Ford','Mustang V8',
- ('Ford','Fusion',
- ('Ford','Edge',
- ('Ford','Ranger',
-
+INSERT INTO carros (marca, modelo, ano, cor, preco) VALUES
+('Ford', 'Mustang V8', 2020, 'Azul', 450000,00), 
+('Ford', 'Fusion', 2017, 'Branco', 79000,00), 
+('Ford', 'Edge', 2014, 'Preto', 68.000,00), 
+('Ford', 'Ranger', 2021, 'Azul', 160.000,00);
 
 INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
  ('Chevrolet',
  ('Chevrolet',
  ('Chevrolet',
  ('Chevrolet',
-
 
 INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
  ('Volkswagen','Passat B8',2018,'Preto',110000,00),
