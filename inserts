@@ -1,12 +1,3 @@
-Create Table carros (
-id INT PRIMARY KEY AUTO_INCREMENT,
-marca VARCHAR(50),
-modelo VARCHAR(50),
-ano  INT,
-cor VARCHAR(30),
-preco DECIMAL(10, 2)
- );
- 
  INSERT Into carros (marca,modelo,ano,cor,preco) VALUES
  ('Toyota','Corolla', 2022,'Preto',120000,00),
  ('Toyota','SW4',2024,'Branco',405000,00),
