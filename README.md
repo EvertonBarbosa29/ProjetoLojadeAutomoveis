@@ -3,15 +3,6 @@ CREATE DATABASE loja_automoveis;
 
 USE loja_automoveis;
 
-Create Table carros (
-id_carros INT PRIMARY KEY AUTO_INCREMENT,
-marca VARCHAR(50),
-modelo VARCHAR(50),
-ano INT,
-cor VARCHAR(30),
-preco DECIMAL(10, 2)
- );
-
 CREATE TABLE funcionarios (
  id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
  nome VARCHAR(200) not null,
@@ -53,9 +44,6 @@ FOREIGN KEY (fk_id_clientes) REFERENCES clientes(id_clientes),
 FOREIGN KEY (fk_id_funcionarios) REFERENCES funcionarios(id_funcionarios),
 FOREIGN KEY (fk_id_endereco) REFERENCES endereco(id_endereco)
  );
-
- CREATE DATABASE loja_automoveis;
-use loja_automoveis;
 
 CREATE TABLE carros (
     id INT PRIMARY KEY AUTO_INCREMENT,
