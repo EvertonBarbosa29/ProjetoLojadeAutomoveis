@@ -140,6 +140,6 @@ CREATE VIEW v_carros_valor_medio AS
 SELECT * FROM carros 
 WHERE preco BETWEEN 50000 AND 150000;
 
-/*FALTAM 5/*
+/*FALTAM 4/*
 
 /*FINAL VIEW/*
