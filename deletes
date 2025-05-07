@@ -1,0 +1,2 @@
+ DELETE Into carros (marca,modelo,ano,cor,preco) VALUES
+ ('Hyundai','Azera', 2015,'Branco',75000,00),
