@@ -98,6 +98,8 @@ INSERT INTO carros (marca, modelo, ano, cor, preco, condicao) VALUES
 ('Fiat', 'Cronos',2023,('Prata'),103000,00),
 ('Fiat', 'Toro',2023,('Vermelha'),205000,00);
 
+/*FALTAM 3 E ADICIONAR AS CONDIÇÕES NOVO E SEMINOVO NOS CARROS/*
+
 /*UPDATE/*
 
 UPDATE carros
@@ -114,4 +116,30 @@ WHERE marca = 'Fiat' AND modelo = 'Toro';
 
 /*FINAL UPDATE/*
 
+/*VIEW/*
 
+CREATE VIEW v_carros_disponiveis AS
+SELECT * FROM carros;
+
+CREATE VIEW v_carros_volkswagen AS
+SELECT * FROM carros
+WHERE marca = 'Volkswagen';
+
+CREATE VIEW v_carros_caros AS
+SELECT * FROM carros
+WHERE preco >150000;
+
+CREATE VIEW v_carros_2018 AS
+SELECT * FROM carros
+WHERE ano = 2018;
+
+CREATE VIEW v_funcionarios_cargos AS
+SELECT * nome, cargo FROM funcionarios;
+
+CREATE VIEW v_carros_valor_medio AS
+SELECT * FROM carros 
+WHERE preco BETWEEN 50000 AND 150000;
+
+/*FALTAM 5/*
+
+/*FINAL VIEW/*
