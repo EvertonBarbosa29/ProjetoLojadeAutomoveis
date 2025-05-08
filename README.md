@@ -19,20 +19,22 @@ CREATE TABLE clientes (
 CREATE TABLE endereco (
     id_endereco INT PRIMARY KEY AUTO_INCREMENT,
     id_clientes INT,
+    cep VARCHAR(9) NOT NULL,
     estado VARCHAR(100),
     cidade VARCHAR(100),
-    rua VARCHAR(100),
-    numero_casa INT,
+    rua VARCHAR(100) NOT NULL,
+    numero_casa INT NOT NULL,
     FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes)
 );
 
 CREATE TABLE carros (
     id_carros INT PRIMARY KEY AUTO_INCREMENT,
-    marca VARCHAR(50),
-    modelo VARCHAR(50),
-    ano INT,
-    cor VARCHAR(30),
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    ano INT NOT NULL,
+    cor VARCHAR(30) NOT NULL,
     preco DECIMAL(10, 2)
+    condicao ENUM('Novo', 'Seminovo') NOT NULL AUTO_INCREMENT
 );
 
 CREATE TABLE vendas (
@@ -123,6 +125,14 @@ WHERE marca = 'Fiat' AND modelo = 'Toro';
 
 CREATE VIEW v_carros_disponiveis AS
 SELECT * FROM carros;
+
+CREATE VIEW v_carros_novos AS
+SELECT * FROM carros
+WHERE condicao = Novo;
+
+CREATE VIEW v_carros_seminovos AS
+SELECT * FROM carros
+WHERE condicao = Seminovo;
 
 CREATE VIEW v_carros_volkswagen AS
 SELECT * FROM carros
