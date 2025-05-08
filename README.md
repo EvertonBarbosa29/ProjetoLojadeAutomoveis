@@ -13,7 +13,8 @@ CREATE TABLE clientes (
     id_clientes INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(200) NOT NULL,
     email VARCHAR(200) NOT NULL,
-    telefone VARCHAR(20) NOT NULL
+    telefone VARCHAR(20) NOT NULL,
+    cpf VARCHAR(14) NOT NULL
 );
 
 CREATE TABLE endereco (
@@ -33,7 +34,7 @@ CREATE TABLE carros (
     modelo VARCHAR(50) NOT NULL,
     ano INT NOT NULL,
     cor VARCHAR(30) NOT NULL,
-    preco DECIMAL(10, 2)
+    preco DECIMAL(10, 2),
     condicao ENUM('Novo', 'Seminovo') NOT NULL AUTO_INCREMENT
 );
 
