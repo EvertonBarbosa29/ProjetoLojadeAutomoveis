@@ -1,58 +1,61 @@
-# ProjetoLojadeAutomoveis
 CREATE DATABASE loja_automoveis;
-
 USE loja_automoveis;
 
 CREATE TABLE funcionarios (
- id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
- nome VARCHAR(200) not null,
- email VARCHAR(200) not null,
- telefone VARCHAR(20) not null,
-  cargo VARCHAR(50)
- );
-  
- CREATE TABLE clientes (
- id_clientes INT PRIMARY KEY AUTO_INCREMENT,
- nome VARCHAR(200) not null,
- email VARCHAR(200) not null,
- telefone VARCHAR(20) not null
- );
- 
- CREATE TABLE endereco (
- id_endereco INT PRIMARY KEY AUTO_INCREMENT,
- id_clientes int,
- estado varchar(100),
- cidade varchar(100),
- rua varchar(100),
- numero_casa int
- );
- 
- CREATE TABLE vendas (
- id_vendas INT PRIMARY KEY AUTO_INCREMENT,
- id_carros int,
- id_clientes int,
- id_funcionarios int,
- id_endereco int,
- data_venda TIME DEFAULT NOW() not null,
- preco_venda decimal (10,2),
-fk_id_carros INT,
-fk_id_clientes INT,
-fk_id_funcionarios INT,
-fk_id_endereco INT,
-FOREIGN KEY (fk_id_carros) REFERENCES carros(id_carros),
-FOREIGN KEY (fk_id_clientes) REFERENCES clientes(id_clientes),
-FOREIGN KEY (fk_id_funcionarios) REFERENCES funcionarios(id_funcionarios),
-FOREIGN KEY (fk_id_endereco) REFERENCES endereco(id_endereco)
- );
+    id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    telefone VARCHAR(20) NOT NULL,
+    cargo VARCHAR(50)
+);
+
+CREATE TABLE clientes (
+    id_clientes INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE endereco (
+    id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+    id_clientes INT,
+    estado VARCHAR(100),
+    cidade VARCHAR(100),
+    rua VARCHAR(100),
+    numero_casa INT,
+    FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes)
+);
 
 CREATE TABLE carros (
     id_carros INT PRIMARY KEY AUTO_INCREMENT,
-    marca VARCHAR(50) not null,
-    modelo VARCHAR(50) not null,
-    ano INT not null,
-    cor VARCHAR(30) not null,
-    preco DECIMAL(10, 2) not null,
-    condicao ENUM('novo', 'seminovo') NOT NULL AUTO_INCREMENT
+    marca VARCHAR(50),
+    modelo VARCHAR(50),
+    ano INT,
+    cor VARCHAR(30),
+    preco DECIMAL(10, 2)
+);
+
+CREATE TABLE vendas (
+    id_vendas INT PRIMARY KEY AUTO_INCREMENT,
+    fk_id_carros INT,
+    fk_id_clientes INT,
+    fk_id_funcionarios INT,
+    fk_id_endereco INT,
+    data_venda DATETIME DEFAULT NOW() NOT NULL,
+    preco_venda DECIMAL(10, 2),
+    FOREIGN KEY (fk_id_carros) REFERENCES carros(id_carros),
+    FOREIGN KEY (fk_id_clientes) REFERENCES clientes(id_clientes),
+    FOREIGN KEY (fk_id_funcionarios) REFERENCES funcionarios(id_funcionarios),
+    FOREIGN KEY (fk_id_endereco) REFERENCES endereco(id_endereco)
+);
+
+CREATE TABLE pagamentos (
+    id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+    id_venda INT NOT NULL,
+    metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    data_pagamento DATETIME DEFAULT NOW() NOT NULL,
+    FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
 INSERT INTO carros (marca, modelo, ano, cor, preco, condicao) VALUES
