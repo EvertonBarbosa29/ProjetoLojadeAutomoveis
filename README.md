@@ -93,29 +93,29 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, preco, condicao) 
 ('Ford', 'Edge', , 2014, 'Preto', 68000.00),
 ('Ford', 'Ranger', , 2021, 'Azul', 160000.00);
 
-INSERT INTO carros (marca, modelo, ano, cor, preco, condicao) VALUES
+INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, preco, condicao) VALUES
 ('Chevrolet', 'Camaro V8', , 2016, 'Amarelo', 399000.00),
 ('Chevrolet', 'Cruze', , 2024, 'Prata', 104000.00),
 ('Chevrolet', 'Tracker', , 2023, 'Vermelho', 103000.00),
 ('Chevrolet', 'S10', , 2020, 'Preto', 108000.00);
 
-INSERT INTO carros (marca, modelo, ano, cor, preco, condicao) VALUES
+INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, preco, condicao) VALUES
 ('Volkswagen', 'Passat B8', , 2018, 'Preto', 110000.00),
 ('Volkswagen', 'Golf Gti', , 2018, 'Branca', 190000.00),
 ('Volkswagen', 'Jetta Gli', , 2023, 'Cinza Nardo', 201000.00),
 ('Volkswagen', 'Gol', 2014, , 'Preto', 32000.00);
 
-INSERT INTO carros (marca, modelo, ano, cor, preco, condicao) VALUES
-('BMW', 'Bmw 428i', ,2020,('Branca'),134000,00),
-('BMW', 'Bmw X6', ,2024,('Verde'),1000000,00),
-('BMW', 'Bmw M4', ,2022,('Preto'),473000,00),
-('Bmw', 'Bmw i8', ,2022,('Vermelho'),770000,00);
+INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, preco, condicao) VALUES
+('BMW', 'Bmw 428i', ,2020,'Branca',134000,00),
+('BMW', 'Bmw X6', ,2024,'Verde',1000000,00),
+('BMW', 'Bmw M4', ,2022,'Preto',473000,00),
+('Bmw', 'Bmw i8', ,2022,'Vermelho',770000,00);
 
-INSERT INTO carros (marca, modelo, ano, cor, preco, condicao) VALUES
-('Fiat', 'Linea', ,2015,('Branca'),35000,00),
-('Fiat', 'Titano', ,2024,('vermelha'),259000,00),
-('Fiat', 'Cronos', ,2023,('Prata'),103000,00),
-('Fiat', 'Toro', ,2023,('Vermelha'),205000,00);
+INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, preco, condicao) VALUES
+('Fiat', 'Linea', ,2015,'Branca',35000,00),
+('Fiat', 'Titano', ,2024,'vermelha',259000,00),
+('Fiat', 'Cronos', ,2023,'Prata',103000,00),
+('Fiat', 'Toro', ,2023,'Vermelha',205000,00);
 
 /*FALTAM 3 E ADICIONAR AS CONDIÇÕES NOVO E SEMINOVO NOS CARROS/*
 
