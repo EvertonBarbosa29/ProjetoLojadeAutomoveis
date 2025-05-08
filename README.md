@@ -20,7 +20,7 @@ cpf VARCHAR(14) NOT NULL UNIQUE KEY
 
 CREATE TABLE endereco (
 id_endereco INT PRIMARY KEY AUTO_INCREMENT,
-id_clientes INT NOT NULL,
+id_clientes INT,
 estado VARCHAR(100)  NOT NULL,
 cidade VARCHAR(100)  NOT NULL,
 rua VARCHAR(100)  NOT NULL,
@@ -53,10 +53,10 @@ FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
 
 CREATE TABLE vendas (
 id_vendas INT PRIMARY KEY AUTO_INCREMENT,
-fk_id_carros INT NOT NULL,
-fk_id_clientes INT NOT NULL,
-fk_id_funcionarios INT NOT NULL,
-fk_id_endereco INT NOT NULL,
+fk_id_carros INT,
+fk_id_clientes INT,
+fk_id_funcionarios INT,
+fk_id_endereco INT,
 data_venda DATETIME DEFAULT NOW() NOT NULL,
 preco_venda DECIMAL(10, 2)  NOT NULL UNIQUE KEY,
 FOREIGN KEY (fk_id_carros) REFERENCES carros(id_carros),
@@ -67,7 +67,7 @@ FOREIGN KEY (fk_id_endereco) REFERENCES endereco(id_endereco)
 
 CREATE TABLE pagamentos (
 id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-id_venda INT NOT NULL,
+id_venda INT,
 metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL UNIQUE KEY,
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
