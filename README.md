@@ -21,10 +21,10 @@ cpf VARCHAR(14) NOT NULL UNIQUE KEY
 CREATE TABLE endereco (
 id_endereco INT PRIMARY KEY AUTO_INCREMENT,
 id_clientes INT,
-estado VARCHAR(100)  NOT NULL,
-cidade VARCHAR(100)  NOT NULL,
-rua VARCHAR(100)  NOT NULL,
-numero_casa INT  NOT NULL,
+estado VARCHAR(100) NOT NULL,
+cidade VARCHAR(100) NOT NULL,
+rua VARCHAR(100) NOT NULL,
+numero_casa INT NOT NULL,
 cep VARCHAR(9) NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes)
 );
@@ -54,10 +54,10 @@ FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
 
 CREATE TABLE vendas (
 id_vendas INT PRIMARY KEY AUTO_INCREMENT,
-fk_id_carros INT,
-fk_id_clientes INT,
-fk_id_funcionarios INT,
-fk_id_endereco INT,
+id_carros INT,
+id_clientes INT,
+id_funcionarios INT,
+id_endereco INT,
 data_venda DATETIME DEFAULT NOW() NOT NULL,
 preco_venda DECIMAL(10, 2)  NOT NULL UNIQUE KEY,
 FOREIGN KEY (fk_id_carros) REFERENCES carros(id_carros),
