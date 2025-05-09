@@ -1,6 +1,6 @@
-CREATE DATABASE loja_automoveis;
+CREATE DATABASE loja_automoveissssssssssssssssss;
 
-USE loja_automoveis;
+USE loja_automoveissssssssssssssssss;
 
 CREATE TABLE funcionarios (
 id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
