@@ -75,47 +75,48 @@ data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Toyota', 'Corolla', Flex, 2024, 'Preto', Novo, 120000.00),
-('Toyota', 'SW4', Diesel, 2025, 'Branco', Novo, 405000.00),
-('Toyota', 'CAMRY', Flex, 2016, 'Prata', Seminovo, 57000.00),
-('Toyota', 'Supra MK4', Flex, 2024, 'Laranja', Novo, 523000.00);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
+('Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 1),
+('Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 1),
+('Toyota', 'Supra MK4', 'Flex', 2024, 'Laranja', 'Novo', 523000.00, 1);
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Hyundai', 'Azera', Flex, 2025, 'Branco', Novo, 75000.00),
-('Hyundai', 'Sonata', Flex, 2013, 'Preto', Seminovo, 45000.00),
-('Hyundai', 'Creta', Flex, 2024, 'Prata', Novo, 153000.00),
-('Hyundai', 'Santa Fé', Flex, 2014, 'Branca', Seminovo, 94000.00);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Hyundai', 'Azera', 'Flex', 2025, 'Branco', 'Novo', 75000.00, 1),
+('Hyundai', 'Sonata', 'Flex', 2013, 'Preto', 'Seminovo', 45000.00, 1),
+('Hyundai', 'Creta', 'Flex', 2024, 'Prata', 'Novo', 153000.00, 1),
+('Hyundai', 'Santa Fé', 'Flex', 2014, 'Branca', 'Seminovo', 94000.00, 1);
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Ford', 'Mustang V8', Flex, 2020, 'Azul', Seminovo, 450000.00),
-('Ford', 'Fusion', Flex, 2017, 'Branco', Seminovo, 79000.00),
-('Ford', 'Edge', Flex, 2025, 'Preto', Novo, 68000.00),
-('Ford', 'Ranger', Diesel, 2021, 'Azul', Novo, 160000.00);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Ford', 'Mustang V8', 'Flex', 2020, 'Azul', 'Seminovo', 450000.00, 1),
+('Ford', 'Fusion', 'Flex', 2017, 'Branco', 'Seminovo', 79000.00, 1),
+('Ford', 'Edge', 'Flex', 2025, 'Preto', 'Novo', 68000.00, 1),
+('Ford', 'Ranger', 'Diesel', 2021, 'Azul', 'Novo', 160000.00, 1);
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Chevrolet', 'Camaro V8', Flex, 2024, 'Amarelo', Novo, 399000.00),
-('Chevrolet', 'Cruze', Flex, 2024, 'Prata', Novo, 104000.00),
-('Chevrolet', 'Tracker', Flex, 2025, 'Vermelho', Novo, 103000.00),
-('Chevrolet', 'S10', Diesel, 2020, 'Preto', Seminovo, 108000.00);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Chevrolet', 'Camaro V8', 'Flex', 2024, 'Amarelo', 'Novo', 399000.00, 1),
+('Chevrolet', 'Cruze', 'Flex', 2024, 'Prata', 'Novo', 104000.00, 1),
+('Chevrolet', 'Tracker', 'Flex', 2025, 'Vermelho', 'Novo', 103000.00, 1),
+('Chevrolet', 'S10', 'Diesel', 2020, 'Preto', 'Seminovo', 108000.00, 1);
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Volkswagen', 'Passat B8', Flex, 2023, 'Preto', Novo, 110000.00),
-('Volkswagen', 'Golf Gti', Flex, 2025, 'Branca', Novo, 190000.00),
-('Volkswagen', 'Jetta Gli', Flex, 2023, 'Cinza Nardo', Novo, 201000.00),
-('Volkswagen', 'Gol', Flex, 2014 ,'Preto', Seminovo, 32000.00);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Volkswagen', 'Passat B8', 'Flex', 2023, 'Preto', 'Novo', 110000.00, 1),
+('Volkswagen', 'Golf Gti', 'Flex', 2025, 'Branca', 'Novo', 190000.00, 1),
+('Volkswagen', 'Jetta Gli', 'Flex', 2023, 'Cinza Nardo', 'Novo', 201000.00, 1),
+('Volkswagen', 'Gol', 'Flex', 2014, 'Preto', 'Seminovo', 32000.00, 1);
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('BMW', 'Bmw 428i', Flex, 2025 ,'Branca', Novo, 134000,00,),
-('BMW', 'Bmw X6', Flex, 2024 ,'Verde', Novo, 1000000,00),
-('BMW', 'Bmw M4', Flex, 2018 ,'Preto', Seminovo,473000,00),
-('Bmw', 'Bmw i8', Flex, 2022 ,'Vermelho', Novo, 770000,00,);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('BMW', 'Bmw 428i', 'Flex', 2025, 'Branca', 'Novo', 134000.00, 1),
+('BMW', 'Bmw X6', 'Flex', 2024, 'Verde', 'Novo', 1000000.00, 1),
+('BMW', 'Bmw M4', 'Flex', 2018, 'Preto', 'Seminovo', 473000.00, 1),
+('BMW', 'Bmw i8', 'Flex', 2022, 'Vermelho', 'Novo', 770000.00, 1);
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Fiat', 'Linea', Flex, 2015, 'Branca', Seminovo, 35000,00,),
-('Fiat', 'Titano', Diesel ,2025,'vermelha', Novo, 259000,00),
-('Fiat', 'Cronos', Flex, 2019, 'Prata', Seminovo, 103000,00),
-('Fiat', 'Toro', Flex, 2025, 'Vermelha', Novo, 205000,00);
+INSERT INTO carross (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Fiat', 'Linea', 'Flex', 2015, 'Branca', 'Seminovo', 35000.00, 1),
+('Fiat', 'Titano', 'Diesel', 2025, 'Vermelha', 'Novo', 259000.00, 1),
+('Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 1),
+('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 1);
+
 
 /*FALTAM 3/*
 
