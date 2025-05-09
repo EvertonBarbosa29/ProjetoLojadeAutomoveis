@@ -46,3 +46,5 @@ INSERT INTO carros_Toyota (marca, modelo, tipo_combustivel, ano, cor, condicao, 
 ('Fiat', 'Titano', 'Diesel', 2025, 'Vermelha', 'Novo', 259000.00, 7),
 ('Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
 ('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
+
+INSERT INTO 
