@@ -46,8 +46,8 @@ modelo VARCHAR(50)  NOT NULL,
 tipo_combustivel ENUM('Flex', 'Diesel') DEFAULT 'Flex' NOT NULL,
 ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
-preco DECIMAL(10, 2)  NOT NULL,
 condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
+preco DECIMAL(10, 2)  NOT NULL,
 id_fornecedor INT NOT NULL,
 FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
 );
