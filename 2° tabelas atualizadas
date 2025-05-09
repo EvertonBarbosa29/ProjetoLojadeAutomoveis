@@ -1,6 +1,6 @@
-CREATE DATABASE loja_automoveissssssssssssssssss;
+CREATE DATABASE loja_automoveis;
 
-USE loja_automoveissssssssssssssssss;
+USE loja_automoveis;
 
 CREATE TABLE funcionarios (
 id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
@@ -43,6 +43,7 @@ CREATE TABLE carros (
 id_carros INT PRIMARY KEY AUTO_INCREMENT,
 marca VARCHAR(50)  NOT NULL,
 modelo VARCHAR(50)  NOT NULL,
+tipo_combustivel ENUM('Flex', 'Diesel') DEFAULT 'Flex' NOT NULL,
 ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
