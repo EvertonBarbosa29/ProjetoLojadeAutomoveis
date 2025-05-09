@@ -76,7 +76,54 @@ data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
+INSERT INTO funcionarios (nome, email, telefone, cargo, numero_cracha) VALUES
+('João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '101'),
+('Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '102'),
+('Carlos Souza', 'carlos.souza@email.com', '11999990003', 'Consultor', '103'),
+('Carlos Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '104'),
+('Fernanda Oliveira', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '105'),
+('Lucas Pereira', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '106'),
+('Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '107'),
+('Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Mecânico', '108'),
+('Amanda Lima', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '109'),
+('Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '210'),
+('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '211');
 
+INSERT INTO carros_Toyota (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+('Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
+('Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 1),
+('Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 1),
+('Toyota', 'Supra MK4', 'Flex', 2024, 'Laranja', 'Novo', 523000.00, 1),
+
+('Hyundai', 'Azera', 'Flex', 2025, 'Branco', 'Novo', 75000.00, 2),
+('Hyundai', 'Sonata', 'Flex', 2013, 'Preto', 'Seminovo', 45000.00, 2),
+('Hyundai', 'Creta', 'Flex', 2024, 'Prata', 'Novo', 153000.00, 2),
+('Hyundai', 'Santa Fé', 'Flex', 2014, 'Branca', 'Seminovo', 94000.00, 2),
+
+('Ford', 'Mustang V8', 'Flex', 2020, 'Azul', 'Seminovo', 450000.00, 3),
+('Ford', 'Fusion', 'Flex', 2017, 'Branco', 'Seminovo', 79000.00, 3),
+('Ford', 'Edge', 'Flex', 2025, 'Preto', 'Novo', 68000.00, 3),
+('Ford', 'Ranger', 'Diesel', 2021, 'Azul', 'Novo', 160000.00, 3),
+
+('Chevrolet', 'Camaro V8', 'Flex', 2024, 'Amarelo', 'Novo', 399000.00, 4),
+('Chevrolet', 'Cruze', 'Flex', 2024, 'Prata', 'Novo', 104000.00, 4),
+('Chevrolet', 'Tracker', 'Flex', 2025, 'Vermelho', 'Novo', 103000.00, 4),
+('Chevrolet', 'S10', 'Diesel', 2020, 'Preto', 'Seminovo', 108000.00, 4),
+
+('Volkswagen', 'Passat B8', 'Flex', 2023, 'Preto', 'Novo', 110000.00, 5),
+('Volkswagen', 'Golf Gti', 'Flex', 2025, 'Branca', 'Novo', 190000.00, 5),
+('Volkswagen', 'Jetta Gli', 'Flex', 2023, 'Cinza Nardo', 'Novo', 201000.00, 5),
+('Volkswagen', 'Gol', 'Flex', 2014, 'Preto', 'Seminovo', 32000.00, 5),
+
+('BMW', 'Bmw 428i', 'Flex', 2025, 'Branca', 'Novo', 134000.00, 6),
+('BMW', 'Bmw X6', 'Flex', 2024, 'Verde', 'Novo', 1000000.00, 6),
+('BMW', 'Bmw M4', 'Flex', 2018, 'Preto', 'Seminovo', 473000.00, 6),
+('BMW', 'Bmw i8', 'Flex', 2022, 'Vermelho', 'Novo', 770000.00, 6),
+
+('Fiat', 'Linea', 'Flex', 2015, 'Branca', 'Seminovo', 35000.00, 7),
+('Fiat', 'Titano', 'Diesel', 2025, 'Vermelha', 'Novo', 259000.00, 7),
+('Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
+('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
 
 /*FALTAM 3/*
 
