@@ -76,46 +76,46 @@ FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Toyota', 'Corolla', flex, 2024, 'Preto', Novo, 120000.00),
-('Toyota', 'SW4', diesel, 2025, 'Branco', Novo, 405000.00),
-('Toyota', 'CAMRY', flex, 2016, 'Prata', Seminovo, 57000.00),
-('Toyota', 'Supra MK4', flex, 2024, 'Laranja', Novo, 523000.00);
-
-INSERT INTO carros VALUES (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Hyundai', 'Azera', flex, 2025, 'Branco', Novo, 75000.00),
-('Hyundai', 'Sonata', flex, 2013, 'Preto', Seminovo, 45000.00),
-('Hyundai', 'Creta', flex, 2024, 'Prata', Novo, 153000.00),
-('Hyundai', 'Santa Fé', flex, 2014, 'Branca', Seminovo, 94000.00);
+('Toyota', 'Corolla', Flex, 2024, 'Preto', Novo, 120000.00),
+('Toyota', 'SW4', Diesel, 2025, 'Branco', Novo, 405000.00),
+('Toyota', 'CAMRY', Flex, 2016, 'Prata', Seminovo, 57000.00),
+('Toyota', 'Supra MK4', Flex, 2024, 'Laranja', Novo, 523000.00);
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Ford', 'Mustang V8', flex, 2020, 'Azul', Seminovo, 450000.00),
-('Ford', 'Fusion', flex, 2017, 'Branco', Seminovo, 79000.00),
-('Ford', 'Edge', flex, 2025, 'Preto', Novo, 68000.00),
-('Ford', 'Ranger', diesel, 2021, 'Azul', Novo, 160000.00);
+('Hyundai', 'Azera', Flex, 2025, 'Branco', Novo, 75000.00),
+('Hyundai', 'Sonata', Flex, 2013, 'Preto', Seminovo, 45000.00),
+('Hyundai', 'Creta', Flex, 2024, 'Prata', Novo, 153000.00),
+('Hyundai', 'Santa Fé', Flex, 2014, 'Branca', Seminovo, 94000.00);
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Chevrolet', 'Camaro V8', flex, 2024, 'Amarelo', Novo, 399000.00),
-('Chevrolet', 'Cruze', flex, 2024, 'Prata', Novo, 104000.00),
-('Chevrolet', 'Tracker', flex, 2025, 'Vermelho', Novo, 103000.00),
-('Chevrolet', 'S10', diesel, 2020, 'Preto', Seminovo, 108000.00);
+('Ford', 'Mustang V8', Flex, 2020, 'Azul', Seminovo, 450000.00),
+('Ford', 'Fusion', Flex, 2017, 'Branco', Seminovo, 79000.00),
+('Ford', 'Edge', Flex, 2025, 'Preto', Novo, 68000.00),
+('Ford', 'Ranger', Diesel, 2021, 'Azul', Novo, 160000.00);
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Volkswagen', 'Passat B8', flex, 2023, 'Preto', Novo, 110000.00),
-('Volkswagen', 'Golf Gti', flex, 2025, 'Branca', Novo, 190000.00),
-('Volkswagen', 'Jetta Gli', flex, 2023, 'Cinza Nardo', Novo, 201000.00),
-('Volkswagen', 'Gol', flex, 2014 ,'Preto', Seminovo, 32000.00);
+('Chevrolet', 'Camaro V8', Flex, 2024, 'Amarelo', Novo, 399000.00),
+('Chevrolet', 'Cruze', Flex, 2024, 'Prata', Novo, 104000.00),
+('Chevrolet', 'Tracker', Flex, 2025, 'Vermelho', Novo, 103000.00),
+('Chevrolet', 'S10', Diesel, 2020, 'Preto', Seminovo, 108000.00);
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('BMW', 'Bmw 428i', flex,2025,'Branca', Novo, 134000,00,),
-('BMW', 'Bmw X6', flex,2024,'Verde', Novo, 1000000,00),
-('BMW', 'Bmw M4', flex,2018,'Preto', Seminovo,473000,00),
-('Bmw', 'Bmw i8', flex,2022,'Vermelho', Novo, 770000,00,);
+('Volkswagen', 'Passat B8', Flex, 2023, 'Preto', Novo, 110000.00),
+('Volkswagen', 'Golf Gti', Flex, 2025, 'Branca', Novo, 190000.00),
+('Volkswagen', 'Jetta Gli', Flex, 2023, 'Cinza Nardo', Novo, 201000.00),
+('Volkswagen', 'Gol', Flex, 2014 ,'Preto', Seminovo, 32000.00);
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
-('Fiat', 'Linea', flex,2015,'Branca', Seminovo, 35000,00,),
-('Fiat', 'Titano', diesel,2025,'vermelha', Novo, 259000,00),
-('Fiat', 'Cronos', flex,2019,'Prata', Seminovo, 103000,00),
-('Fiat', 'Toro', flex,2025,'Vermelha', Novo, 205000,00);
+('BMW', 'Bmw 428i', Flex, 2025 ,'Branca', Novo, 134000,00,),
+('BMW', 'Bmw X6', Flex, 2024 ,'Verde', Novo, 1000000,00),
+('BMW', 'Bmw M4', Flex, 2018 ,'Preto', Seminovo,473000,00),
+('Bmw', 'Bmw i8', Flex, 2022 ,'Vermelho', Novo, 770000,00,);
+
+INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco) VALUES
+('Fiat', 'Linea', Flex, 2015, 'Branca', Seminovo, 35000,00,),
+('Fiat', 'Titano', Diesel ,2025,'vermelha', Novo, 259000,00),
+('Fiat', 'Cronos', Flex, 2019, 'Prata', Seminovo, 103000,00),
+('Fiat', 'Toro', Flex, 2025, 'Vermelha', Novo, 205000,00);
 
 /*FALTAM 3/*
 
