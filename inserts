@@ -1,15 +1,15 @@
 INSERT INTO funcionarios (nome, email, telefone, cargo, numero_cracha) VALUES
-('João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '001'),
-('Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '002'),
-('Carlos Souza', 'carlos.souza@email.com', '11999990003', 'Consultor', '003'),
-('Carlos Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '004'),
-('Fernanda Oliveira', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '005'),
-('Lucas Pereira', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '006'),
-('Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '007'),
-('Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Mecânico', '008'),
-('Amanda Lima', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '009'),
-('Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '010'),
-('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '011');
+('João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '101'),
+('Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '102'),
+('Carlos Souza', 'carlos.souza@email.com', '11999990003', 'Consultor', '103'),
+('Carlos Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '104'),
+('Fernanda Oliveira', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '105'),
+('Lucas Pereira', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '106'),
+('Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '107'),
+('Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Mecânico', '108'),
+('Amanda Lima', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '109'),
+('Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '210'),
+('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '211');
 
 INSERT INTO carros_Toyota (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
 ('Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
