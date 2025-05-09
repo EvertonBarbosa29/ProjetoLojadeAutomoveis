@@ -3,11 +3,12 @@ CREATE DATABASE loja_automoveis;
 USE loja_automoveis;
 
 CREATE TABLE funcionarios (
-id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
-nome VARCHAR(200) NOT NULL UNIQUE KEY,
-email VARCHAR(200) NOT NULL UNIQUE KEY,
-telefone VARCHAR(20) NOT NULL,
-cargo VARCHAR(50)
+  id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(200) NOT NULL UNIQUE,
+  email VARCHAR(200) NOT NULL UNIQUE,
+  telefone VARCHAR(20) NOT NULL,
+  cargo VARCHAR(50),
+  numero_cracha VARCHAR(3)
 );
 
 CREATE TABLE clientes (
