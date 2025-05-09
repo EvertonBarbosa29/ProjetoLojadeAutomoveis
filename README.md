@@ -1,6 +1,6 @@
-CREATE DATABASE loja_automoveis;
+CREATE DATABASE loja_veiculos;
 
-USE loja_automoveis;
+USE loja_veiculos;
 
 CREATE TABLE funcionarios (
 id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,10 +21,10 @@ cpf VARCHAR(14) NOT NULL UNIQUE KEY
 CREATE TABLE endereco (
 id_endereco INT PRIMARY KEY AUTO_INCREMENT,
 id_clientes INT,
-estado VARCHAR(100) NOT NULL,
-cidade VARCHAR(100) NOT NULL,
-rua VARCHAR(100) NOT NULL,
-numero_casa INT NOT NULL,
+estado VARCHAR(100)  NOT NULL,
+cidade VARCHAR(100)  NOT NULL,
+rua VARCHAR(100)  NOT NULL,
+numero_casa INT  NOT NULL,
 cep VARCHAR(9) NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes)
 );
@@ -43,11 +43,10 @@ CREATE TABLE carros (
 id_carros INT PRIMARY KEY AUTO_INCREMENT,
 marca VARCHAR(50)  NOT NULL,
 modelo VARCHAR(50)  NOT NULL,
-tipo_combustivel ENUM('flex', 'diesel') DEFAULT 'flex',
 ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
-condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
+condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
 id_fornecedor INT NOT NULL,
 FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
 );
@@ -60,10 +59,10 @@ id_funcionarios INT,
 id_endereco INT,
 data_venda DATETIME DEFAULT NOW() NOT NULL,
 preco_venda DECIMAL(10, 2)  NOT NULL UNIQUE KEY,
-FOREIGN KEY (fk_id_carros) REFERENCES carros(id_carros),
-FOREIGN KEY (fk_id_clientes) REFERENCES clientes(id_clientes),
-FOREIGN KEY (fk_id_funcionarios) REFERENCES funcionarios(id_funcionarios),
-FOREIGN KEY (fk_id_endereco) REFERENCES endereco(id_endereco)
+FOREIGN KEY (id_carros) REFERENCES carros(id_carros),
+FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes),
+FOREIGN KEY (id_funcionarios) REFERENCES funcionarios(id_funcionarios),
+FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
 CREATE TABLE pagamentos (
