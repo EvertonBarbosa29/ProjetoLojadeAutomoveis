@@ -47,5 +47,12 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, 
 ('Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
 ('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
 
+INSERT INTO clientes (nome, email, telefone, cpf) VALUES
+('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
+('kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
+('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22');
+
+INSERT INTO  (estado,cidade,rua,numero_loja,cep) VALUES
+('Bahia','Xique-Xique','Rua meia nove','38','64444-343');
 
 INSERT INTO 
