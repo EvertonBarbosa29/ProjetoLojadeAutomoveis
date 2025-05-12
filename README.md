@@ -137,8 +137,10 @@ INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 ('kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
 ('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22');
 
-INSERT INTO clientes (estado,cidade,rua,numero_loja,cep) VALUES
+INSERT INTO endereco (estado,cidade,rua,numero_loja,cep) VALUES
 ('Bahia','Xique-Xique','Rua meia nove','38','64444-343');
+
+INSERT INTO fornecedores
 
 /*UPDATE/*
 
