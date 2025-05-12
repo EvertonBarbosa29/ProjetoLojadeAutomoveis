@@ -132,7 +132,6 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, 
 ('Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
 ('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
 
-/*FALTAM 3/*
 INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 ('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
 ('kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
