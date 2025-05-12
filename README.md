@@ -1,6 +1,12 @@
 CREATE DATABASE loja_automoveis;
 
 USE loja_automoveis;
+CREATE TABLE loja (
+id_loja INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT,
+nome_loja VARRCHAR(15),
+cnpj VARCHAR(14) NOT NULL UNIQUE KEY
+);
 
 CREATE TABLE funcionarios (
   id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
@@ -75,11 +81,6 @@ metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Chequ
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
-);
-CREATE TABLE loja (
-id_loja INT PRIMARY KEY AUTO_INCREMENT,
-id_endereco INT,
-nome_loja VARRCHAR(15)
 );
 
 INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALUES
