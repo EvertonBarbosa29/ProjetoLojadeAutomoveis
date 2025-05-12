@@ -1,6 +1,13 @@
 CREATE DATABASE loja_automoveis;
 USE loja_automoveis;
 
+CREATE TABLE loja (
+id_loja INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT,
+nome_loja VARRCHAR(15),
+cnpj VARCHAR(14) NOT NULL UNIQUE KEY
+);
+
 CREATE TABLE funcionarios (
   id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
   nome VARCHAR(200) NOT NULL UNIQUE,
