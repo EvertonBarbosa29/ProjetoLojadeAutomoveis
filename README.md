@@ -52,6 +52,7 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 
 CREATE TABLE carros (
 id_carros INT PRIMARY KEY AUTO_INCREMENT,
+id_fornecedores INT,
 marca VARCHAR(50)  NOT NULL,
 modelo VARCHAR(50)  NOT NULL,
 tipo_combustivel ENUM('Flex', 'Diesel') DEFAULT 'Flex' NOT NULL,
@@ -59,8 +60,7 @@ ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
 condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
-id_fornecedor INT NOT NULL,
-FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
+FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
 );
 
 CREATE TABLE vendas (
@@ -143,7 +143,7 @@ INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 INSERT INTO endereco (estado,cidade,rua,numero_loja,cep) VALUES
 ('Bahia','Xique-Xique','Rua meia nove','38','64444-343');
 
-INSERT INTO fornecedores
+INSERT INTO fornecedores()
 
 /*UPDATE/*
 
