@@ -139,7 +139,7 @@ INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 ('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22');
 
 INSERT INTO clientes (estado,cidade,rua,numero_loja,cep) VALUES
-('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
+('Bahia','Xique-Xique','Rua meia nove','38','64444-343');
 
 /*UPDATE/*
 
