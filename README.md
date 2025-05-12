@@ -127,7 +127,10 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, 
 ('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
 
 /*FALTAM 3/*
-
+INSERT INTO clientes (nome, email, telefone, cpf) VALUES
+('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
+('kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
+('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22'),
 /*UPDATE/*
 
 UPDATE carros
