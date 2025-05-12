@@ -7,7 +7,8 @@ CREATE TABLE funcionarios (
   nome VARCHAR(200) NOT NULL UNIQUE,
   email VARCHAR(200) NOT NULL UNIQUE,
   telefone VARCHAR(20) NOT NULL,
-  cargo VARCHAR(50),
+  cargo VARCHAR(50), 
+  cpf VARCHAR(14) NOT NULL UNIQUE KEY,
   numero_cracha VARCHAR(3)
 );
 
