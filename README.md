@@ -99,7 +99,7 @@ INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALU
 ('Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
 ('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedor) VALUES
+INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedores) VALUES
 ('Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
 ('Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 1),
 ('Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 1),
