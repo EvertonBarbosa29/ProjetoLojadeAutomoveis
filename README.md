@@ -1,6 +1,7 @@
 CREATE DATABASE loja_automoveis;
 
 USE loja_automoveis;
+
 CREATE TABLE loja (
 id_loja INT PRIMARY KEY AUTO_INCREMENT,
 id_endereco INT,
