@@ -40,12 +40,14 @@ FOREIGN KEY (id_loja) REFERENCES clientes(id_loja)
 
 CREATE TABLE fornecedores (
 id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 cnpj VARCHAR(18) NOT NULL UNIQUE KEY,
 telefone VARCHAR(20) NOT NULL,
 email VARCHAR(200) NOT NULL,
 endereco VARCHAR(255)  NOT NULL,
-responsavel VARCHAR(200)  NOT NULL UNIQUE KEY
+responsavel VARCHAR(200)  NOT NULL,
+FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
 CREATE TABLE carros (
