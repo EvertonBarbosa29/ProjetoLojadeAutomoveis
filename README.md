@@ -22,7 +22,7 @@ cpf VARCHAR(14) NOT NULL UNIQUE KEY
 
 CREATE TABLE endereco (
 id_endereco INT PRIMARY KEY AUTO_INCREMENT,
-id_clientes INT,
+id_loja INT,
 estado VARCHAR(100)  NOT NULL,
 cidade VARCHAR(100)  NOT NULL,
 rua VARCHAR(100)  NOT NULL,
@@ -75,6 +75,11 @@ metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Chequ
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
+);
+CREATE TABLE loja (
+id_loja INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT,
+nome_loja VARRCHAR(15)
 );
 
 INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALUES
@@ -130,7 +135,7 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, 
 INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 ('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
 ('kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
-('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22'),
+('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22');
 /*UPDATE/*
 
 UPDATE carros
