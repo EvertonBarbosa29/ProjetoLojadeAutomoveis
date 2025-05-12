@@ -32,9 +32,9 @@ id_loja INT,
 estado VARCHAR(100)  NOT NULL,
 cidade VARCHAR(100)  NOT NULL,
 rua VARCHAR(100)  NOT NULL,
-numero_casa INT  NOT NULL,
+numero_loja INT  NOT NULL,
 cep VARCHAR(9) NOT NULL UNIQUE KEY,
-FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes)
+FOREIGN KEY (id_loja) REFERENCES clientes(id_loja)
 );
 
 CREATE TABLE fornecedores (
@@ -137,6 +137,10 @@ INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 ('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
 ('kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
 ('camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22');
+
+INSERT INTO clientes (estado,cidade,rua) VALUES
+('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
+
 /*UPDATE/*
 
 UPDATE carros
