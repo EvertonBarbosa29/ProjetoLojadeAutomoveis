@@ -93,18 +93,18 @@ INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
 ('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
 ('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2);
 
-INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALUES
-('João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '123.456.789-00', '101'),
-('Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '234.567.890-11', '102'),
-('Carlos Souza', 'carlos.souza@email.com', '11999990003', 'Consultor', '345.678.901-22', '103'),
-('Carlos Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '456.789.012-33', '104'),
-('Fernanda Oliveira', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '567.890.123-44', '105'),
-('Lucas Pereira', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '678.901.234-55', '106'),
-('Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '789.012.345-66', '107'),
-('Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Mecânico', '890.123.456-77', '108'),
-('Amanda Lima', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '901.234.567-88', '109'),
-('Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
-('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
+INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
+(1, 'João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '123.456.789-00', '101'),
+(2, 'Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '234.567.890-11', '102'),
+(3, 'Carlos Souza', 'carlos.souza@email.com', '11999990003', 'Consultor', '345.678.901-22', '103'),
+(4, 'Carlos Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '456.789.012-33', '104'),
+(5, 'Fernanda Oliveira', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '567.890.123-44', '105'),
+(6, 'Lucas Pereira', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '678.901.234-55', '106'),
+(7, 'Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '789.012.345-66', '107'),
+(8, 'Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Mecânico', '890.123.456-77', '108'),
+(9, 'Amanda Lima', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '901.234.567-88', '109'),
+(10, 'Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
+(11, 'Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep) VALUES
 ('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
