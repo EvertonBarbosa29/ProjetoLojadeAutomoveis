@@ -10,16 +10,19 @@ cnpj VARCHAR(18) NOT NULL
 
 CREATE TABLE funcionarios (
   id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
+  id_loja INT,
   nome VARCHAR(200) NOT NULL UNIQUE KEY,
   email VARCHAR(200) NOT NULL UNIQUE KEY,
   telefone VARCHAR(20) NOT NULL,
   cargo VARCHAR(50),
   cpf VARCHAR(14) NOT NULL UNIQUE KEY,
-  numero_cracha VARCHAR(3) NOT NULL
+  numero_cracha VARCHAR(3) NOT NULL,
+  FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
 
 CREATE TABLE clientes (
 id_clientes INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 email VARCHAR(200) NOT NULL UNIQUE KEY,
 telefone VARCHAR(20) NOT NULL,
@@ -79,7 +82,7 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 CREATE TABLE pagamentos (
 id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
 id_venda INT,
-metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL UNIQUE KEY,
+metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
