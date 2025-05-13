@@ -107,7 +107,12 @@ INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALU
 ('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep) VALUES
-('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
+('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'), -- id_endereco = 3
+('São Paulo', 'Campinas', 'Av. Japão', 789, '13000-000'), --id_endereco = 1
+('piaui','mato alto','rua',55,'65678-554'),--id_endereco = 2
+('','','',,''),--id_endereco = 4
+('','','',,''),--id_endereco = 5
+('','','',,'');--id_endereco = 6
 
 INSERT INTO fornecedores (id_endereco, nome, cnpj, telefone, email, endereco, responsavel) VALUES
 (3, 'Toyota Motors', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123', 'Carlos Tanaka'),
