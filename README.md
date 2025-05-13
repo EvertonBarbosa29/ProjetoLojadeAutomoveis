@@ -4,7 +4,7 @@ USE loja_automoveis;
 
 CREATE TABLE loja (
 id_loja INT PRIMARY KEY AUTO_INCREMENT,
-nome_loja VARCHAR(50),
+nome_loja VARCHAR(50) NOT NULL,
 cnpj VARCHAR(18) NOT NULL
 );
 
@@ -77,17 +77,16 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
 CREATE TABLE pagamentos (
-id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-id_venda INT,
-metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL UNIQUE KEY,
-valor DECIMAL(10, 2) NOT NULL,
-data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
-FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
+id_pagamentos INT PRIMARY KEY AUTO_INCREMENT,
+id_vendas INT,
+metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
+data_pagamento DATETIME DEFAULT NOW() NOT NULL,
+FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas)
 );
 
 INSERT INTO loja (nome_loja, cnpj) VALUES
 ('Auto Center Bahia', '12345678901234'),
-('Carros Premium SP', '23456789012345');
+('Auto Center SP', '23456789012345');
 
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
 ('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
@@ -163,10 +162,11 @@ INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_
 (2, 2, 2, 2, 405000.00),
 (3, 3, 3, 3, 57000.00);
 
-INSERT INTO pagamentos (id_venda, metodo_pagamento, valor) VALUES
-(1, 'Pix', 120000.00),
-(2, 'Cartão de Crédito', 405000.00),
-(3, 'Dinheiro', 57000.00);
+INSERT INTO pagamentos (id_vendas, metodo_pagamento) VALUES
+(1, 'Pix'),
+(2, 'Cartão de Débito'),
+(3, 'Cartão de Crédito'),
+(4, 'Dinheiro');
 
 /*UPDATE/*
 
