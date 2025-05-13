@@ -4,9 +4,8 @@ USE loja_automoveis;
 
 CREATE TABLE loja (
 id_loja INT PRIMARY KEY AUTO_INCREMENT,
-id_endereco INT,
-nome_loja VARCHAR(15),
-cnpj VARCHAR(14) NOT NULL UNIQUE KEY
+nome_loja VARCHAR(50),
+cnpj VARCHAR(18) NOT NULL UNIQUE KEY
 );
 
 CREATE TABLE funcionarios (
@@ -86,9 +85,11 @@ data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
-INSERT INTO loja (id_endereco, nome_loja, cnpj) VALUES
-(1, 'Auto Center Bahia', '12345678901234'),
-(2, 'Carros Premium SP', '23456789012345');
+SELECT * FROM loja WHERE cnpj = '12345678901234';
+
+INSERT INTO loja (nome_loja, cnpj) VALUES
+('Auto Center Bahia', '12345678901234'),
+('Carros Premium SP', '23456789012345');
 
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
 ('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
