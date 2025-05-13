@@ -2,14 +2,20 @@ CREATE DATABASE loja_automoveis;
 
 USE loja_automoveis;
 
+CREATE TABLE loja (
+id_loja INT PRIMARY KEY AUTO_INCREMENT,
+nome_loja VARCHAR(50),
+cnpj VARCHAR(18) NOT NULL
+);
+
 CREATE TABLE funcionarios (
   id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
-  nome VARCHAR(200) NOT NULL UNIQUE,
-  email VARCHAR(200) NOT NULL UNIQUE,
+  nome VARCHAR(200) NOT NULL UNIQUE KEY,
+  email VARCHAR(200) NOT NULL UNIQUE KEY,
   telefone VARCHAR(20) NOT NULL,
-  cargo VARCHAR(50), 
+  cargo VARCHAR(50),
   cpf VARCHAR(14) NOT NULL UNIQUE KEY,
-  numero_cracha VARCHAR(3)
+  numero_cracha VARCHAR(3) NOT NULL
 );
 
 CREATE TABLE clientes (
@@ -22,27 +28,30 @@ cpf VARCHAR(14) NOT NULL UNIQUE KEY
 
 CREATE TABLE endereco (
 id_endereco INT PRIMARY KEY AUTO_INCREMENT,
-id_clientes INT,
+id_loja INT,
 estado VARCHAR(100)  NOT NULL,
 cidade VARCHAR(100)  NOT NULL,
 rua VARCHAR(100)  NOT NULL,
-numero_casa INT  NOT NULL,
+numero_loja INT  NOT NULL,
 cep VARCHAR(9) NOT NULL UNIQUE KEY,
-FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes)
+FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
 
 CREATE TABLE fornecedores (
-id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
+id_fornecedores INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 cnpj VARCHAR(18) NOT NULL UNIQUE KEY,
-telefone VARCHAR(20) NOT NULL UNIQUE KEY,
+telefone VARCHAR(20) NOT NULL,
 email VARCHAR(200) NOT NULL,
 endereco VARCHAR(255)  NOT NULL,
-responsavel VARCHAR(200)  NOT NULL UNIQUE KEY
+responsavel VARCHAR(200)  NOT NULL,
+FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
 CREATE TABLE carros (
 id_carros INT PRIMARY KEY AUTO_INCREMENT,
+id_fornecedores INT,
 marca VARCHAR(50)  NOT NULL,
 modelo VARCHAR(50)  NOT NULL,
 tipo_combustivel ENUM('Flex', 'Diesel') DEFAULT 'Flex' NOT NULL,
@@ -50,8 +59,7 @@ ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
 condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
-id_fornecedor INT NOT NULL,
-FOREIGN KEY (id_fornecedor) REFERENCES fornecedores(id_fornecedor)
+FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
 );
 
 CREATE TABLE vendas (
@@ -61,7 +69,7 @@ id_clientes INT,
 id_funcionarios INT,
 id_endereco INT,
 data_venda DATETIME DEFAULT NOW() NOT NULL,
-preco_venda DECIMAL(10, 2)  NOT NULL UNIQUE KEY,
+preco_venda DECIMAL(10, 2)  NOT NULL,
 FOREIGN KEY (id_carros) REFERENCES carros(id_carros),
 FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes),
 FOREIGN KEY (id_funcionarios) REFERENCES funcionarios(id_funcionarios),
