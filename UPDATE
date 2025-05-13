@@ -9,3 +9,46 @@ WHERE marca = 'Ford' AND modelo = 'Mustang V8';
 UPDATE carros
 SET ano = 2024
 WHERE marca = 'Fiat' AND modelo = 'Toro';
+
+
+/* NOVOS UPDATES*/
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM carros;
+
+UPDATE carros
+SET cor = 'Branco'
+WHERE cor = 'Branca';
+
+UPDATE carros
+SET cor = 'Vermelho'
+WHERE marca = 'Ford' AND modelo = 'Mustang V8';
+
+UPDATE funcionarios f
+JOIN loja l ON l.id_loja = 1
+SET f.cargo = 'Vendedor Sênior'
+WHERE f.cargo = 'Vendedor';
+
+SELECT * FROM funcionarios;
+
+UPDATE carros JOIN (
+  SELECT id_fornecedores, AVG(preco) AS media_preco
+  FROM carros
+  GROUP BY id_fornecedores
+) AS media ON carros.id_fornecedores = media.id_fornecedores
+SET carros.preco = carros.preco * 1.02
+WHERE carros.preco < media.media_preco;
+
+SELECT * FROM carros;
+
+UPDATE carros JOIN (
+  SELECT id_carros
+  FROM carros
+  ORDER BY preco ASC
+  LIMIT 3
+) AS mais_baratos ON carros.id_carros = mais_baratos.id_carros
+SET carros.condicao = 'Seminovo';
+
+SELECT * FROM carros;
+
