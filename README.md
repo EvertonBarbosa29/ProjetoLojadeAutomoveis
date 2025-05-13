@@ -68,6 +68,7 @@ id_carros INT,
 id_clientes INT,
 id_funcionarios INT,
 id_endereco INT,
+id_pagamentos INT,
 data_venda DATETIME DEFAULT NOW() NOT NULL,
 preco_venda DECIMAL(10, 2)  NOT NULL,
 FOREIGN KEY (id_carros) REFERENCES carros(id_carros),
@@ -77,11 +78,12 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
 CREATE TABLE pagamentos (
-id_pagamentos INT PRIMARY KEY AUTO_INCREMENT,
-id_vendas INT,
-metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
-data_pagamento DATETIME DEFAULT NOW() NOT NULL,
-FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas)
+id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+id_venda INT,
+metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL UNIQUE KEY,
+valor DECIMAL(10, 2) NOT NULL,
+data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
+FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
 INSERT INTO loja (nome_loja, cnpj) VALUES
@@ -106,12 +108,9 @@ INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALU
 ('Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep) VALUES
-('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'), -- id_endereco = 3
-('São Paulo', 'Campinas', 'Av. Japão', 789, '13000-000'), --id_endereco = 1
-('piaui','mato alto','rua',55,'65678-554'),--id_endereco = 2
-('','','',,''),--id_endereco = 4
-('','','',,''),--id_endereco = 5
-('','','',,'');--id_endereco = 6
+('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'), -- id_endereco = 3 
+('São Paulo', 'Campinas', 'Av. Japão', 789, '13000-000'), --id_endereco = 1 
+('piaui','mato alto','rua',55,'65678-554');--id_endereco = 2
 
 INSERT INTO fornecedores (id_endereco, nome, cnpj, telefone, email, endereco, responsavel) VALUES
 (3, 'Toyota Motors', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123', 'Carlos Tanaka'),
@@ -162,61 +161,7 @@ INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_
 (2, 2, 2, 2, 405000.00),
 (3, 3, 3, 3, 57000.00);
 
-INSERT INTO pagamentos (id_vendas, metodo_pagamento) VALUES
-(1, 'Pix'),
-(2, 'Cartão de Débito'),
-(3, 'Cartão de Crédito'),
-(4, 'Dinheiro');
-
-/*UPDATE/*
-
-UPDATE carros
-SET preco = 499000.00
-WHERE marca = 'Toyota' AND modelo = 'Supra MK4';
-
-UPDATE carros
-SET cor = 'Vermelho'
-WHERE marca = 'Ford' AND modelo = 'Mustang V8';
-
-UPDATE carros
-SET ano = 2024
-WHERE marca = 'Fiat' AND modelo = 'Toro';
-
-/*FINAL UPDATE/*
-
-/*VIEW/*
-
-CREATE VIEW v_carros_disponiveis AS
-SELECT * FROM carros;
-
-CREATE VIEW v_carros_novos AS
-SELECT * FROM carros
-WHERE condicao = Novo;
-
-CREATE VIEW v_carros_seminovos AS
-SELECT * FROM carros
-WHERE condicao = Seminovo;
-
-CREATE VIEW v_carros_volkswagen AS
-SELECT * FROM carros
-WHERE marca = 'Volkswagen';
-
-CREATE VIEW v_carros_caros AS
-SELECT * FROM carros
-WHERE preco >150000;
-
-CREATE VIEW v_carros_2025 AS
-SELECT * FROM carros
-WHERE ano = 2025;
-
-CREATE VIEW v_funcionarios_cargos AS
-SELECT * nome, cargo FROM funcionarios;
-
-CREATE VIEW v_carros_valor_medio AS
-SELECT * FROM carros 
-WHERE preco BETWEEN 50000 AND 150000;
-
-/*FALTAM 4/*
-
-/*FINAL VIEW/*
-
+INSERT INTO pagamentos (id_venda, metodo_pagamento, valor) VALUES
+(1, 'Pix', 120000.00),
+(2, 'Cartão de Crédito', 405000.00),
+(3, 'Dinheiro', 57000.00);
