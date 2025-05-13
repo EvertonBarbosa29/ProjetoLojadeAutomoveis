@@ -239,10 +239,3 @@ WHERE ano = 2018;
 
 CREATE VIEW v_funcionarios_cargos AS
 SELECT nome, cargo FROM funcionarios;
-
-
-CREATE VIEW v_carros_valor_medio_nova AS
-SELECT * FROM carros
-WHERE preco BETWEEN 50000 AND 150000;
-
-
