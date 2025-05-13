@@ -86,6 +86,14 @@ data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
 
+INSERT INTO loja (id_endereco, nome_loja, cnpj) VALUES
+(1, 'Auto Center Bahia', '12345678901234'),
+(2, 'Carros Premium SP', '23456789012345');
+
+INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
+('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
+('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2);
+
 INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALUES
 ('João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '123.456.789-00', '101'),
 ('Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '234.567.890-11', '102'),
@@ -143,7 +151,20 @@ INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 INSERT INTO endereco (estado,cidade,rua,numero_loja,cep) VALUES
 ('Bahia','Xique-Xique','Rua meia nove','38','64444-343');
 
-INSERT INTO fornecedores()
+INSERT INTO fornecedores (id_endereco, nome, cnpj, telefone, email, endereco, responsavel) VALUES
+(1, 'Toyota Motors', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123, Salvador - BA', 'Carlos Tanaka'),
+(2, 'Hyundai Brasil', '00234567890123', '(11) 98765-4321', 'hyundai@fornecedores.com', 'Avenida Coreia, 456, São Paulo - SP', 'Mariana Kim');
+
+INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
+(1, 1, 1, 1, 120000.00),
+(2, 2, 2, 2, 405000.00),
+(3, 3, 3, 1, 57000.00);
+
+INSERT INTO pagamentos (id_venda, metodo_pagamento, valor) VALUES
+(1, 'Pix', 120000.00),
+(2, 'Cartão de Crédito', 405000.00),
+(3, 'Dinheiro', 57000.00);
+
 
 /*UPDATE/*
 
