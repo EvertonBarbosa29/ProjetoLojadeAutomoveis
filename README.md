@@ -81,17 +81,23 @@ id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
 id_venda INT,
 metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL UNIQUE KEY,
 valor DECIMAL(10, 2) NOT NULL,
-data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
+data_pagamento DATETIME DEFAULT NOW() NOT NULL,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
+
+SELECT * FROM loja;
 
 INSERT INTO loja (nome_loja, cnpj) VALUES
 ('Auto Center Bahia', '12345678901234'),
 ('Carros Premium SP', '23456789012345');
 
+SELECT * FROM endereco;
+
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
 ('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
 ('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2);
+
+SELECT * FROM funcionarios;
 
 INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
 (1, 'João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '123.456.789-00', '101'),
@@ -109,19 +115,25 @@ INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, nu
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep) VALUES
 ('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
 
-INSERT INTO fornecedores (id_endereco, nome, cnpj, telefone, email, endereco, responsavel) VALUES
-(3, 'Toyota Motors', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123', 'Carlos Tanaka'),
-(3, 'Hyundai Brasil', '00234567890123', '(11) 98765-4321', 'hyundai@fornecedores.com', 'Av. Coreia, 456', 'Mariana Kim'),
-(3, 'Ford Brasil', '00345678901234', '(11) 91111-1111', 'ford@fornecedores.com', 'Av. América, 123', 'Roberto Ford'),
-(3, 'Chevrolet Motors', '00456789012345', '(11) 92222-2222', 'chevrolet@fornecedores.com', 'Rua GM, 456', 'Ana GM'),
-(3, 'Volkswagen Brasil', '00567890123456', '(11) 93333-3333', 'vw@fornecedores.com', 'Av. Alemanha, 789', 'Carlos VW'),
-(3, 'BMW Brasil', '00678901234567', '(11) 94444-4444', 'bmw@fornecedores.com', 'Rua Munique, 321', 'Hans BMW'),
-(3, 'Fiat Brasil', '00789012345678', '(11) 95555-5555', 'fiat@fornecedores.com', 'Rua Itália, 654', 'Giovanni Fiat');
+SELECT * FROM endereco;
+
+INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
+(1, 'Toyota', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123', 'Carlos Tanaka'),
+(2, 'Hyundai', '00234567890123', '(11) 98765-4321', 'hyundai@fornecedores.com', 'Av. Coreia, 456', 'Mariana Kim'),
+(3, 'Ford', '00345678901234', '(11) 91111-1111', 'ford@fornecedores.com', 'Av. América, 123', 'Roberto Ford'),
+(4, 'Chevrolet', '00456789012345', '(11) 92222-2222', 'chevrolet@fornecedores.com', 'Rua GM, 456', 'Ana GM'),
+(5, 'Volkswagen', '00567890123456', '(11) 93333-3333', 'vw@fornecedores.com', 'Av. Alemanha, 789', 'Carlos VW'),
+(6, 'BMW', '00678901234567', '(11) 94444-4444', 'bmw@fornecedores.com', 'Rua Munique, 321', 'Hans BMW'),
+(7, 'Fiat', '00789012345678', '(11) 95555-5555', 'fiat@fornecedores.com', 'Rua Itália, 654', 'Giovanni Fiat');
+
+SELECT * FROM fornecedores;
 
 INSERT INTO clientes (nome, email, telefone, cpf) VALUES
 ('Jonas', 'jonas.silvino@gmail.com', '93346-6747', '756.345.345-34'),
 ('Kleitin', 'DogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
 ('Camilo', 'Superidoll@gmail.com', '95467-3200', '435.587.629-22');
+
+SELECT * FROM clientes;
 
 INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedores) VALUES
 ('Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
@@ -153,12 +165,20 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, 
 ('Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
 ('Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
 
+SELECT * FROM carros;
+
 INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
 (1, 1, 1, 1, 120000.00),
 (2, 2, 2, 2, 405000.00),
 (3, 3, 3, 3, 57000.00);
 
-INSERT INTO pagamentos (id_venda, metodo_pagamento, valor) VALUES
-(1, 'Pix', 120000.00),
-(2, 'Cartão de Crédito', 405000.00),
-(3, 'Dinheiro', 57000.00);
+SELECT * FROM vendas;
+
+INSERT INTO pagamentos (id_venda, metodo_pagamento, valor, data_pagamento)
+VALUES (1, 'Pix', 120000.00, NOW());
+INSERT INTO pagamentos (id_venda, metodo_pagamento, valor, data_pagamento)
+VALUES (2, 'Cartão de Crédito', 405000.00, NOW());
+INSERT INTO pagamentos (id_venda, metodo_pagamento, valor, data_pagamento)
+VALUES (3, 'Dinheiro', 57000.00, NOW());
+
+SELECT * FROM pagamentos;
