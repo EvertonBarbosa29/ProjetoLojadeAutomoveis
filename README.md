@@ -5,7 +5,7 @@ USE loja_automoveis;
 CREATE TABLE loja (
 id_loja INT PRIMARY KEY AUTO_INCREMENT,
 id_endereco INT,
-nome_loja VARRCHAR(15),
+nome_loja VARCHAR(15),
 cnpj VARCHAR(14) NOT NULL UNIQUE KEY
 );
 
