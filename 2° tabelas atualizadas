@@ -221,3 +221,5 @@ UPDATE carros JOIN (
 SET carros.condicao = 'Seminovo';
 
 SELECT * FROM carros;
+
+
