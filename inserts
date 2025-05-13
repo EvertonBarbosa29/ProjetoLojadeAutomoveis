@@ -1,3 +1,10 @@
+SELECT * FROM loja WHERE cnpj = '12345678901234';
+
+INSERT INTO loja (nome_loja, cnpj) VALUES
+('Auto Center Bahia', '12345678901234'),
+('Carros Premium SP', '23456789012345');
+
+
 INSERT INTO funcionarios (nome, email, telefone, cargo, cpf, numero_cracha) VALUES
 ('João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '123.456.789-00', '101'),
 ('Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '234.567.890-11', '102'),
