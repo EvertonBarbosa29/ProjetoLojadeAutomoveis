@@ -162,7 +162,7 @@ INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_
 (2, 2, 2, 2, 405000.00),
 (3, 3, 3, 3, 57000.00);
 
-INSERT INTO pagamentos (id_venda, metodo_pagamento, valor) VALUES
+INSERT INTO pagamentos (id_vendas, metodo_pagamento, valor) VALUES
 (1, 'Pix', 120000.00),
 (2, 'Cartão de Crédito', 405000.00),
 (3, 'Dinheiro', 57000.00);
