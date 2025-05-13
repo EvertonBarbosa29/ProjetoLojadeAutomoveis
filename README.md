@@ -62,6 +62,15 @@ preco DECIMAL(10, 2)  NOT NULL,
 FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
 );
 
+CREATE TABLE pagamentos (
+id_pagamentos INT PRIMARY KEY AUTO_INCREMENT,
+id_vendas INT,
+metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
+valor DECIMAL(10, 2) NOT NULL,
+data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
+FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas)
+);
+
 CREATE TABLE vendas (
 id_vendas INT PRIMARY KEY AUTO_INCREMENT,
 id_carros INT,
@@ -78,14 +87,6 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco),
 FOREIGN KEY (id_pagamentos) REFERENCES pagamentos(id_pagamentos)
 );
 
-CREATE TABLE pagamentos (
-id_pagamentos INT PRIMARY KEY AUTO_INCREMENT,
-id_vendas INT,
-metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
-valor DECIMAL(10, 2) NOT NULL,
-data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
-FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas)
-);
 
 INSERT INTO loja (nome_loja, cnpj) VALUES
 ('Auto Center Bahia', '12345678901234'),
