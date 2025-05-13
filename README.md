@@ -39,7 +39,7 @@ FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
 
 CREATE TABLE fornecedores (
-id_fornecedor INT PRIMARY KEY AUTO_INCREMENT,
+id_fornecedores INT PRIMARY KEY AUTO_INCREMENT,
 id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 cnpj VARCHAR(18) NOT NULL UNIQUE KEY,
