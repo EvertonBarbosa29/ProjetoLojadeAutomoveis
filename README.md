@@ -74,16 +74,17 @@ preco_venda DECIMAL(10, 2)  NOT NULL,
 FOREIGN KEY (id_carros) REFERENCES carros(id_carros),
 FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes),
 FOREIGN KEY (id_funcionarios) REFERENCES funcionarios(id_funcionarios),
-FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco),
+FOREIGN KEY (id_pagamentos) REFERENCES pagamentos(id_pagamentos)
 );
 
 CREATE TABLE pagamentos (
-id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-id_venda INT,
+id_pagamentos INT PRIMARY KEY AUTO_INCREMENT,
+id_vendas INT,
 metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
-FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
+FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas)
 );
 
 INSERT INTO loja (nome_loja, cnpj) VALUES
