@@ -182,3 +182,68 @@ INSERT INTO pagamentos (id_venda, metodo_pagamento, valor, data_pagamento)
 VALUES (3, 'Dinheiro', 57000.00, NOW());
 
 SELECT * FROM pagamentos;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM carros;
+
+UPDATE carros
+SET cor = 'Branco'
+WHERE cor = 'Branca';
+
+UPDATE carros
+SET cor = 'Vermelho'
+WHERE marca = 'Ford' AND modelo = 'Mustang V8';
+
+UPDATE funcionarios f
+JOIN loja l ON l.id_loja = 1
+SET f.cargo = 'Vendedor Sênior'
+WHERE f.cargo = 'Vendedor';
+
+SELECT * FROM funcionarios;
+
+UPDATE carros JOIN (
+  SELECT id_fornecedores, AVG(preco) AS media_preco
+  FROM carros
+  GROUP BY id_fornecedores
+) AS media ON carros.id_fornecedores = media.id_fornecedores
+SET carros.preco = carros.preco * 1.02
+WHERE carros.preco < media.media_preco;
+
+SELECT * FROM carros;
+
+UPDATE carros JOIN (
+  SELECT id_carros
+  FROM carros
+  ORDER BY preco ASC
+  LIMIT 3
+) AS mais_baratos ON carros.id_carros = mais_baratos.id_carros
+SET carros.condicao = 'Seminovo';
+
+SELECT * FROM carros;
+
+CREATE VIEW v_carros_disponiveis AS
+SELECT * FROM carros;
+
+CREATE VIEW v_carros_volkswagen AS
+SELECT * FROM carros
+WHERE marca = 'Volkswagen';
+
+CREATE VIEW v_carros_caros AS
+SELECT * FROM carros
+WHERE preco >150000;
+
+CREATE VIEW v_carros_2018 AS
+SELECT * FROM carros
+WHERE ano = 2018;
+
+CREATE VIEW v_funcionarios_cargos AS
+SELECT nome, cargo FROM funcionarios;
+
+DROP VIEW IF EXISTS v_carros_valor_medio;
+
+CREATE VIEW v_carros_valor_medio_nova AS
+SELECT * FROM carros
+WHERE preco BETWEEN 50000 AND 150000;
+
+
