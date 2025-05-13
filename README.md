@@ -35,7 +35,7 @@ cidade VARCHAR(100)  NOT NULL,
 rua VARCHAR(100)  NOT NULL,
 numero_loja INT  NOT NULL,
 cep VARCHAR(9) NOT NULL UNIQUE KEY,
-FOREIGN KEY (id_loja) REFERENCES clientes(id_loja)
+FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
 
 CREATE TABLE fornecedores (
