@@ -240,7 +240,6 @@ WHERE ano = 2018;
 CREATE VIEW v_funcionarios_cargos AS
 SELECT nome, cargo FROM funcionarios;
 
-DROP VIEW IF EXISTS v_carros_valor_medio;
 
 CREATE VIEW v_carros_valor_medio_nova AS
 SELECT * FROM carros
