@@ -62,10 +62,21 @@ preco DECIMAL(10, 2)  NOT NULL,
 FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
 );
 
+CREATE TABLE metodo_pagamentos (
+id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+id_pagamentos INT,
+id_clientes INT,
+id_carros INT,
+metodo_de_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
+FOREIGN KEY (id_pagamentos) REFERENCES pagamentos(id_pagamentos),
+FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas),
+FOREIGN KEY (id_carros) REFERENCES carros(id_carros)
+);
+
 CREATE TABLE pagamentos (
 id_pagamentos INT PRIMARY KEY AUTO_INCREMENT,
 id_vendas INT,
-metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
+forma_do_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro'),
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL UNIQUE KEY,
 FOREIGN KEY (id_vendas) REFERENCES vendas(id_vendas)
@@ -163,7 +174,8 @@ INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_
 (2, 2, 2, 2, 405000.00),
 (3, 3, 3, 3, 57000.00);
 
-INSERT INTO pagamentos (id_vendas, metodo_pagamento, valor) VALUES
+INSERT INTO pagamentos (id_vendas, id_metodo_pagamento, valor) VALUES
 (1, 'Pix', 120000.00),
 (2, 'Cartão de Crédito', 405000.00),
 (3, 'Dinheiro', 57000.00);
+
