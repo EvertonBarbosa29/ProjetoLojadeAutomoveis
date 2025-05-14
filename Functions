@@ -1,0 +1,48 @@
+DELIMITER $$
+
+CREATE FUNCTION validar_cep(cep_input VARCHAR(9)) RETURNS INT
+BEGIN
+    IF cep_input REGEXP '^[0-9]{5}-[0-9]{3}$' THEN
+        RETURN 1; -- CEP válido
+    ELSE
+        RETURN 0; -- CEP inválido
+    END IF;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE FUNCTION verificar_estoque(id_carro INT) RETURNS INT
+BEGIN
+    DECLARE estoque INT;
+
+    SELECT COUNT(*) INTO estoque
+    FROM carros
+    WHERE id_carros = id_carro;
+
+    IF estoque > 0 THEN
+        RETURN 1; -- Carro disponível
+    ELSE
+        RETURN 0; -- Carro indisponível
+    END IF;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE FUNCTION contar_vendas_por_loja(id_loja_input INT) RETURNS INT
+BEGIN
+    DECLARE total_vendas INT;
+
+    SELECT COUNT(*)
+    INTO total_vendas
+    FROM vendas v
+    JOIN endereco e ON v.id_endereco = e.id_endereco
+    WHERE e.id_loja = id_loja_input;
+
+    RETURN total_vendas;
+END $$
+
+DELIMITER ;
