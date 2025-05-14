@@ -120,9 +120,6 @@ INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, nu
 (10, 'Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
 (11, 'Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
-INSERT INTO endereco (estado, cidade, rua, numero_loja, cep) VALUES
-('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
-
 SELECT * FROM endereco;
 
 INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
