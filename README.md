@@ -120,8 +120,6 @@ INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, nu
 (10, 'Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
 (11, 'Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
-SELECT * FROM fornecedores;
-
 INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
 (1, 'Toyota', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123', 'Carlos Tanaka'),
 (2, 'Hyundai', '00234567890123', '(11) 98765-4321', 'hyundai@fornecedores.com', 'Av. Coreia, 456', 'Mariana Kim'),
