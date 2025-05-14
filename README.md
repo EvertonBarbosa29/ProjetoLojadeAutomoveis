@@ -97,9 +97,13 @@ INSERT INTO loja (nome_loja, cnpj) VALUES
 SELECT * FROM endereco;
 
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
-('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
-('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2);
-('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
+('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343', 1), -- id_endereco = 1
+('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2), -- id_endereco = 2
+('Minas Gerais', 'Belo Horizonte', 'Rua das Flores', 123, '31000-000', 1), -- id_endereco = 3
+('Rio de Janeiro', 'Rio de Janeiro', 'Avenida Atlântica', 456, '22000-000', 2), -- id_endereco = 4
+('Paraná', 'Curitiba', 'Rua XV de Novembro', 789, '80000-000', 1), -- id_endereco = 5
+('Bahia', 'Feira de Santana', 'Praça da Matriz', 50, '44000-000', 1); -- id_endereco = 6
+
 
 SELECT * FROM funcionarios;
 
