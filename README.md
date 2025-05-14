@@ -99,6 +99,7 @@ SELECT * FROM endereco;
 INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
 ('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
 ('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2);
+('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
 
 SELECT * FROM funcionarios;
 
