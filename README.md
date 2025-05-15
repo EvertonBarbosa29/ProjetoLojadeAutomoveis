@@ -228,9 +228,33 @@ SELECT * FROM carros;
 CREATE VIEW v_carros_disponiveis AS
 SELECT * FROM carros;
 
+CREATE VIEW v_carros_toyota AS
+SELECT * FROM carros
+WHERE marca = 'Toyota';
+
+CREATE VIEW v_carros_hyundai AS
+SELECT * FROM carros
+WHERE marca = 'Hyundai';
+
+CREATE VIEW v_carros_ford AS
+SELECT * FROM carros
+WHERE marca = 'Ford';
+
+CREATE VIEW v_carros_chevrolet AS
+SELECT * FROM carros
+WHERE marca = 'Chevrolet';
+
 CREATE VIEW v_carros_volkswagen AS
 SELECT * FROM carros
 WHERE marca = 'Volkswagen';
+
+CREATE VIEW v_carros_bmw AS
+SELECT * FROM carros
+WHERE marca = 'BMW';
+
+CREATE VIEW v_carros_fiat AS
+SELECT * FROM carros
+WHERE marca = 'Fiat';
 
 CREATE VIEW v_carros_caros AS
 SELECT * FROM carros
