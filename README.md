@@ -236,9 +236,9 @@ CREATE VIEW v_carros_caros AS
 SELECT * FROM carros
 WHERE preco >150000;
 
-CREATE VIEW v_carros_2018 AS
+CREATE VIEW v_carros_2025 AS
 SELECT * FROM carros
-WHERE ano = 2018;
+WHERE ano = 2025;
 
 CREATE VIEW v_funcionarios_cargos AS
 SELECT nome, cargo FROM funcionarios;
