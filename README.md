@@ -79,6 +79,17 @@ FOREIGN KEY (id_funcionarios) REFERENCES funcionarios(id_funcionarios),
 FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
+CREATE TABLE forma_pagamento (
+  id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+  metodo VARCHAR(50) NOT NULL UNIQUE
+);
+
+INSERT INTO forma_pagamento (metodo) VALUES 
+('Pix'),
+('Cartão de Débito'),
+('Cartão de Crédito'),
+('Cheque'),
+('Dinheiro');
 CREATE TABLE pagamentos (
 id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
 id_venda INT,
@@ -86,6 +97,16 @@ metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Chequ
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME DEFAULT NOW() NOT NULL,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
+);
+
+CREATE TABLE pagamentos (
+  id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+  id_venda INT,
+  id_forma_pagamento INT,
+  valor DECIMAL(10, 2) NOT NULL,
+  data_pagamento DATETIME DEFAULT NOW() NOT NULL,
+  FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas),
+  FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento(id_forma_pagamento)
 );
 
 SELECT * FROM loja;
