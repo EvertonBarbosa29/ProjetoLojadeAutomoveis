@@ -1,52 +1,89 @@
-/*VIEW*/
-
-CREATE VIEW v_carros_disponiveis AS
+CREATE VIEW v_car_disponiveis AS
 SELECT * FROM carros;
 
-CREATE VIEW v_carros_toyota AS
+CREATE VIEW v_total_car_m AS
+SELECT marca, COUNT(*) AS total_carros
+FROM carros
+GROUP BY marca;
+
+CREATE VIEW v_car_toyota AS
 SELECT * FROM carros
 WHERE marca = 'Toyota';
 
-CREATE VIEW v_carros_hyundai AS
+CREATE VIEW v_car_hyundai AS
 SELECT * FROM carros
 WHERE marca = 'Hyundai';
 
-CREATE VIEW v_carros_ford AS
+CREATE VIEW v_car_ford AS
 SELECT * FROM carros
 WHERE marca = 'Ford';
 
-CREATE VIEW v_carros_chevrolet AS
+CREATE VIEW v_car_chevrolet AS
 SELECT * FROM carros
 WHERE marca = 'Chevrolet';
 
-CREATE VIEW v_carros_volkswagen AS
+CREATE VIEW v_car_volkswagen AS
 SELECT * FROM carros
 WHERE marca = 'Volkswagen';
 
-CREATE VIEW v_carros_bmw AS
+CREATE VIEW v_car_bmw AS
 SELECT * FROM carros
 WHERE marca = 'BMW';
 
-CREATE VIEW v_carros_fiat AS
+CREATE VIEW v_car_fiat AS
 SELECT * FROM carros
 WHERE marca = 'Fiat';
 
-CREATE VIEW v_carros_caros AS
+CREATE VIEW v_car_caros AS
 SELECT * FROM carros
-WHERE preco >150000;
+WHERE preco >50000;
 
-CREATE VIEW v_carros_2025 AS
+CREATE VIEW v_car_2025 AS
 SELECT * FROM carros
 WHERE ano = 2025;
 
-CREATE VIEW v_funcionarios_cargos AS
+CREATE VIEW v_car_semi AS
+SELECT * FROM carros
+WHERE condicao = 'Seminovo';
+
+CREATE VIEW v_car_novos AS
+SELECT * FROM carros
+WHERE condicao = 'Novo';
+
+CREATE VIEW v_car_preco_cres AS
+SELECT * FROM carros
+ORDER BY preco ASC;
+
+SELECT * FROM carros;
+
+CREATE VIEW v_funci_cargos AS
 SELECT nome, cargo FROM funcionarios;
 
-DROP VIEW IF EXISTS v_carros_valor_medio;
+CREATE VIEW v_funci_alf AS
+SELECT nome FROM funcionarios
+ORDER BY nome ASC;
 
-CREATE VIEW v_carros_valor_medio_nova AS
-SELECT * FROM carros
-WHERE preco BETWEEN 50000 AND 150000;
+CREATE VIEW v_funci_crg_n° AS
+SELECT cargo, COUNT(*) AS numero
+FROM funcionarios
+GROUP BY cargo
+HAVING COUNT(*) >1;
 
+UPDATE funcionarios f
+JOIN loja l ON l.id_loja = 1
+SET f.cargo = 'Vendedor Sênior'
+WHERE f.cargo = 'Vendedor';
 
-CREATE VIEW
+SELECT * FROM funcionarios;
+
+CREATE VIEW v_ende_cep AS 
+SELECT id_endereco, id_loja, estado,cidade, rua, numero_loja, cep FROM endereco
+WHERE cep IS NOT NULL;
+
+SELECT * FROM endereco;
+
+CREATE VIEW v_client_cpf AS
+SELECT id_clientes, nome, email, telefone, cpf FROM clientes
+WHERE cpf IS NOT NULL;
+
+SELECT * FROM clientes;
