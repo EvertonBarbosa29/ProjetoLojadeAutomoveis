@@ -69,11 +69,6 @@ FROM funcionarios
 GROUP BY cargo
 HAVING COUNT(*) >1;
 
-UPDATE funcionarios f
-JOIN loja l ON l.id_loja = 1
-SET f.cargo = 'Vendedor Sênior'
-WHERE f.cargo = 'Vendedor';
-
 SELECT * FROM funcionarios;
 
 CREATE VIEW v_ende_cep AS 
