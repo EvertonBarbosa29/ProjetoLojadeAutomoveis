@@ -43,3 +43,7 @@ SET carros.condicao = 'Novo';
 
 SELECT * FROM carros;
 
+UPDATE funcionarios f
+JOIN loja l ON l.id_loja = 1
+SET f.cargo = 'Vendedor Sênior'
+WHERE f.cargo = 'Vendedor';
