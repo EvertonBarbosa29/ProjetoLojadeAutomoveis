@@ -1,21 +1,27 @@
+INSERT INTO loja (nome_loja, cnpj) VALUES
+('Auto Center CAR BA', '23.456.789/0123-04'),
+('Auto Center CAR SP', '23.456.789/0123-45'),
+('Auto Center CAR MG', '19.577.430/0001-07'),
+('Auto Center CAR RJ', '44.345.772/0001-30'),
+('Auto Center CAR PR', '83.312.232/0001-02'),
+('Auto Center CAR PE', '41.349.631/0001-06');
+
 SELECT * FROM loja;
 
-INSERT INTO loja (nome_loja, cnpj) VALUES
-('Auto Center Bahia', '12345678901234'),
-('Carros Premium SP', '23456789012345');
+INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
+('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343', 1), -- id_endereco = 1
+('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2), -- id_endereco = 2
+('Minas Gerais', 'Belo Horizonte', 'Rua das Flores', 123, '31000-000', 1), -- id_endereco = 3
+('Rio de Janeiro', 'Rio de Janeiro', 'Avenida Atlântica', 456, '22000-000', 2), -- id_endereco = 4
+('Paraná', 'Curitiba', 'Rua XV de Novembro', 789, '80000-000', 1), -- id_endereco = 5
+('Pernanbuco', 'Recife', 'Praça da Matriz', 50, '44000-000', 1); -- id_endereco = 6
 
 SELECT * FROM endereco;
 
-INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
-('Bahia', 'Salvador', 'Rua Principal', 100, '40000-000', 1),
-('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '01310-000', 2);
-
-SELECT * FROM funcionarios;
-
 INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
-(1, 'João da Silva', 'joao.silva@email.com', '11999990001', 'Vendedor', '123.456.789-00', '101'),
-(2, 'Maria Oliveira', 'maria.oliveira@email.com', '11999990002', 'Gerente', '234.567.890-11', '102'),
-(3, 'Carlos Souza', 'carlos.souza@email.com', '11999990003', 'Consultor', '345.678.901-22', '103'),
+(1, 'João da Silva', 'joao.silva@email.com', '(11) 999990001', 'Vendedor', '123.456.789-00', '101'),
+(2, 'Maria Oliveira', 'maria.oliveira@email.com', '(11) 999990002', 'Gerente', '234.567.890-11', '102'),
+(3, 'Carlos Souza', 'carlos.souza@email.com', '(11) 999990003', 'Consultor', '345.678.901-22', '103'),
 (4, 'Carlos Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '456.789.012-33', '104'),
 (5, 'Fernanda Oliveira', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '567.890.123-44', '105'),
 (6, 'Lucas Pereira', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '678.901.234-55', '106'),
@@ -25,10 +31,7 @@ INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, nu
 (10, 'Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
 (11, 'Larissa Souza', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
 
-INSERT INTO endereco (estado, cidade, rua, numero_loja, cep) VALUES
-('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '64444-343'); -- id_endereco = 3
-
-SELECT * FROM endereco;
+SELECT * FROM funcionarios;
 
 INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
 (1, 'Toyota', '00123456789001', '(11) 91234-5678', 'toyota@fornecedores.com', 'Rua Japão, 123', 'Carlos Tanaka'),
@@ -82,8 +85,8 @@ SELECT * FROM carros;
 
 INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
 (1, 1, 1, 1, 120000.00),
-(2, 2, 2, 2, 405000.00),
-(3, 3, 3, 3, 57000.00);
+(2, 2, 4, 2, 405000.00),
+(3, 3, 10, 3, 57000.00);
 
 SELECT * FROM vendas;
 
@@ -95,3 +98,12 @@ INSERT INTO pagamentos (id_venda, metodo_pagamento, valor, data_pagamento)
 VALUES (3, 'Dinheiro', 57000.00, NOW());
 
 SELECT * FROM pagamentos;
+
+INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES 
+(1, 'Pix'),
+(2, 'Cartão de Débito'),
+(3, 'Cartão de Crédito'),
+(4, 'Cheque'),
+(5, 'Dinheiro');
+
+SELECT * FROM forma_pagamento;
