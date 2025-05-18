@@ -44,17 +44,17 @@ INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco
 
 SELECT * FROM fornecedores;
 
-INSERT INTO clientes (id_clinetes, nome, email, telefone, cpf) VALUES
+INSERT INTO clientes (id_clientes , nome, email, telefone, cpf) VALUES
 ('1','Jonas', 'jonas.silvino@hotmail.com', '93346-6747', '756.345.345-34'),
 ('2','Kleitin', 'dogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
 ('3','Camilo', 'superidoll@gmail.com', '95467-3200', '435.587.629-22'),
-('4','José Cunha', 'josecunha@gmail.com', '92345-6789', '345.648.453-37'),
-('5','Isabelle Lima','isabellelima@hotmail.com', '99876-5432', '345.648.453-37'),
-('6','Mateus Alves ','mateusalves@gmail.com', ' 98765-4321', '345.648.453-37'),
-('7','Vinícius Melo','viníciusmelo@gmail.com', '91234-5678', '345.648.453-37'),
-('8','Tiago Martins','tiagomartins@hotmail.com', '93456-7890', '345.648.453-37'),
-('9','Tânia Azevedo','tâniaazevedo@gmail.com', ' 97654-3210', '345.648.453-37'),
-('10','Sara Almeida','saraalmeida@hotmail.com', '94567-8901', '345.648.453-37');
+('4','José Cunha', 'josecunha@gmail.com', '92345-6789', '756.816.820-48'),
+('5','Isabelle Lima','isabellelima@hotmail.com', '99876-5432', '240.354.990-80'),
+('6','Mateus Alves ','mateusalves@gmail.com', ' 98765-4321', '371.413.150-71'),
+('7','Vinícius Melo','viníciusmelo@gmail.com', '91234-5678', '604.746.650-89'),
+('8','Tiago Martins','tiagomartins@hotmail.com', '93456-7890', '419.952.530-06'),
+('9','Tânia Azevedo','tâniaazevedo@gmail.com', ' 97654-3210', '986.747.160-16'),
+('10','Sara Almeida','saraalmeida@hotmail.com', '94567-8901', '081.457.630-37');
 
 SELECT * FROM clientes;
 
