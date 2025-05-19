@@ -2,3 +2,8 @@
  ('Hyundai','Azera', 2015,'Branco',75000,00),
  ('Ford', 'Mustang V8', 2020, 'Azul', 450000,00), 
  ('Chevrolet', 'Camaro V8', 2016, 'Amarelo', 399000,00);
+
+DELETE INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
+(1, 'João Lucas', 'joao.silva@email.com', '(11) 999990001', 'Vendedor', '123.456.789-00', '101'),
+(2, 'Maria Eduarda', 'maria.oliveira@email.com', '(11) 999990002', 'Gerente', '234.567.890-11', '102'),
+(3, 'Carlos Souza', 'carlos.souza@email.com', '(11) 999990003', 'Consultor', '345.678.901-22', '103'),
