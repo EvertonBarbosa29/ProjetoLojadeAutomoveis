@@ -172,19 +172,20 @@ INSERT INTO funcionarios (id_funcionarios, id_loja, nome, email, telefone, cargo
 SELECT * FROM funcionarios;
 
 INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
-(1, 'Toyota', '00123456789001', '(11) 91234-5678', 'toyotafornecedores@hotmail.com', 'Rua Japão, 123', 'Carlos Tanaka'),
-(2, 'Hyundai', '00234567890123', '(11) 98765-4321', 'hyundaifornecedores@hotmail.com', 'Av. Coreia, 456', 'Mariana Kim'),
-(3, 'Ford', '00345678901234', '(11) 91111-1111', 'fordfornecedores@hotmail.com', 'Av. América, 123', 'Roberto Ford'),
-(4, 'Chevrolet', '00456789012345', '(11) 92222-2222', 'chevroletfornecedores@hotmail.com', 'Rua GM, 456', 'Ana GM'),
-(5, 'Volkswagen', '00567890123456', '(11) 93333-3333', 'vwfornecedores@hotmail.com', 'Av. Alemanha, 789', 'Carlos VW'),
-(6, 'BMW', '00678901234567', '(11) 94444-4444', 'bmwfornecedores@hotmail.com', 'Rua Munique, 321', 'Hans BMW'),
-(7, 'Fiat', '00789012345678', '(11) 95555-5555', 'fiatfornecedores@hotmail.com', 'Rua Itália, 654', 'Giovanni Fiat'),
-(8, 'Subaru', '00890123456789', '(11) 96666-6666', 'subarufornecedores@hotmail.com', 'Rua Dias, 789', 'Takashi Subaru'),
-(9, 'Mitsubishi', '00901234567890', '(11) 97777-7777', 'mitsubishifornecedores@hotmail.com', 'Av. Tokio, 101', 'Hiroshi Mitsubishi'),
-(10, 'Audi', '01012345678901', '(11) 98888-8888', 'audifornecedores@hotmail.com', 'Rua Alemanha, 202', 'Hans Audi'),
-(11, 'Renault', '01123456789012', '(11) 99999-9999', 'renaultfornecedores@hotmail.com', 'Av. França, 303', 'Jean Renault'),
-(12, 'Nissan', '01234567890123', '(11) 90000-0000', 'nissanfornecedores@hotmail.com', 'Rua Japão, 404', 'Kenta Nissan'),
-(13, 'Kia', '01345678901234', '(11) 91111-1112', 'kiafornecedores@hotmail.com', 'Av. Coreia, 505', 'Min Soo Kia');
+(1, 'Toyota', '00.123.456/7890-01', '(11) 91234-5678', 'toyotafornecedores@hotmail.com', 'Rua Japão, 123', 'Carlos Tanaka'),
+(2, 'Hyundai', '00.234.567/8901-23', '(11) 98765-4321', 'hyundaifornecedores@hotmail.com', 'Av. Coreia, 456', 'Mariana Kim'),
+(3, 'Ford', '00.345.678/9012-34', '(11) 91111-1111', 'fordfornecedores@hotmail.com', 'Av. América, 123', 'Roberto Ford'),
+(4, 'Chevrolet', '00.456.789/0123-45', '(11) 92222-2222', 'chevroletfornecedores@hotmail.com', 'Rua GM, 456', 'Ana GM'),
+(5, 'Volkswagen', '00.567.890/1234-56', '(11) 93333-3333', 'vwfornecedores@hotmail.com', 'Av. Alemanha, 789', 'Carlos VW'),
+(6, 'BMW', '00.678.901/2345-67', '(11) 94444-4444', 'bmwfornecedores@hotmail.com', 'Rua Munique, 321', 'Hans BMW'),
+(7, 'Fiat', '00.789.012/3456-78', '(11) 95555-5555', 'fiatfornecedores@hotmail.com', 'Rua Itália, 654', 'Giovanni Fiat'),
+(8, 'Subaru', '00.890.123/4567-89', '(11) 96666-6666', 'subarufornecedores@hotmail.com', 'Rua Dias, 789', 'Takashi Subaru'),
+(9, 'Mitsubishi', '00.901.234/567890', '(11) 97777-7777', 'mitsubishifornecedores@hotmail.com', 'Av. Tokio, 101', 'Hiroshi Mitsubishi'),
+(10, 'Audi', '01.012.345/6789-01', '(11) 98888-8888', 'audifornecedores@hotmail.com', 'Rua Alemanha, 202', 'Hans Audi'),
+(11, 'Renault', '01.123.456/7890-12', '(11) 99999-9999', 'renaultfornecedores@hotmail.com', 'Av. França, 303', 'Jean Renault'),
+(12, 'Nissan', '01.234.567/8901-23', '(11) 90000-0000', 'nissanfornecedores@hotmail.com', 'Rua Japão, 404', 'Kenta Nissan'),
+(13, 'Kia', '01.345.678/9012-34', '(11) 91111-1112', 'kiafornecedores@hotmail.com', 'Av. Coreia, 505', 'Min Soo Kia');
+
 
 SELECT * FROM fornecedores;
 
