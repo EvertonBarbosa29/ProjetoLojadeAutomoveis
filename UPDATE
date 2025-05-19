@@ -25,25 +25,21 @@ UPDATE carros
 SET cor = 'Vermelho'
 WHERE marca = 'Ford' AND modelo = 'Mustang V8';
 
-UPDATE carros JOIN (
-  SELECT id_carros
-  FROM carros
-  ORDER BY preco ASC
-  LIMIT 7
-) AS mais_baratos ON carros.id_carros = mais_baratos.id_carros
-SET carros.condicao = 'Seminovo';
-
-UPDATE carros JOIN (
-  SELECT id_carros
-  FROM carros
-  ORDER BY preco ASC
-  LIMIT 7
-) AS mais_baratos ON carros.id_carros = mais_baratos.id_carros
-SET carros.condicao = 'Novo';
-
-SELECT * FROM carros;
+UPDATE carros
+SET preco = preco * 1.08
+WHERE tipo_combustivel = 'Diesel';
 
 UPDATE funcionarios f
-JOIN loja l ON l.id_loja = 1
+JOIN loja l ON l.id_loja = 7
 SET f.cargo = 'Vendedor Sênior'
 WHERE f.cargo = 'Vendedor';
+
+UPDATE carros
+JOIN (
+    SELECT id_fornecedores
+    FROM carros
+    GROUP BY id_fornecedores
+    HAVING AVG(preco) > 750000
+) AS fornecd_luxo USING (id_fornecedores)
+SET carros.condicao = 'Luxo';
+
