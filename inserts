@@ -1,32 +1,24 @@
 INSERT INTO loja (id_loja, nome_loja, cnpj) VALUES
 ('1','Auto Center CAR BA', '23.456.789/0123-04'),
-('2','Auto Center CAR SP', '23.456.789/0123-45'),
-('3','Auto Center CAR MG', '19.577.430/0001-07'),
-('4','Auto Center CAR RJ', '44.345.772/0001-30'),
-('5','Auto Center CAR PR', '83.312.232/0001-02'),
-('6','Auto Center CAR PE', '41.349.631/0001-06');
+('2','Auto Center CAR SP', '23.456.789/0123-45');
 
 SELECT * FROM loja;
 
-INSERT INTO endereco (estado, cidade, rua, numero_loja, cep, id_loja) VALUES
-('Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '83408-000', 1), -- id_endereco = 1
-('São Paulo', 'São Paulo', 'Avenida Paulista', 500, '93115-660', 2), -- id_endereco = 2
-('Minas Gerais', 'Belo Horizonte', 'Rua das Flores', 123, '57312-390', 3), -- id_endereco = 3
-('Rio de Janeiro', 'Rio de Janeiro', 'Avenida Atlântica', 456, '78144-350', 4), -- id_endereco = 4
-('Paraná', 'Curitiba', 'Rua XV de Novembro', 789, '68904-366', 5), -- id_endereco = 5
-('Pernanbuco', 'Recife', 'Praça da Matriz', 50, '50860-040', 6); -- id_endereco = 6
+INSERT INTO endereco (id_endereco, estado, cidade, rua, numero_loja, cep, id_loja) VALUES
+('1','Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '83408-000', 1),
+('2','São Paulo', 'São Paulo', 'Avenida Paulista', 500, '93115-660', 2);
 
 SELECT * FROM endereco;
 
 INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
-(1, 'João Lucas', 'joao.silva@email.com', '(11) 999990001', 'Vendedor', '123.456.789-00', '101'),
+(1, 'João Lucas', 'joao.silva@email.com', '(11) 999990001', 'Vendedor', '123.456.789-00', '101'),  
 (2, 'Maria Eduarda', 'maria.oliveira@email.com', '(11) 999990002', 'Gerente', '234.567.890-11', '102'),
 (3, 'Carlos Souza', 'carlos.souza@email.com', '(11) 999990003', 'Consultor', '345.678.901-22', '103'),
 (4, 'Yuri Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '456.789.012-33', '104'),
 (5, 'Fernanda Monteiro', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '567.890.123-44', '105'),
 (6, 'Lucas Peres', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '678.901.234-55', '106'),
 (7, 'Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '789.012.345-66', '107'),
-(8, 'Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Mecânico', '890.123.456-77', '108'),
+(8, 'Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Vendedor', '890.123.456-77', '108'),
 (9, 'Amanda Almeida', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '901.234.567-88', '109'),
 (10, 'Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
 (11, 'Larissa Manoela', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
@@ -58,7 +50,7 @@ INSERT INTO clientes (id_clientes , nome, email, telefone, cpf) VALUES
 
 SELECT * FROM clientes;
 
-INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedores) VALUES
+INSERT INTO carros (id_carros, marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedores) VALUES
 ('1','Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
 ('2','Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 1),
 ('3','Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 1),
@@ -88,13 +80,20 @@ INSERT INTO carros (marca, modelo, tipo_combustivel, ano, cor, condicao, preco, 
 ('27','Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
 ('28','Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7);
 
-
 SELECT * FROM carros;
 
-INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
-(1, 1, 1, 1, 120000.00),
-(2, 2, 4, 2, 405000.00),
-(3, 3, 10, 3, 57000.00);
+
+INSERT INTO vendas (id_vendas,id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
+('1', 1, 1, 1, 120000.00),
+('2', 2, 4, 2, 405000.00),
+('3', 2, 4, 2, 405000.00),
+('4', 2, 4, 2, 405000.00),
+('5', 2, 4, 2, 405000.00),
+('6', 2, 4, 2, 405000.00),
+('7', 2, 4, 2, 405000.00),
+('8', 2, 4, 2, 405000.00),
+('9', 2, 4, 2, 405000.00),
+('10', 3, 10, 3, 57000.00);
 
 SELECT * FROM vendas;
 
@@ -107,11 +106,9 @@ VALUES (3, 'Dinheiro', 57000.00, NOW());
 
 SELECT * FROM registro;
 
-INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES 
+INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES
 (1, 'Pix'),
 (2, 'Cartão de Débito'),
 (3, 'Cartão de Crédito'),
 (4, 'Cheque'),
 (5, 'Dinheiro');
-
-SELECT * FROM forma_pagamento;
