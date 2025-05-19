@@ -126,7 +126,8 @@ INSERT INTO endereco (id_endereco, estado, cidade, rua, numero_loja, cep, id_loj
 (10, 'Pará', 'Belém', 'Avenida Nazaré', 250, '66010-110', 10),
 (11, 'Amazonas', 'Manaus', 'Rua Eduardo Ribeiro', 350, '69010-110', 11),
 (12, 'Goiás', 'Goiânia', 'Avenida Independência', 450, '74010-110', 12),
-(13, 'Rio Grande do Norte', 'Natal', 'Rua Chile', 550, '59010-110', 13);
+(13, 'Rio Grande do Norte', 'Natal', 'Rua Chile', 550, '59010-110', 13),
+(14, 'Bahia', 'Satiro Dias', 'Rua Alto da Saudade', 158, '40470-285', 14);
 
 SELECT * FROM endereco;
 
@@ -232,59 +233,59 @@ INSERT INTO clientes (id_clientes , nome, email, telefone, cpf) VALUES
 
 SELECT * FROM clientes;
 
-INSERT INTO carros (id_carros, marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedores) VALUES
-('1','Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
-('2','Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 1),
-('3','Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 1),
-('4','Toyota', 'Supra MK4', 'Flex', 2024, 'Laranja', 'Novo', 523000.00, 1),
-('5','Hyundai', 'Azera', 'Flex', 2025, 'Branco', 'Novo', 75000.00, 2),
-('6','Hyundai', 'Sonata', 'Flex', 2013, 'Preto', 'Seminovo', 45000.00, 2),
-('7','Hyundai', 'Creta', 'Flex', 2024, 'Prata', 'Novo', 153000.00, 2),
-('8','Hyundai', 'Santa Fé', 'Flex', 2014, 'Branca', 'Seminovo', 94000.00, 2),
-('9','Ford', 'Mustang V8', 'Flex', 2020, 'Azul', 'Seminovo', 450000.00, 3),
-('10','Ford', 'Fusion', 'Flex', 2017, 'Branco', 'Seminovo', 79000.00, 3),
-('11','Ford', 'Edge', 'Flex', 2025, 'Preto', 'Novo', 68000.00, 3),
-('12','Ford', 'Ranger', 'Diesel', 2021, 'Azul', 'Novo', 160000.00, 3),
-('13','Chevrolet', 'Camaro V8', 'Flex', 2024, 'Amarelo', 'Novo', 399000.00, 4),
-('14','Chevrolet', 'Cruze', 'Flex', 2024, 'Prata', 'Novo', 104000.00, 4),
-('15','Chevrolet', 'Tracker', 'Flex', 2025, 'Vermelho', 'Novo', 103000.00, 4),
-('16','Chevrolet', 'S10', 'Diesel', 2020, 'Preto', 'Seminovo', 108000.00, 4),
-('17','Volkswagen', 'Passat B8', 'Flex', 2023, 'Preto', 'Novo', 110000.00, 5),
-('18','Volkswagen', 'Golf Gti', 'Flex', 2025, 'Branca', 'Novo', 190000.00, 5),
-('19','Volkswagen', 'Jetta Gli', 'Flex', 2023, 'Cinza Nardo', 'Novo', 201000.00, 5),
-('20','Volkswagen', 'Gol', 'Flex', 2014, 'Preto', 'Seminovo', 32000.00, 5),
-('21','BMW', 'Bmw 428i', 'Flex', 2025, 'Branca', 'Novo', 134000.00, 6),
-('22','BMW', 'Bmw X6', 'Flex', 2024, 'Verde', 'Novo', 1000000.00, 6),
-('23','BMW', 'Bmw M4', 'Flex', 2018, 'Preto', 'Seminovo', 473000.00, 6),
-('24','BMW', 'Bmw i8', 'Flex', 2022, 'Vermelho', 'Novo', 770000.00, 6),
-('25','Fiat', 'Linea', 'Flex', 2015, 'Branca', 'Seminovo', 35000.00, 7),
-('26','Fiat', 'Titano', 'Diesel', 2025, 'Vermelha', 'Novo', 259000.00, 7),
-('27','Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00, 7),
-('28','Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 7),
-('29', 'Subaru', 'Impreza', 'Flex', 2024, 'Cinza', 'Novo', 140000.00, 8),
-('30', 'Subaru', 'Outback', 'Flex', 2025, 'Preto', 'Novo', 180000.00, 8),
-('31', 'Subaru', 'Forester', 'Flex', 2023, 'Branco', 'Novo', 170000.00, 8),
-('32', 'Subaru', 'WRX', 'Flex', 2022, 'Vermelho', 'Seminovo', 210000.00, 8),
-('33', 'Mitsubishi', 'Lancer', 'Flex', 2019, 'Preto', 'Seminovo', 85000.00, 9),
-('34', 'Mitsubishi', 'Outlander', 'Flex', 2024, 'Branco', 'Novo', 160000.00, 9),
-('35', 'Mitsubishi', 'Eclipse Cross', 'Flex', 2023, 'Cinza', 'Novo', 155000.00, 9),
-('36', 'Mitsubishi', 'Triton', 'Diesel', 2025, 'Azul', 'Novo', 180000.00, 9),
-('37', 'Audi', 'A3', 'Flex', 2024, 'Preto', 'Novo', 220000.00, 10),
-('38', 'Audi', 'A4', 'Flex', 2025, 'Branco', 'Novo', 280000.00, 10),
-('39', 'Audi', 'Q5', 'Flex', 2023, 'Cinza', 'Novo', 320000.00, 10),
-('40', 'Audi', 'RS7', 'Flex', 2022, 'Vermelho', 'Seminovo', 850000.00, 10),
-('41', 'Renault', 'Duster', 'Flex', 2024, 'Prata', 'Novo', 110000.00, 11),
-('42', 'Renault', 'Kwid', 'Flex', 2023, 'Branco', 'Novo', 60000.00, 11),
-('43', 'Renault', 'Captur', 'Flex', 2025, 'Vermelho', 'Novo', 130000.00, 11),
-('44', 'Renault', 'Sandero', 'Flex', 2022, 'Preto', 'Seminovo', 75000.00, 11),
-('45', 'Nissan', 'Versa', 'Flex', 2024, 'Azul', 'Novo', 90000.00, 12),
-('46', 'Nissan', 'Kicks', 'Flex', 2023, 'Branco', 'Novo', 110000.00, 12),
-('47', 'Nissan', 'Sentra', 'Flex', 2025, 'Preto', 'Novo', 125000.00, 12),
-('48', 'Nissan', 'Frontier', 'Diesel', 2022, 'Cinza', 'Seminovo', 140000.00, 12),
-('49', 'Kia', 'Soul', 'Flex', 2024, 'Vermelho', 'Novo', 115000.00, 13),
-('50', 'Kia', 'Sportage', 'Flex', 2025, 'Branco', 'Novo', 150000.00, 13),
-('51', 'Kia', 'Cerato', 'Flex', 2023, 'Preto', 'Novo', 100000.00, 13),
-('52', 'Kia', 'Seltos', 'Flex', 2022, 'Azul', 'Seminovo', 130000.00, 13);
+INSERT INTO carros (id_carros, marca, modelo, tipo_combustivel, ano, cor, condicao, preco, sts, id_fornecedores) VALUES
+('1','Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 'Vendido', 1),
+('2','Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 'Vendido',1),
+('3','Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 'Vendido', 1),
+('4','Toyota', 'Supra MK4', 'Flex', 2024, 'Laranja', 'Novo', 523000.00,'Disponível', 1),
+('5','Hyundai', 'Azera', 'Flex', 2025, 'Branco', 'Novo', 75000.00,'Disponível', 2),
+('6','Hyundai', 'Sonata', 'Flex', 2013, 'Preto', 'Seminovo', 45000.00,'Disponível', 2),
+('7','Hyundai', 'Creta', 'Flex', 2024, 'Prata', 'Novo', 153000.00, 'Vendido', 2),
+('8','Hyundai', 'Santa Fé', 'Flex', 2014, 'Branca', 'Seminovo', 94000.00,'Disponível', 2),
+('9','Ford', 'Mustang V8', 'Flex', 2020, 'Azul', 'Seminovo', 450000.00, 'Vendido', 3),
+('10','Ford', 'Fusion', 'Flex', 2017, 'Branco', 'Seminovo', 79000.00,'Disponível', 3),
+('11','Ford', 'Edge', 'Flex', 2025, 'Preto', 'Novo', 68000.00, 'Vendido', 3),
+('12','Ford', 'Ranger', 'Diesel', 2021, 'Azul', 'Novo', 160000.00,'Disponível', 3),
+('13','Chevrolet', 'Camaro V8', 'Flex', 2024, 'Amarelo', 'Novo', 399000.00, 'Vendido', 4),
+('14','Chevrolet', 'Cruze', 'Flex', 2024, 'Prata', 'Novo', 104000.00, 'Vendido', 4),
+('15','Chevrolet', 'Tracker', 'Flex', 2025, 'Vermelho', 'Novo', 103000.00, 'Vendido', 4),
+('16','Chevrolet', 'S10', 'Diesel', 2020, 'Preto', 'Seminovo', 108000.00,'Disponível', 4),
+('17','Volkswagen', 'Passat B8', 'Flex', 2023, 'Preto', 'Novo', 110000.00, 'Vendido', 5),
+('18','Volkswagen', 'Golf Gti', 'Flex', 2025, 'Branca', 'Novo', 190000.00,'Disponível', 5),
+('19','Volkswagen', 'Jetta Gli', 'Flex', 2023, 'Cinza Nardo', 'Novo', 201000.00,'Disponível', 5),
+('20','Volkswagen', 'Gol', 'Flex', 2014, 'Preto', 'Seminovo', 32000.00, 'Vendido', 5),
+('21','BMW', 'Bmw 428i', 'Flex', 2025, 'Branca', 'Novo', 134000.00,'Disponível', 6),
+('22','BMW', 'Bmw X6', 'Flex', 2024, 'Verde', 'Novo', 1000000.00, 'Vendido', 6),
+('23','BMW', 'Bmw M4', 'Flex', 2018, 'Preto', 'Seminovo', 473000.00, 'Vendido', 6),
+('24','BMW', 'Bmw i8', 'Flex', 2022, 'Vermelho', 'Novo', 770000.00,'Disponível', 6),
+('25','Fiat', 'Linea', 'Flex', 2015, 'Branca', 'Seminovo', 35000.00, 'Vendido', 7),
+('26','Fiat', 'Titano', 'Diesel', 2025, 'Vermelha', 'Novo', 259000.00,'Disponível', 7),
+('27','Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00,'Disponível', 7),
+('28','Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 'Vendido', 7),
+('29', 'Subaru', 'Impreza', 'Flex', 2024, 'Cinza', 'Novo', 140000.00,'Disponível', 8),
+('30', 'Subaru', 'Outback', 'Flex', 2025, 'Preto', 'Novo', 180000.00,  'Vendido', 8),
+('31', 'Subaru', 'Forester', 'Flex', 2023, 'Branco', 'Novo', 170000.00,'Disponível', 8),
+('32', 'Subaru', 'WRX', 'Flex', 2022, 'Vermelho', 'Seminovo', 210000.00,'Disponível', 8),
+('33', 'Mitsubishi', 'Lancer', 'Flex', 2019, 'Preto', 'Seminovo', 85000.00, 'Vendido', 9),
+('34', 'Mitsubishi', 'Outlander', 'Flex', 2024, 'Branco', 'Novo', 160000.00,'Disponível', 9),
+('35', 'Mitsubishi', 'Eclipse Cross', 'Flex', 2023, 'Cinza', 'Novo', 155000.00,'Disponível', 9),
+('36', 'Mitsubishi', 'Triton', 'Diesel', 2025, 'Azul', 'Novo', 180000.00,'Disponível', 9),
+('37', 'Audi', 'A3', 'Flex', 2024, 'Preto', 'Novo', 220000.00,'Disponível', 10),
+('38', 'Audi', 'A4', 'Flex', 2025, 'Branco', 'Novo', 280000.00, 'Vendido', 10),
+('39', 'Audi', 'Q5', 'Flex', 2023, 'Cinza', 'Novo', 320000.00,'Disponível', 10),
+('40', 'Audi', 'RS7', 'Flex', 2022, 'Vermelho', 'Seminovo', 850000.00,'Disponível', 10),
+('41', 'Renault', 'Duster', 'Flex', 2024, 'Prata', 'Novo', 110000.00,'Disponível', 11),
+('42', 'Renault', 'Kwid', 'Flex', 2023, 'Branco', 'Novo', 60000.00,'Disponível', 11),
+('43', 'Renault', 'Captur', 'Flex', 2025, 'Vermelho', 'Novo', 130000.00,'Disponível', 11),
+('44', 'Renault', 'Sandero', 'Flex', 2022, 'Preto', 'Seminovo', 75000.00,'Disponível', 11),
+('45', 'Nissan', 'Versa', 'Flex', 2024, 'Azul', 'Novo', 90000.00, 'Vendido', 12),
+('46', 'Nissan', 'Kicks', 'Flex', 2023, 'Branco', 'Novo', 110000.00,'Disponível', 12),
+('47', 'Nissan', 'Sentra', 'Flex', 2025, 'Preto', 'Novo', 125000.00,'Disponível', 12),
+('48', 'Nissan', 'Frontier', 'Diesel', 2022, 'Cinza', 'Seminovo', 140000.00,'Disponível', 12),
+('49', 'Kia', 'Soul', 'Flex', 2024, 'Vermelho', 'Novo', 115000.00,'Disponível', 13),
+('50', 'Kia', 'Sportage', 'Flex', 2025, 'Branco', 'Novo', 150000.00, 'Vendido', 13),
+('51', 'Kia', 'Cerato', 'Flex', 2023, 'Preto', 'Novo', 100000.00,'Disponível', 13),
+('52', 'Kia', 'Seltos', 'Flex', 2022, 'Azul', 'Seminovo', 130000.00,'Disponível', 13);
 
 
 SELECT * FROM carros;
@@ -313,6 +314,15 @@ INSERT INTO vendas (id_vendas, id_carros, id_clientes, id_funcionarios, id_ender
 
 SELECT * FROM vendas;
 
+INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES 
+(1, 'Pix'),
+(2, 'Cartão de Débito'),
+(3, 'Cartão de Crédito'),
+(4, 'Cheque'),
+(5, 'Dinheiro');
+
+SELECT * FROM forma_pagamento;
+
 INSERT INTO registro (id_venda, id_forma_pagamento, valor, data_pagamento) VALUES 
 (1, '1', 120000.00, '2024-11-26 16:39:40'),
 (2, '2', 405000.00, '2025-09-22 08:39:28' ),
@@ -336,13 +346,6 @@ INSERT INTO registro (id_venda, id_forma_pagamento, valor, data_pagamento) VALUE
 (20, '4', 85000.00, '2025-01-15 11:22:10');
 
 SELECT * FROM registro;
-
-INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES 
-(1, 'Pix'),
-(2, 'Cartão de Débito'),
-(3, 'Cartão de Crédito'),
-(4, 'Cheque'),
-(5, 'Dinheiro');
 
 SELECT * FROM registro
 WHERE YEAR(data_pagamento) = 2025;
@@ -518,3 +521,38 @@ FROM registro r
 WHERE r.valor > 120000;
 
 SELECT * FROM v_vlr_120k;
+
+SET SQL_SAFE_UPDATES = 0;
+
+SELECT * FROM carros;
+
+UPDATE carros
+SET cor = 'Branco'
+WHERE cor = 'Branca';
+
+UPDATE carros
+SET cor = 'Vermelho'
+WHERE marca = 'Ford' AND modelo = 'Mustang V8';
+
+UPDATE carros JOIN (
+  SELECT id_carros
+  FROM carros
+  ORDER BY preco ASC
+  LIMIT 7
+) AS mais_baratos ON carros.id_carros = mais_baratos.id_carros
+SET carros.condicao = 'Seminovo';
+
+UPDATE carros JOIN (
+  SELECT id_carros
+  FROM carros
+  ORDER BY preco ASC
+  LIMIT 7
+) AS mais_baratos ON carros.id_carros = mais_baratos.id_carros
+SET carros.condicao = 'Novo';
+
+SELECT * FROM carros;
+
+UPDATE funcionarios f
+JOIN loja l ON l.id_loja = 7
+SET f.cargo = 'Vendedor Sênior'
+WHERE f.cargo = 'Vendedor';
