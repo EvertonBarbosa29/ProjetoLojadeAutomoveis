@@ -240,3 +240,12 @@ INSERT INTO registro (id_venda, id_forma_pagamento, valor, data_pagamento) VALUE
 (20, '4', 85000.00, '2025-01-15 11:22:10');
 
 SELECT * FROM registro;
+
+INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES 
+(1, 'Pix'),
+(2, 'Cartão de Débito'),
+(3, 'Cartão de Crédito'),
+(4, 'Cheque'),
+(5, 'Dinheiro');
+
+SELECT * FROM forma_pagamento;
