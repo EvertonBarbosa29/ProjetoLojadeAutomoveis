@@ -83,17 +83,19 @@ INSERT INTO carros (id_carros, marca, modelo, tipo_combustivel, ano, cor, condic
 SELECT * FROM carros;
 
 
-INSERT INTO vendas (id_vendas,id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
-('1', 1, 1, 1, 120000.00),
-('2', 2, 4, 2, 405000.00),
-('3', 2, 4, 2, 405000.00),
-('4', 2, 4, 2, 405000.00),
-('5', 2, 4, 2, 405000.00),
-('6', 2, 4, 2, 405000.00),
-('7', 2, 4, 2, 405000.00),
-('8', 2, 4, 2, 405000.00),
-('9', 2, 4, 2, 405000.00),
-('10', 3, 10, 3, 57000.00);
+INSERT INTO vendas (id_vendas, id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
+INSERT INTO registro (id_venda, metodo_pagamento, valor, data_pagamento) VALUES
+(1, 'Pix', 120000.00, 2024-11-26),
+(2, 'Cartão de Crédito', 405000.00, 2025-09-22 ),
+(3, 'Dinheiro', 473000.00, 2024-05-29),
+(4, 'Pix', 205000.00, 2025-08-15),
+(5, 'Cartão de Débito', 2025-06-19),
+(6, 'Cheque', 68000.00, 2025-04-22),
+(7, 'Dinheiro', 35000.00, 2023-08-23),
+(8, 'Dinheiro', 32000.00, 2025-04-16),
+(9, 'Cartão de Crédito', 399000.00, 2024-03-17),
+(10, 'Cheque', 153000.00, 2025-01-20);
+
 
 SELECT * FROM vendas;
 
