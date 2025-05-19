@@ -31,3 +31,40 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+Exemplo: Trigger para verificar carro
+
+DELIMITER $$
+
+CREATE TRIGGER verificar_carro_existente
+BEFORE INSERT ON vendas
+FOR EACH ROW
+BEGIN
+  DECLARE carro_existe INT;
+
+  SELECT COUNT(*) INTO carro_existe
+  FROM carros
+  WHERE id_carros = NEW.id_carros;
+
+  IF carro_existe = 0 THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Carro especificado na venda não existe.';
+  END IF;
+END$$
+
+DELIMITER ;
+
+Exemplo: Trigger para atualizar carros apos venda
+
+DELIMITER $$
+
+CREATE TRIGGER atualizar_status_carro_apos_venda
+AFTER INSERT ON vendas
+FOR EACH ROW
+BEGIN
+  UPDATE carros
+  SET status = 'Vendido'
+  WHERE id_carro = NEW.id_carro;
+END$$
+
+DELIMITER ;
