@@ -81,7 +81,7 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 
 CREATE TABLE forma_pagamento (
   id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-  metodo VARCHAR(50) NOT NULL UNIQUE
+  metodo ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') NOT NULL
 );
 
 CREATE TABLE registro (
