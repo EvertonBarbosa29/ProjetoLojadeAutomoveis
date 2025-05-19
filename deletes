@@ -1,14 +1,13 @@
- DELETE Into carros (marca,modelo,ano,cor,preco) VALUES
- ('Hyundai','Azera', 2015,'Branco',75000,00),
- ('Ford', 'Mustang V8', 2020, 'Azul', 450000,00), 
- ('Chevrolet', 'Camaro V8', 2016, 'Amarelo', 399000,00);
+-- Apagar os 3 carros
+DELETE FROM carros
+WHERE (marca = 'Hyundai' AND modelo = 'Azera' AND ano = 2015 AND cor = 'Branco' AND preco = 75000.00)
+   OR (marca = 'Ford' AND modelo = 'Mustang V8' AND ano = 2020 AND cor = 'Azul' AND preco = 450000.00)
+   OR (marca = 'Chevrolet' AND modelo = 'Camaro V8' AND ano = 2016 AND cor = 'Amarelo' AND preco = 399000.00);
 
-DELETE INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
-(1, 'João Lucas', 'joao.silva@email.com', '(11) 999990001', 'Vendedor', '123.456.789-00', '101'),
-(2, 'Maria Eduarda', 'maria.oliveira@email.com', '(11) 999990002', 'Gerente', '234.567.890-11', '102'),
-(3, 'Carlos Souza', 'carlos.souza@email.com', '(11) 999990003', 'Consultor', '345.678.901-22', '103'),
+-- Apagar os 3 funcionários
+DELETE FROM funcionarios
+WHERE id_funcionarios IN (1, 2, 3);
 
-DELETE INTO clientes (id_clientes , nome, email, telefone, cpf) VALUES
-('1','Jonas', 'jonas.silvino@hotmail.com', '93346-6747', '756.345.345-34'),
-('2','Kleitin', 'dogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
-('3','Camilo', 'superidoll@gmail.com', '95467-3200', '435.587.629-22'),
+-- Apagar os 3 clientes
+DELETE FROM clientes
+WHERE id_clientes IN (1, 2, 3);
