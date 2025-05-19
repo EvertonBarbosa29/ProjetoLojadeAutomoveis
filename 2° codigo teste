@@ -62,6 +62,7 @@ ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
 condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
+sts ENUM('Disponível', 'Vendido') DEFAULT 'Disponível' NOT NULL,
 FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
 );
 
@@ -342,6 +343,19 @@ INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES
 (3, 'Cartão de Crédito'),
 (4, 'Cheque'),
 (5, 'Dinheiro');
+
+UPDATE carros
+SET status = 'Vendido'
+WHERE id_carros IN (
+  SELECT id_carros FROM vendas
+);
+
+UPDATE carros
+SET status = 'Disponível'
+WHERE id_carros NOT IN (
+  SELECT id_carros FROM vendas
+);
+
 
 SELECT * FROM forma_pagamento;
 
