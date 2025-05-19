@@ -5,7 +5,7 @@ USE loja_automoveis;
 CREATE TABLE loja (
 id_loja INT PRIMARY KEY AUTO_INCREMENT,
 nome_loja VARCHAR(50),
-cnpj VARCHAR(18) NOT NULL
+cnpj CHAR(18) NOT NULL
 );
 
 CREATE TABLE funcionarios (
@@ -14,8 +14,8 @@ CREATE TABLE funcionarios (
   nome VARCHAR(200) NOT NULL UNIQUE KEY,
   email VARCHAR(200) NOT NULL UNIQUE KEY,
   telefone VARCHAR(20) NOT NULL,
-  cargo VARCHAR(50),
-  cpf VARCHAR(14) NOT NULL UNIQUE KEY,
+  cargo VARCHAR(50) NOT NULL,
+  cpf CHAR(14) NOT NULL UNIQUE KEY,
   numero_cracha VARCHAR(3) NOT NULL,
   FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
@@ -26,7 +26,7 @@ id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 email VARCHAR(200) NOT NULL UNIQUE KEY,
 telefone VARCHAR(20) NOT NULL,
-cpf VARCHAR(14) NOT NULL UNIQUE KEY
+cpf CHAR(14) NOT NULL UNIQUE KEY
 );
 
 CREATE TABLE endereco (
@@ -44,7 +44,7 @@ CREATE TABLE fornecedores (
 id_fornecedores INT PRIMARY KEY AUTO_INCREMENT,
 id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
-cnpj VARCHAR(18) NOT NULL UNIQUE KEY,
+cnpj CHAR(18) NOT NULL UNIQUE KEY,
 telefone VARCHAR(20) NOT NULL,
 email VARCHAR(200) NOT NULL,
 endereco VARCHAR(255)  NOT NULL,
@@ -81,32 +81,16 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 
 CREATE TABLE forma_pagamento (
   id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-  metodo VARCHAR(50) NOT NULL UNIQUE
+  metodo ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') NOT NULL
 );
 
-INSERT INTO forma_pagamento (metodo) VALUES 
-('Pix'),
-('Cartão de Débito'),
-('Cartão de Crédito'),
-('Cheque'),
-('Dinheiro');
-CREATE TABLE pagamentos (
-id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE registro (
+id_registro INT PRIMARY KEY AUTO_INCREMENT,
 id_venda INT,
 metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
 valor DECIMAL(10, 2) NOT NULL,
-data_pagamento DATETIME DEFAULT NOW() NOT NULL,
+data_pagamento DATETIME,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
-);
-
-CREATE TABLE pagamentos (
-  id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-  id_venda INT,
-  id_forma_pagamento INT,
-  valor DECIMAL(10, 2) NOT NULL,
-  data_pagamento DATETIME DEFAULT NOW() NOT NULL,
-  FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas),
-  FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento(id_forma_pagamento)
 );
 
 INSERT INTO loja (id_loja, nome_loja, cnpj) VALUES
