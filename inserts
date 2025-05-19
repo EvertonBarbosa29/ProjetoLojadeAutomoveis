@@ -1,54 +1,78 @@
+
 INSERT INTO loja (id_loja, nome_loja, cnpj) VALUES
-('1','Auto Center CAR BA', '23.456.789/0123-04'),
-('2','Auto Center CAR SP', '23.456.789/0123-45');
+(1,'Auto Center CAR BA', '23.456.789/0123-04'),
+(2,'Auto Center CAR SP', '23.456.789/0123-45'),
+(3, 'Auto Center CAR MG', '23.456.789/0123-56'),
+(4, 'Auto Center CAR RJ', '23.456.789/0123-67'),
+(5, 'Auto Center CAR PE', '23.456.789/0123-78'),
+(6, 'Auto Center CAR RS', '23.456.789/0123-89'),
+(7, 'Auto Center CAR PR', '23.456.789/0123-90'),
+(8, 'Auto Center CAR SC', '23.456.789/0123-91'),
+(9, 'Auto Center CAR CE', '23.456.789/0123-97'),
+(10, 'Auto Center CAR PA', '23.456.789/0123-98'),
+(11, 'Auto Center CAR AM', '23.456.789/0123-99'),
+(12, 'Auto Center CAR GO', '23.456.789/0123-10'),
+(13, 'Auto Center CAR RN', '23.456.789/0123-11'),
+(14, 'AC CAR BR PRINCIPAL', '11.222.333/0001-81');
 
 SELECT * FROM loja;
 
 INSERT INTO endereco (id_endereco, estado, cidade, rua, numero_loja, cep, id_loja) VALUES
-('1','Bahia', 'Xique-Xique', 'Rua Meia Nove', 38, '83408-000', 1),
-('2','São Paulo', 'São Paulo', 'Avenida Paulista', 500, '93115-660', 2);
+(1,'Bahia', 'Xique-Xique', 'Rua Meia Nove', 388, '83408-000', 1),
+(2,'São Paulo', 'São Paulo', 'Avenida Paulista', 500, '93115-660', 2),
+(3, 'Minas Gerais', 'Belo Horizonte', 'Rua das Flores', 123, '30130-010', 3),
+(4, 'Rio de Janeiro', 'Rio de Janeiro', 'Rua do Comércio', 456, '20010-000', 4),
+(5, 'Pernambuco', 'Recife', 'Avenida Boa Viagem', 789, '51020-020', 5),
+(6, 'Rio Grande do Sul', 'Porto Alegre', 'Rua dos Andradas', 321, '90020-030', 6),
+(7, 'Paraná', 'Curitiba', 'Avenida Sete de Setembro', 654, '80010-040', 7),
+(8, 'Santa Catarina', 'Florianópolis', 'Rua das Palmeiras', 987, '88010-050', 8),
+(9, 'Ceará', 'Fortaleza', 'Rua Dragão do Mar', 150, '60120-110', 9),
+(10, 'Pará', 'Belém', 'Avenida Nazaré', 250, '66010-110', 10),
+(11, 'Amazonas', 'Manaus', 'Rua Eduardo Ribeiro', 350, '69010-110', 11),
+(12, 'Goiás', 'Goiânia', 'Avenida Independência', 450, '74010-110', 12),
+(13, 'Rio Grande do Norte', 'Natal', 'Rua Chile', 550, '59010-110', 13);
 
 SELECT * FROM endereco;
 
-INSERT INTO funcionarios (id_funcionarios, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
-(1, 'João Lucas', 'joao.silva@email.com', '(11) 999990001', 'Vendedor', '123.456.789-00', '101'),  
-(2, 'Maria Eduarda', 'maria.oliveira@email.com', '(11) 999990002', 'Gerente', '234.567.890-11', '102'),
-(3, 'Carlos Souza', 'carlos.souza@email.com', '(11) 999990003', 'Consultor', '345.678.901-22', '103'),
-(4, 'Yuri Silva', 'carlos.silva@lojaauto.com', '(11) 99999-1234', 'Vendedor', '456.789.012-33', '104'),
-(5, 'Fernanda Monteiro', 'fernanda.oliveira@lojaauto.com', '(11) 98888-5678', 'Gerente de Vendas', '567.890.123-44', '105'),
-(6, 'Lucas Peres', 'lucas.pereira@lojaauto.com', '(11) 97777-9012', 'Financeiro', '678.901.234-55', '106'),
-(7, 'Juliana Costa', 'juliana.costa@lojaauto.com', '(11) 96666-3456', 'Vendedora', '789.012.345-66', '107'),
-(8, 'Marcos Souza', 'marcos.souza@lojaauto.com', '(11) 95555-7890', 'Vendedor', '890.123.456-77', '108'),
-(9, 'Amanda Almeida', 'amanda.lima@lojaauto.com', '(11) 94444-2345', 'RH', '901.234.567-88', '109'),
-(10, 'Ricardo Mendes', 'ricardo.mendes@lojaauto.com', '(11) 93333-5678', 'Vendedor', '012.345.678-99', '210'),
-(11, 'Larissa Manoela', 'larissa.souza@lojaauto.com', '(11) 92222-1234', 'Vendedora', '321.654.987-00', '211');
+INSERT INTO funcionarios (id_funcionarios, id_loja, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
+(1, 14, 'João Lucas', 'joao.lucas@email.com', '(11) 99999-0001', 'Gerente Geral', '123.456.789-00', '101'),
+(2, 14, 'Maria Eduarda', 'maria.eduarda@email.com', '(11) 99999-0002', 'Sub Gerente', '234.567.890-11', '102'),
+(3, 14, 'Carlos Souza', 'carlos.souza@email.com', '(11) 99999-0003', 'Consultor', '345.678.901-22', '103'),
+(4, 14, 'Paula Ribeiro', 'paula.ribeiro@email.com', '(11) 99999-0004', 'RH', '456.789.012-33', '104'),
+(5, 14, 'Thiago Lima', 'thiago.lima@email.com', '(11) 99999-0005', 'RH', '567.890.123-44', '105'),
+(6, 14, 'Carolina Silva', 'carolina.silva@email.com', '(11) 99999-0006', 'RH', '678.901.234-55', '106'),
+(7, 1, 'Yuri Silva', 'yuri.silva@email.com', '(11) 99999-0007', 'Vendedor', '789.012.345-66', '107'),
+(8, 1, 'Fernanda Monteiro', 'fernanda.monteiro@email.com', '(11) 99999-0008', 'Gerente de Vendas', '890.123.456-77', '108'),
+(9, 1, 'Lucas Peres', 'lucas.peres@email.com', '(11) 99999-0009', 'Financeiro', '901.234.567-88', '109'),
+(10, 1, 'Juliana Costa', 'juliana.costa@email.com', '(11) 99999-0010', 'Vendedora', '012.345.678-99', '110'),
+(11, 1, 'Marcos Souza', 'marcos.souza@email.com', '(11) 99999-0011', 'Vendedor', '321.654.987-00', '111'),
+(12, 14, 'Amanda Almeida', 'amanda.almeida@email.com', '(11) 99999-0012', 'RH', '444.555.666-77', '112'),
+(13, 2, 'Ricardo Mendes', 'ricardo.mendes@email.com', '(11) 99999-0013', 'Vendedor', '555.666.777-88', '113'),
+(14, 2, 'Larissa Manoela', 'larissa.manoela@email.com', '(11) 99999-0014', 'Vendedora', '666.777.888-99', '114'),
+(15, 3, 'Pedro Gomes', 'pedro.gomes@email.com', '(11) 99999-0015', 'Vendedor', '777.888.999-00', '115'),
+(16, 3, 'Ana Paula', 'ana.paula@email.com', '(11) 99999-0016', 'Vendedora', '888.999.000-11', '116'),
+(17, 4, 'Bruno Martins', 'bruno.martins@email.com', '(11) 99999-0017', 'Vendedor', '999.000.111-22', '117'),
+(18, 4, 'Carla Mendes', 'carla.mendes@email.com', '(11) 99999-0018', 'Vendedora', '000.111.222-33', '118'),
+(19, 5, 'Daniel Oliveira', 'daniel.oliveira@email.com', '(11) 99999-0019', 'Vendedor', '111.222.333-44', '119'),
+(20, 5, 'Fabiana Costa', 'fabiana.costa@email.com', '(11) 99999-0020', 'Vendedora', '222.333.444-55', '120'),
+(21, 6, 'Eduardo Silva', 'eduardo.silva@email.com', '(11) 99999-0021', 'Vendedor', '333.444.555-66', '121'),
+(22, 6, 'Gloria Santos', 'gloria.santos@email.com', '(11) 99999-0022', 'Vendedora', '444.555.666-88', '122'),
+(23, 7, 'Hugo Fernandes', 'hugo.fernandes@email.com', '(11) 99999-0023', 'Vendedor', '555.666.777-99', '123'),
+(24, 7, 'Isabela Rocha', 'isabela.rocha@email.com', '(11) 99999-0024', 'Vendedora', '666.777.888-00', '124'),
+(25, 8, 'Joana Pinto', 'joana.pinto@email.com', '(11) 99999-0025', 'Vendedora', '777.888.999-11', '125'),
+(26, 8, 'Kleber Lima', 'kleber.lima@email.com', '(11) 99999-0026', 'Vendedor', '888.999.000-22', '126'),
+(27, 9, 'Lucas Almeida', 'lucas.almeida@email.com', '(11) 99999-0027', 'Vendedor', '999.000.111-33', '127'),
+(28, 9, 'Marina Fernandes', 'marina.fernandes@email.com', '(11) 99999-0028', 'Vendedora', '000.111.222-44', '128'),
+(29, 10, 'Nicolas Barbosa', 'nicolas.barbosa@email.com', '(11) 99999-0029', 'Vendedor', '111.222.333-55', '129'),
+(30, 10, 'Olivia Mendes', 'olivia.mendes@email.com', '(11) 99999-0030', 'Vendedora', '222.333.444-66', '130'),
+(31, 11, 'Paulo Carvalho', 'paulo.carvalho@email.com', '(11) 99999-0031', 'Vendedor', '333.444.555-77', '131'),
+(32, 11, 'Quenia Souza', 'quenia.souza@email.com', '(11) 99999-0032', 'Vendedora', '444.555.666-99', '132'),
+(33, 12, 'Rafael Dias', 'rafael.dias@email.com', '(11) 99999-0033', 'Vendedor', '555.666.777-00', '133'),
+(34, 12, 'Sandra Lima', 'sandra.lima@email.com', '(11) 99999-0034', 'Vendedora', '666.777.888-11', '134'),
+(35, 13, 'Tomas Moreira', 'tomas.moreira@email.com', '(11) 99999-0035', 'Vendedor', '777.888.999-22', '135'),
+(36, 13, 'Ursula Ferreira', 'ursula.ferreira@email.com', '(11) 99999-0036', 'Vendedora', '888.999.000-33', '136');
 
 SELECT * FROM funcionarios;
-
-INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
-(1, 'Toyota', '00123456789001', '(11) 91234-5678', 'toyotafornecedores@hotmail.com', 'Rua Japão, 123', 'Carlos Tanaka'),
-(2, 'Hyundai', '00234567890123', '(11) 98765-4321', 'hyundaifornecedores@hotmail.com', 'Av. Coreia, 456', 'Mariana Kim'),
-(3, 'Ford', '00345678901234', '(11) 91111-1111', 'fordfornecedores@hotmail.com', 'Av. América, 123', 'Roberto Ford'),
-(4, 'Chevrolet', '00456789012345', '(11) 92222-2222', 'chevroletfornecedores@hotmail.com', 'Rua GM, 456', 'Ana GM'),
-(5, 'Volkswagen', '00567890123456', '(11) 93333-3333', 'vwfornecedores@hotmail.com', 'Av. Alemanha, 789', 'Carlos VW'),
-(6, 'BMW', '00678901234567', '(11) 94444-4444', 'bmwfornecedores@hotmail.com', 'Rua Munique, 321', 'Hans BMW'),
-(7, 'Fiat', '00789012345678', '(11) 95555-5555', 'fiatfornecedores@hotmail.com', 'Rua Itália, 654', 'Giovanni Fiat');
-
-SELECT * FROM fornecedores;
-
-INSERT INTO clientes (id_clientes , nome, email, telefone, cpf) VALUES
-('1','Jonas', 'jonas.silvino@hotmail.com', '93346-6747', '756.345.345-34'),
-('2','Kleitin', 'dogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
-('3','Camilo', 'superidoll@gmail.com', '95467-3200', '435.587.629-22'),
-('4','José Cunha', 'josecunha@gmail.com', '92345-6789', '756.816.820-48'),
-('5','Isabelle Lima','isabellelima@hotmail.com', '99876-5432', '240.354.990-80'),
-('6','Mateus Alves ','mateusalves@gmail.com', ' 98765-4321', '371.413.150-71'),
-('7','Vinícius Melo','viníciusmelo@gmail.com', '91234-5678', '604.746.650-89'),
-('8','Tiago Martins','tiagomartins@hotmail.com', '93456-7890', '419.952.530-06'),
-('9','Tânia Azevedo','tâniaazevedo@gmail.com', ' 97654-3210', '986.747.160-16'),
-('10','Sara Almeida','saraalmeida@hotmail.com', '94567-8901', '081.457.630-37');
-
-SELECT * FROM clientes;
 
 INSERT INTO carros (id_carros, marca, modelo, tipo_combustivel, ano, cor, condicao, preco, id_fornecedores) VALUES
 ('1','Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 1),
