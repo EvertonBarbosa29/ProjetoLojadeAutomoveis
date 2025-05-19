@@ -345,6 +345,9 @@ INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES
 
 SELECT * FROM forma_pagamento;
 
+SELECT * FROM registro
+WHERE YEAR(data_pagamento) = 2025;
+
 CREATE VIEW v_car_disponiveis AS
 SELECT * FROM carros;
 
