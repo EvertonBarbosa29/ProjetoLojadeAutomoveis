@@ -344,26 +344,16 @@ INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES
 (4, 'Cheque'),
 (5, 'Dinheiro');
 
-UPDATE carros
-SET status = 'Vendido'
-WHERE id_carros IN (
-  SELECT id_carros FROM vendas
-);
-
-UPDATE carros
-SET status = 'Disponível'
-WHERE id_carros NOT IN (
-  SELECT id_carros FROM vendas
-);
-
-
-SELECT * FROM forma_pagamento;
-
 SELECT * FROM registro
 WHERE YEAR(data_pagamento) = 2025;
 
-CREATE VIEW v_car_disponiveis AS
-SELECT * FROM carros;
+CREATE VIEW v_car_vend AS
+SELECT * FROM carros
+WHERE sts = 'Vendido';
+
+CREATE VIEW v_car_disp AS
+SELECT * FROM carros
+WHERE sts = 'Disponível';
 
 CREATE VIEW v_total_car_m AS
 SELECT marca, COUNT(*) AS total_carros
@@ -410,7 +400,7 @@ CREATE VIEW v_car_audi AS
 SELECT * FROM carros
 WHERE marca = 'Audi';
 
-CREATE VIEW v_car_Renlt AS
+CREATE VIEW v_car_renlt AS
 SELECT * FROM carros
 WHERE marca = 'Renault';
 
@@ -424,7 +414,7 @@ WHERE marca = 'Kia';
 
 CREATE VIEW v_car_caros AS
 SELECT * FROM carros
-WHERE preco >50000;
+WHERE preco >100000;
 
 CREATE VIEW v_car_2025 AS
 SELECT * FROM carros
@@ -442,6 +432,37 @@ CREATE VIEW v_car_preco_cres AS
 SELECT * FROM carros
 ORDER BY preco ASC;
 
+CREATE VIEW car_vend_marca AS
+SELECT marca,COUNT(*) AS total_vendidos
+FROM carros
+WHERE sts = 'Vendido'
+GROUP BY marca
+ORDER BY total_vendidos DESC;
+
+SELECT * FROM v_car_vend;
+SELECT * FROM v_car_disp;
+SELECT * FROM v_total_car_m;
+SELECT * FROM v_car_toyota;
+SELECT * FROM v_car_hyundai;
+SELECT * FROM v_car_ford;
+SELECT * FROM v_car_chevrolet;
+SELECT * FROM v_car_volkswagen;
+SELECT * FROM v_car_bmw;
+SELECT * FROM v_car_fiat;
+SELECT * FROM v_car_fiat;
+SELECT * FROM v_car_subaru;
+SELECT * FROM v_car_mits;
+SELECT * FROM v_car_audi;
+SELECT * FROM v_car_renlt;
+SELECT * FROM v_car_nissan;
+SELECT * FROM v_car_kia;
+SELECT * FROM v_car_caros;
+SELECT * FROM v_car_2025 ;
+SELECT * FROM v_car_semi;
+SELECT * FROM v_car_novos;
+SELECT * FROM v_car_preco_cres;
+SELECT * FROM car_vend_marca;
+
 SELECT * FROM carros;
 
 CREATE VIEW v_funci_cargos AS
@@ -457,18 +478,43 @@ FROM funcionarios
 GROUP BY cargo
 HAVING COUNT(*) >1;
 
-SELECT * FROM funcionarios;
+SELECT * FROM v_funci_cargos;
+SELECT * FROM v_funci_alf;
+SELECT * FROM v_funci_crg_n°;
 
 CREATE VIEW v_ende_cep AS 
 SELECT id_endereco, id_loja, estado,cidade, rua, numero_loja, cep FROM endereco
 WHERE cep IS NOT NULL;
 
-SELECT * FROM endereco;
+SELECT * FROM v_ende_cep;
 
+CREATE VIEW v_forc_responsa AS
+SELECT nome AS fornecedor,  responsavel, email
+FROM fornecedores
+ORDER BY nome;
+  
+ SELECT * FROM v_forc_responsa; 
+  
 CREATE VIEW v_client_cpf AS
-SELECT id_clientes, nome, email, telefone, cpf FROM clientes
+SELECT id_clientes, nome, cpf FROM clientes
 WHERE cpf IS NOT NULL;
 
-SELECT * FROM clientes;
+CREATE VIEW v_client_tel_e AS
+SELECT id_clientes, nome, email, telefone
+FROM clientes;
 
 SELECT * FROM v_client_cpf;
+SELECT * FROM v_client_tel_e;
+
+CREATE VIEW v_f_paga AS
+SELECT id_forma_pagamento, metodo
+FROM forma_pagamento;
+
+SELECT * FROM v_f_paga;
+
+CREATE VIEW v_vlr_120k AS
+SELECT  r.id_venda,  r.valor,  r.data_pagamento
+FROM registro r
+WHERE r.valor > 120000;
+
+SELECT * FROM v_vlr_120k;
