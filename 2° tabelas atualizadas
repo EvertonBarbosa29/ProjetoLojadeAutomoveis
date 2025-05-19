@@ -89,6 +89,6 @@ id_registro INT PRIMARY KEY AUTO_INCREMENT,
 id_venda INT,
 metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
 valor DECIMAL(10, 2) NOT NULL,
-data_pagamento DATETIME DEFAULT NOW() NOT NULL,
+data_pagamento DATETIME,
 FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
 );
