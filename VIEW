@@ -1,3 +1,4 @@
+
 CREATE VIEW v_car_disponiveis AS
 SELECT * FROM carros;
 
@@ -33,6 +34,30 @@ WHERE marca = 'BMW';
 CREATE VIEW v_car_fiat AS
 SELECT * FROM carros
 WHERE marca = 'Fiat';
+
+CREATE VIEW v_car_subaru AS
+SELECT * FROM carros
+WHERE marca = 'Subaru';
+
+CREATE VIEW v_car_mits AS
+SELECT * FROM carros
+WHERE marca = 'Mitsubishi';
+
+CREATE VIEW v_car_audi AS
+SELECT * FROM carros
+WHERE marca = 'Audi';
+
+CREATE VIEW v_car_Renlt AS
+SELECT * FROM carros
+WHERE marca = 'Renault';
+
+CREATE VIEW v_car_nissan AS
+SELECT * FROM carros
+WHERE marca = 'Nissan';
+
+CREATE VIEW v_car_kia AS
+SELECT * FROM carros
+WHERE marca = 'Kia';
 
 CREATE VIEW v_car_caros AS
 SELECT * FROM carros
@@ -82,3 +107,5 @@ SELECT id_clientes, nome, email, telefone, cpf FROM clientes
 WHERE cpf IS NOT NULL;
 
 SELECT * FROM clientes;
+
+SELECT * FROM v_client_cpf;
