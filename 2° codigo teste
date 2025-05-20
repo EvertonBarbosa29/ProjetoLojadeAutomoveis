@@ -464,9 +464,9 @@ DELIMITER $$
 CREATE FUNCTION vldr_cep(cep_input VARCHAR(9)) RETURNS INT
 BEGIN
     IF cep_input REGEXP '^[0-9]{5}-[0-9]{3}$' THEN
-        RETURN 1; -- CEP válido
+        RETURN 1;
     ELSE
-        RETURN 0; -- CEP inválido
+        RETURN 0; 
     END IF;
 END $$
 
@@ -483,9 +483,9 @@ BEGIN
     WHERE id_carros = id_carro;
 
     IF estoque > 0 THEN
-        RETURN 1; -- Carro disponível
+        RETURN 1;
     ELSE
-        RETURN 0; -- Carro indisponível
+        RETURN 0;
     END IF;
 END $$
 
