@@ -378,7 +378,6 @@ SET preco = preco * 1.08
 WHERE tipo_combustivel = 'Diesel';
 
 UPDATE funcionarios
-JOIN loja l ON l.id_loja = 7
 SET cargo = 'Vendedor Sênior'
 WHERE cargo = 'Vendedor' AND id_funcionarios = 23;
 
