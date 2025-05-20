@@ -1,21 +1,4 @@
-UPDATE carros
-SET preco = 499000.00
-WHERE marca = 'Toyota' AND modelo = 'Supra MK4';
-
-UPDATE carros
-SET cor = 'Vermelho'
-WHERE marca = 'Ford' AND modelo = 'Mustang V8';
-
-UPDATE carros
-SET ano = 2024
-WHERE marca = 'Fiat' AND modelo = 'Toro';
-
-
-/* NOVOS UPDATES*/
-
 SET SQL_SAFE_UPDATES = 0;
-
-SELECT * FROM carros;
 
 UPDATE carros
 SET cor = 'Branco'
@@ -42,4 +25,3 @@ JOIN (
     HAVING AVG(preco) > 750000
 ) AS fornecd_luxo USING (id_fornecedores)
 SET carros.condicao = 'Luxo';
-
