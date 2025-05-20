@@ -1,0 +1,46 @@
+
+SELECT modelo, AVG(preco) AS vlr_menor
+FROM carros
+GROUP BY modelo
+HAVING AVG(preco) < 250000
+ORDER BY vlr_menor DESC;
+
+SELECT modelo, AVG(preco) AS vlr_maior
+FROM carros
+GROUP BY modelo
+HAVING AVG(preco) > 250000
+ORDER BY vlr_maior DESC;
+
+SELECT marca, COUNT(*) AS quantidade
+FROM carros
+GROUP BY marca
+HAVING COUNT(*) > 2
+ORDER BY quantidade DESC;
+
+SELECT marca, COUNT(*) AS total_vendidos
+FROM carros
+WHERE sts = 'Vendido'
+GROUP BY marca
+ORDER BY total_vendidos DESC;
+
+SELECT marca, COUNT(*) AS total_carros
+FROM carros
+GROUP BY marca;
+
+SELECT id_carros, modelo, marca, ano, preco
+FROM carros
+ORDER BY preco ASC;
+
+SELECT * FROM registro
+WHERE YEAR(data_pagamento) = 2025;
+
+SELECT cargo, COUNT(*) AS numero
+FROM funcionarios
+GROUP BY cargo;
+
+SELECT nome FROM funcionarios
+ORDER BY nome ASC;
+
+SELECT  r.id_venda,  r.valor,  r.data_pagamento
+FROM registro r
+WHERE r.valor > 120000;
