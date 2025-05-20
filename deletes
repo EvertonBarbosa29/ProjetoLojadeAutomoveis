@@ -1,3 +1,5 @@
+SET SQL_SAFE_UPDATES = 0;
+
 DELETE FROM carros
 WHERE (marca = 'Hyundai' AND modelo = 'Azera' AND ano = 2015 AND cor = 'Branco' AND preco = 75000.00)
    OR (marca = 'Ford' AND modelo = 'Mustang V8' AND ano = 2020 AND cor = 'Azul' AND preco = 450000.00)
