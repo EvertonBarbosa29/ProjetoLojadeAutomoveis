@@ -94,6 +94,31 @@ BEGIN
   END IF;
 END$$
 
+DELIMITER $$
+
+CREATE TRIGGER isrt_vnds_car
+BEFORE INSERT ON vendas
+FOR EACH ROW
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM carros WHERE id_carros = NEW.id_carros) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'O carro inserido não existe, Por favor tente novamente!';
+  END IF;
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE TRIGGER isrt_vnds_car_vnd
+BEFORE INSERT ON vendas
+FOR EACH ROW
+BEGIN
+  IF EXISTS (SELECT 1 FROM vendas WHERE id_carros = NEW.id_carros) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Este carro foi vendido, Por favor tente novamente em alguns dias ou faça uma visita a loja.';
+  END IF;
+END$$
+
+DELIMITER ;
 
 DELIMITER $$
 
@@ -122,8 +147,6 @@ BEGIN
     SET MESSAGE_TEXT = 'E-mail inválido';
   END IF;
 END$$
-
-DELIMITER ;
 
 DELIMITER ;
 
