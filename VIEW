@@ -1,3 +1,5 @@
+
+
 SELECT * FROM registro
 WHERE YEAR(data_pagamento) = 2025;
 
@@ -13,6 +15,14 @@ WHERE sts = 'Vendido';
 CREATE VIEW v_car_disp AS
 SELECT * FROM carros
 WHERE sts = 'Disponível';
+
+CREATE VIEW v_car_luxo AS
+SELECT * FROM carros
+WHERE sts = 'Luxo';
+
+CREATE VIEW v_car_ant AS
+SELECT * FROM carros
+WHERE sts = 'Antigo';
 
 CREATE VIEW v_total_car_m AS
 SELECT marca, COUNT(*) AS total_carros
@@ -101,6 +111,8 @@ ORDER BY total_vendidos DESC;
 SELECT * FROM v_car_preco_asc;
 SELECT * FROM v_car_vend;
 SELECT * FROM v_car_disp;
+SELECT * FROM v_car_luxo;
+SELECT * FROM v_car_ant;
 SELECT * FROM v_total_car_m;
 SELECT * FROM v_car_toyota;
 SELECT * FROM v_car_hyundai;
