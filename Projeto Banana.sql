@@ -584,15 +584,6 @@ END$$
 
 DELIMITER ;
 
-
-SELECT * FROM registro
-WHERE YEAR(data_pagamento) = 2025;
-
-CREATE VIEW v_car_preco_asc AS
-SELECT id_carros, modelo, marca, ano, preco
-FROM carros
-ORDER BY preco ASC;
-
 CREATE VIEW v_car_vend AS
 SELECT * FROM carros
 WHERE sts = 'Vendido';
@@ -608,11 +599,6 @@ WHERE sts = 'Luxo';
 CREATE VIEW v_car_ant AS
 SELECT * FROM carros
 WHERE sts = 'Antigo';
-
-CREATE VIEW v_total_car_m AS
-SELECT marca, COUNT(*) AS total_carros
-FROM carros
-GROUP BY marca;
 
 CREATE VIEW v_car_toyota AS
 SELECT * FROM carros
@@ -682,23 +668,10 @@ CREATE VIEW v_car_novos AS
 SELECT * FROM carros
 WHERE condicao = 'Novo';
 
-CREATE VIEW v_car_preco_cres AS
-SELECT * FROM carros
-ORDER BY preco ASC;
-
-CREATE VIEW car_vend_marca AS
-SELECT marca, COUNT(*) AS total_vendidos
-FROM carros
-WHERE sts = 'Vendido'
-GROUP BY marca
-ORDER BY total_vendidos DESC;
-
-SELECT * FROM v_car_preco_asc;
 SELECT * FROM v_car_vend;
 SELECT * FROM v_car_disp;
 SELECT * FROM v_car_luxo;
 SELECT * FROM v_car_ant;
-SELECT * FROM v_total_car_m;
 SELECT * FROM v_car_toyota;
 SELECT * FROM v_car_hyundai;
 SELECT * FROM v_car_ford;
@@ -717,27 +690,13 @@ SELECT * FROM v_car_caros;
 SELECT * FROM v_car_2025 ;
 SELECT * FROM v_car_semi;
 SELECT * FROM v_car_novos;
-SELECT * FROM v_car_preco_cres;
-SELECT * FROM car_vend_marca;
 
 SELECT * FROM carros;
 
 CREATE VIEW v_funci_cargos AS
 SELECT nome, cargo FROM funcionarios;
 
-CREATE VIEW v_funci_alf AS
-SELECT nome FROM funcionarios
-ORDER BY nome ASC;
-
-CREATE VIEW v_funci_crg_n AS
-SELECT cargo, COUNT(*) AS numero
-FROM funcionarios
-GROUP BY cargo
-HAVING COUNT(*) >1;
-
 SELECT * FROM v_funci_cargos;
-SELECT * FROM v_funci_alf;
-SELECT * FROM v_funci_crg_n;
 
 CREATE VIEW v_ende_cep AS 
 SELECT id_endereco, id_loja, estado,cidade, rua, numero_loja, cep FROM endereco
@@ -769,10 +728,48 @@ FROM forma_pagamento;
 
 SELECT * FROM v_f_paga;
 
-CREATE VIEW v_vlr_sentoevintek AS
+SELECT modelo, AVG(preco) AS vlr_menor
+FROM carros
+GROUP BY modelo
+HAVING AVG(preco) < 250000
+ORDER BY vlr_menor DESC;
+
+SELECT modelo, AVG(preco) AS vlr_maior
+FROM carros
+GROUP BY modelo
+HAVING AVG(preco) > 250000
+ORDER BY vlr_maior DESC;
+
+SELECT marca, COUNT(*) AS quantidade
+FROM carros
+GROUP BY marca
+HAVING COUNT(*) > 2
+ORDER BY quantidade DESC;
+
+SELECT marca, COUNT(*) AS total_vendidos
+FROM carros
+WHERE sts = 'Vendido'
+GROUP BY marca
+ORDER BY total_vendidos DESC;
+
+SELECT marca, COUNT(*) AS total_carros
+FROM carros
+GROUP BY marca;
+
+SELECT id_carros, modelo, marca, ano, preco
+FROM carros
+ORDER BY preco ASC;
+
+SELECT * FROM registro
+WHERE YEAR(data_pagamento) = 2025;
+
+SELECT cargo, COUNT(*) AS numero
+FROM funcionarios
+GROUP BY cargo;
+
+SELECT nome FROM funcionarios
+ORDER BY nome ASC;
+
 SELECT  r.id_venda,  r.valor,  r.data_pagamento
 FROM registro r
 WHERE r.valor > 120000;
-
-SELECT * FROM v_vlr_sentoevintek;
-SELECT * FROM carros;
