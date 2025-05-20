@@ -97,6 +97,14 @@ CREATE VIEW v_car_novos AS
 SELECT * FROM carros
 WHERE condicao = 'Novo';
 
+CREATE VIEW v_car_luxo AS
+SELECT * FROM carros
+WHERE sts = 'Luxo';
+
+CREATE VIEW v_car_ant AS
+SELECT * FROM carros
+WHERE sts = 'Antigo';
+
 CREATE VIEW v_car_preco_cres AS
 SELECT * FROM carros
 ORDER BY preco ASC;
@@ -111,8 +119,6 @@ ORDER BY total_vendidos DESC;
 SELECT * FROM v_car_preco_asc;
 SELECT * FROM v_car_vend;
 SELECT * FROM v_car_disp;
-SELECT * FROM v_car_luxo;
-SELECT * FROM v_car_ant;
 SELECT * FROM v_total_car_m;
 SELECT * FROM v_car_toyota;
 SELECT * FROM v_car_hyundai;
@@ -132,7 +138,8 @@ SELECT * FROM v_car_caros;
 SELECT * FROM v_car_2025 ;
 SELECT * FROM v_car_semi;
 SELECT * FROM v_car_novos;
-SELECT * FROM v_car_preco_cres;
+SELECT * FROM v_car_luxo;
+SELECT * FROM v_car_ant;
 SELECT * FROM car_vend_marca;
 
 SELECT * FROM carros;
