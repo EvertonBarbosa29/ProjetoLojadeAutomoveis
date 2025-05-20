@@ -1,6 +1,11 @@
 SELECT * FROM registro
 WHERE YEAR(data_pagamento) = 2025;
 
+CREATE VIEW v_car_preco_asc AS
+SELECT id_carros, modelo, marca, ano, preco
+FROM carros
+ORDER BY preco ASC;
+
 CREATE VIEW v_car_vend AS
 SELECT * FROM carros
 WHERE sts = 'Vendido';
@@ -87,12 +92,13 @@ SELECT * FROM carros
 ORDER BY preco ASC;
 
 CREATE VIEW car_vend_marca AS
-SELECT marca,COUNT(*) AS total_vendidos
+SELECT marca, COUNT(*) AS total_vendidos
 FROM carros
 WHERE sts = 'Vendido'
 GROUP BY marca
 ORDER BY total_vendidos DESC;
 
+SELECT * FROM v_car_preco_asc;
 SELECT * FROM v_car_vend;
 SELECT * FROM v_car_disp;
 SELECT * FROM v_total_car_m;
@@ -126,7 +132,7 @@ CREATE VIEW v_funci_alf AS
 SELECT nome FROM funcionarios
 ORDER BY nome ASC;
 
-CREATE VIEW v_funci_crg_n° AS
+CREATE VIEW v_funci_crg_n AS
 SELECT cargo, COUNT(*) AS numero
 FROM funcionarios
 GROUP BY cargo
@@ -134,7 +140,7 @@ HAVING COUNT(*) >1;
 
 SELECT * FROM v_funci_cargos;
 SELECT * FROM v_funci_alf;
-SELECT * FROM v_funci_crg_n°;
+SELECT * FROM v_funci_crg_n;
 
 CREATE VIEW v_ende_cep AS 
 SELECT id_endereco, id_loja, estado,cidade, rua, numero_loja, cep FROM endereco
@@ -153,12 +159,12 @@ CREATE VIEW v_client_cpf AS
 SELECT id_clientes, nome, cpf FROM clientes
 WHERE cpf IS NOT NULL;
 
-CREATE VIEW v_client_tel_e AS
+CREATE VIEW v_client_tel_em AS
 SELECT id_clientes, nome, email, telefone
 FROM clientes;
 
 SELECT * FROM v_client_cpf;
-SELECT * FROM v_client_tel_e;
+SELECT * FROM v_client_tel_em;
 
 CREATE VIEW v_f_paga AS
 SELECT id_forma_pagamento, metodo
@@ -166,9 +172,10 @@ FROM forma_pagamento;
 
 SELECT * FROM v_f_paga;
 
-CREATE VIEW v_vlr_120k AS
+CREATE VIEW v_vlr_sentoevintek AS
 SELECT  r.id_venda,  r.valor,  r.data_pagamento
 FROM registro r
 WHERE r.valor > 120000;
 
-SELECT * FROM v_vlr_120k;
+SELECT * FROM v_vlr_sentoevintek;
+SELECT * FROM carros;
