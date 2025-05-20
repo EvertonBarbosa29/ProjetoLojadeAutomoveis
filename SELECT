@@ -44,3 +44,7 @@ ORDER BY nome ASC;
 SELECT  r.id_venda,  r.valor,  r.data_pagamento
 FROM registro r
 WHERE r.valor > 120000;
+
+SELECT nome AS fornecedor,  responsavel, email
+FROM fornecedores
+ORDER BY nome;
