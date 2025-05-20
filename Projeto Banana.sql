@@ -1,0 +1,789 @@
+CREATE DATABASE loja_automoveis;
+
+USE loja_automoveis;
+
+CREATE TABLE loja (
+id_loja INT PRIMARY KEY,
+nome_loja VARCHAR(50),
+cnpj CHAR(18) NOT NULL
+);
+
+CREATE TABLE funcionarios (
+  id_funcionarios INT PRIMARY KEY,
+  id_loja INT,
+  nome VARCHAR(200) NOT NULL UNIQUE KEY,
+  email VARCHAR(200) NOT NULL UNIQUE KEY,
+  telefone VARCHAR(20) NOT NULL,
+  cargo VARCHAR(50) NOT NULL,
+  cpf CHAR(14) NOT NULL UNIQUE KEY,
+  numero_cracha VARCHAR(3) NOT NULL,
+  FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
+);
+
+CREATE TABLE clientes (
+id_clientes INT PRIMARY KEY,
+id_endereco INT,
+nome VARCHAR(200) NOT NULL UNIQUE KEY,
+email VARCHAR(200) NOT NULL UNIQUE KEY,
+telefone VARCHAR(20) NOT NULL,
+cpf CHAR(14) NOT NULL UNIQUE KEY
+);
+
+CREATE TABLE endereco (
+id_endereco INT PRIMARY KEY,
+id_loja INT,
+estado VARCHAR(100)  NOT NULL,
+cidade VARCHAR(100)  NOT NULL,
+rua VARCHAR(100)  NOT NULL,
+numero_loja INT  NOT NULL,
+cep VARCHAR(9) NOT NULL UNIQUE KEY,
+FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
+);
+
+CREATE TABLE fornecedores (
+id_fornecedores INT PRIMARY KEY,
+id_endereco INT,
+nome VARCHAR(200) NOT NULL UNIQUE KEY,
+cnpj CHAR(18) NOT NULL UNIQUE KEY,
+telefone VARCHAR(20) NOT NULL,
+email VARCHAR(200) NOT NULL,
+endereco VARCHAR(255)  NOT NULL,
+responsavel VARCHAR(200)  NOT NULL,
+FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+);
+
+CREATE TABLE carros (
+id_carros INT PRIMARY KEY,
+id_fornecedores INT,
+marca VARCHAR(50)  NOT NULL,
+modelo VARCHAR(50)  NOT NULL,
+tipo_combustivel ENUM('Flex', 'Diesel') DEFAULT 'Flex' NOT NULL,
+ano INT  NOT NULL,
+cor VARCHAR(30)  NOT NULL,
+condicao ENUM('Novo', 'Seminovo', 'Luxo', 'Antigo')NOT NULL,
+preco DECIMAL(10, 2)  NOT NULL,
+sts ENUM('Disponível', 'Vendido') DEFAULT 'Disponível' NOT NULL,
+FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
+);
+
+CREATE TABLE vendas (
+id_vendas INT PRIMARY KEY AUTO_INCREMENT,
+id_carros INT,
+id_clientes INT,
+id_funcionarios INT,
+id_endereco INT,
+data_venda DATETIME DEFAULT NOW() NOT NULL,
+preco_venda DECIMAL(10, 2)  NOT NULL,
+FOREIGN KEY (id_carros) REFERENCES carros(id_carros),
+FOREIGN KEY (id_clientes) REFERENCES clientes(id_clientes),
+FOREIGN KEY (id_funcionarios) REFERENCES funcionarios(id_funcionarios),
+FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
+);
+
+CREATE TABLE forma_pagamento (
+  id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
+  metodo ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') NOT NULL
+);
+
+CREATE TABLE registro (
+id_registro INT PRIMARY KEY AUTO_INCREMENT,
+id_venda INT,
+id_forma_pagamento INT,
+valor DECIMAL(10, 2) NOT NULL,
+data_pagamento DATETIME,
+FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas),
+FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento(id_forma_pagamento)
+);
+
+INSERT INTO loja (id_loja, nome_loja, cnpj) VALUES
+(1,'Auto Center CAR BA', '23.456.789/0123-04'),
+(2,'Auto Center CAR SP', '23.456.789/0123-45'),
+(3, 'Auto Center CAR MG', '23.456.789/0123-56'),
+(4, 'Auto Center CAR RJ', '23.456.789/0123-67'),
+(5, 'Auto Center CAR PE', '23.456.789/0123-78'),
+(6, 'Auto Center CAR RS', '23.456.789/0123-89'),
+(7, 'Auto Center CAR PR', '23.456.789/0123-90'),
+(8, 'Auto Center CAR SC', '23.456.789/0123-91'),
+(9, 'Auto Center CAR CE', '23.456.789/0123-97'),
+(10, 'Auto Center CAR PA', '23.456.789/0123-98'),
+(11, 'Auto Center CAR AM', '23.456.789/0123-99'),
+(12, 'Auto Center CAR GO', '23.456.789/0123-10'),
+(13, 'Auto Center CAR RN', '23.456.789/0123-11'),
+(14, 'AC CAR BR PRINCIPAL', '11.222.333/0001-81');
+
+SELECT * FROM loja;
+
+INSERT INTO endereco (id_endereco, estado, cidade, rua, numero_loja, cep, id_loja) VALUES
+(1,'Bahia', 'Xique-Xique', 'Rua Meia Nove', 388, '83408-000', 1),
+(2,'São Paulo', 'São Paulo', 'Avenida Paulista', 500, '93115-660', 2),
+(3, 'Minas Gerais', 'Belo Horizonte', 'Rua das Flores', 123, '30130-010', 3),
+(4, 'Rio de Janeiro', 'Rio de Janeiro', 'Rua do Comércio', 456, '20010-000', 4),
+(5, 'Pernambuco', 'Recife', 'Avenida Boa Viagem', 789, '51020-020', 5),
+(6, 'Rio Grande do Sul', 'Porto Alegre', 'Rua dos Andradas', 321, '90020-030', 6),
+(7, 'Paraná', 'Curitiba', 'Avenida Sete de Setembro', 654, '80010-040', 7),
+(8, 'Santa Catarina', 'Florianópolis', 'Rua das Palmeiras', 987, '88010-050', 8),
+(9, 'Ceará', 'Fortaleza', 'Rua Dragão do Mar', 150, '60120-110', 9),
+(10, 'Pará', 'Belém', 'Avenida Nazaré', 250, '66010-110', 10),
+(11, 'Amazonas', 'Manaus', 'Rua Eduardo Ribeiro', 350, '69010-110', 11),
+(12, 'Goiás', 'Goiânia', 'Avenida Independência', 450, '74010-110', 12),
+(13, 'Rio Grande do Norte', 'Natal', 'Rua Chile', 550, '59010-110', 13),
+(14, 'Bahia', 'Satiro Dias', 'Rua Alto da Saudade', 158, '40470-285', 14);
+
+SELECT * FROM endereco;
+
+INSERT INTO funcionarios (id_funcionarios, id_loja, nome, email, telefone, cargo, cpf, numero_cracha) VALUES
+(1, 14, 'João Lucas', 'joao.lucas@email.com', '(11) 99999-0001', 'Gerente Geral', '123.456.789-00', '101'),
+(2, 14, 'Maria Eduarda', 'maria.eduarda@email.com', '(11) 99999-0002', 'Sub Gerente', '234.567.890-11', '102'),
+(3, 14, 'Carlos Souza', 'carlos.souza@email.com', '(11) 99999-0003', 'Consultor', '345.678.901-22', '103'),
+(4, 14, 'Paula Ribeiro', 'paula.ribeiro@email.com', '(11) 99999-0004', 'RH', '456.789.012-33', '104'),
+(5, 14, 'Thiago Lima', 'thiago.lima@email.com', '(11) 99999-0005', 'RH', '567.890.123-44', '105'),
+(6, 14, 'Carolina Silva', 'carolina.silva@email.com', '(11) 99999-0006', 'RH', '678.901.234-55', '106'),
+(7, 1, 'Yuri Silva', 'yuri.silva@email.com', '(11) 99999-0007', 'Vendedor', '789.012.345-66', '107'),                               
+(8, 14, 'Fernanda Monteiro', 'fernanda.monteiro@email.com', '(11) 99999-0008', 'Gerente de Vendas', '890.123.456-77', '108'),
+(9, 14, 'Lucas Peres', 'lucas.peres@email.com', '(11) 99999-0009', 'Financeiro', '901.234.567-88', '109'),
+(10, 1, 'Juliana Costa', 'juliana.costa@email.com', '(11) 99999-0010', 'Vendedora', '012.345.678-99', '110'),
+(11, 1, 'Marcos Souza', 'marcos.souza@email.com', '(11) 99999-0011', 'Vendedor', '321.654.987-00', '111'),
+(12, 14, 'Amanda Almeida', 'amanda.almeida@email.com', '(11) 99999-0012', 'RH', '444.555.666-77', '112'),
+(13, 2, 'Ricardo Mendes', 'ricardo.mendes@email.com', '(11) 99999-0013', 'Assistente', '555.666.777-88', '113'),
+(14, 2, 'Larissa Manoela', 'larissa.manoela@email.com', '(11) 99999-0014', 'Vendedora', '666.777.888-99', '114'),
+(15, 3, 'Pedro Gomes', 'pedro.gomes@email.com', '(11) 99999-0015', 'Vendedor', '777.888.999-00', '115'),
+(16, 3, 'Ana Paula', 'ana.paula@email.com', '(11) 99999-0016', 'Vendedora', '888.999.000-11', '116'),
+(17, 4, 'Bruno Martins', 'bruno.martins@email.com', '(11) 99999-0017', 'Vendedor', '999.000.111-22', '117'),
+(18, 4, 'Carla Mendes', 'carla.mendes@email.com', '(11) 99999-0018', 'Vendedora', '000.111.222-33', '118'),
+(19, 5, 'Daniel Oliveira', 'daniel.oliveira@email.com', '(11) 99999-0019', 'Vendedor', '111.222.333-44', '119'),
+(20, 5, 'Fabiana Costa', 'fabiana.costa@email.com', '(11) 99999-0020', 'Vendedora', '222.333.444-55', '120'),
+(21, 6, 'Eduardo Silva', 'eduardo.silva@email.com', '(11) 99999-0021', 'Vendedor', '333.444.555-66', '121'),
+(22, 6, 'Gloria Santos', 'gloria.santos@email.com', '(11) 99999-0022', 'Vendedora', '444.555.666-88', '122'),
+(23, 7, 'Hugo Fernandes', 'hugo.fernandes@email.com', '(11) 99999-0023', 'Vendedor', '555.666.777-99', '123'),
+(24, 7, 'Isabela Rocha', 'isabela.rocha@email.com', '(11) 99999-0024', 'Vendedora', '666.777.888-00', '124'),
+(25, 8, 'Joana Pinto', 'joana.pinto@email.com', '(11) 99999-0025', 'Vendedora', '777.888.999-11', '125'),
+(26, 8, 'Kleber Lima', 'kleber.lima@email.com', '(11) 99999-0026', 'Vendedor', '888.999.000-22', '126'),
+(27, 9, 'Lucas Almeida', 'lucas.almeida@email.com', '(11) 99999-0027', 'Vendedor', '999.000.111-33', '127'),
+(28, 9, 'Marina Fernandes', 'marina.fernandes@email.com', '(11) 99999-0028', 'Vendedora', '000.111.222-44', '128'),
+(29, 10, 'Nicolas Barbosa', 'nicolas.barbosa@email.com', '(11) 99999-0029', 'Vendedor', '111.222.333-55', '129'),
+(30, 10, 'Olivia Mendes', 'olivia.mendes@email.com', '(11) 99999-0030', 'Vendedora', '222.333.444-66', '130'),
+(31, 11, 'Paulo Carvalho', 'paulo.carvalho@email.com', '(11) 99999-0031', 'Vendedor', '333.444.555-77', '131'),
+(32, 11, 'Quenia Souza', 'quenia.souza@email.com', '(11) 99999-0032', 'Vendedora', '444.555.666-99', '132'),
+(33, 12, 'Rafael Dias', 'rafael.dias@email.com', '(11) 99999-0033', 'Vendedor', '555.666.777-00', '133'),
+(34, 12, 'Sandra Lima', 'sandra.lima@email.com', '(11) 99999-0034', 'Vendedora', '666.777.888-11', '134'),
+(35, 13, 'Tomas Moreira', 'tomas.moreira@email.com', '(11) 99999-0035', 'Vendedor', '777.888.999-22', '135'),
+(36, 13, 'Ursula Ferreira', 'ursula.ferreira@email.com', '(11) 99999-0036', 'Vendedora', '888.999.000-33', '136');
+
+SELECT * FROM funcionarios;
+
+INSERT INTO fornecedores (id_fornecedores, nome, cnpj, telefone, email, endereco, responsavel) VALUES
+(1, 'Toyota', '00.123.456/7890-01', '(11) 91234-5678', 'toyotafornecedores@hotmail.com', 'Rua Japão, 123', 'Carlos Tanaka'),
+(2, 'Hyundai', '00.234.567/8901-23', '(11) 98765-4321', 'hyundaifornecedores@hotmail.com', 'Av. Coreia, 456', 'Mariana Kim'),
+(3, 'Ford', '00.345.678/9012-34', '(11) 91111-1111', 'fordfornecedores@hotmail.com', 'Av. América, 123', 'Roberto Ford'),
+(4, 'Chevrolet', '00.456.789/0123-45', '(11) 92222-2222', 'chevroletfornecedores@hotmail.com', 'Rua GM, 456', 'Ana GM'),
+(5, 'Volkswagen', '00.567.890/1234-56', '(11) 93333-3333', 'vwfornecedores@hotmail.com', 'Av. Alemanha, 789', 'Carlos VW'),
+(6, 'BMW', '00.678.901/2345-67', '(11) 94444-4444', 'bmwfornecedores@hotmail.com', 'Rua Munique, 321', 'Hans BMW'),
+(7, 'Fiat', '00.789.012/3456-78', '(11) 95555-5555', 'fiatfornecedores@hotmail.com', 'Rua Itália, 654', 'Giovanni Fiat'),
+(8, 'Subaru', '00.890.123/4567-89', '(11) 96666-6666', 'subarufornecedores@hotmail.com', 'Rua Dias, 789', 'Takashi Subaru'),
+(9, 'Mitsubishi', '00.901.234/567890', '(11) 97777-7777', 'mitsubishifornecedores@hotmail.com', 'Av. Tokio, 101', 'Hiroshi Mitsubishi'),
+(10, 'Audi', '01.012.345/6789-01', '(11) 98888-8888', 'audifornecedores@hotmail.com', 'Rua Alemanha, 202', 'Hans Audi'),
+(11, 'Renault', '01.123.456/7890-12', '(11) 99999-9999', 'renaultfornecedores@hotmail.com', 'Av. França, 303', 'Jean Renault'),
+(12, 'Nissan', '01.234.567/8901-23', '(11) 90000-0000', 'nissanfornecedores@hotmail.com', 'Rua Japão, 404', 'Kenta Nissan'),
+(13, 'Kia', '01.345.678/9012-34', '(11) 91111-1112', 'kiafornecedores@hotmail.com', 'Av. Coreia, 505', 'Min Soo Kia');
+
+SELECT * FROM fornecedores;
+
+INSERT INTO clientes (id_clientes , nome, email, telefone, cpf) VALUES
+(1,'Jonas', 'jonas.silvino@hotmail.com', '93346-6747', '756.345.345-34'),
+(2,'Kleitin', 'dogralKleitin@gmail.com', '95467-3200', '345.648.453-37'),
+(3,'Camilo', 'superidoll@gmail.com', '95467-3200', '435.587.629-22'),
+(4,'José Cunha', 'josecunha@gmail.com', '92345-6789', '756.816.820-48'),
+(5,'Isabelle Lima','isabellelima@hotmail.com', '99876-5432', '240.354.990-80'),
+(6,'Mateus Alves ','mateusalves@gmail.com', ' 98765-4321', '371.413.150-71'),
+(7,'Vinícius Melo','viníciusmelo@gmail.com', '91234-5678', '604.746.650-89'),
+(8,'Tiago Martins','tiagomartins@hotmail.com', '93456-7890', '419.952.530-06'),
+(9,'Tânia Azevedo','tâniaazevedo@gmail.com', ' 97654-3210', '986.747.160-16'),
+(10,'Sara Almeida','saraalmeida@hotmail.com', '94567-8901', '081.457.630-37'),
+(11, 'Amanda Rocha', 'amanda.rocha@gmail.com', '92123-4567', '831.234.560-11'),
+(12, 'Bruno Silva', 'bruno.silva@gmail.com', '93333-7890', '239.456.780-22'),
+(13, 'Carlos Souza', 'carlos.souza@hotmail.com', '94444-1234', '372.918.650-33'),
+(14, 'Daniela Castro', 'daniela.castro@hotmail.com', '95555-6789', '408.576.900-44'),
+(15, 'Eduardo Lima', 'edu.lima@gmail.com', '96666-4321', '198.654.320-55'),
+(16, 'Fernanda Gomes', 'fer.gomes@gmail.com', '97777-8901', '286.715.450-66'),
+(17, 'Gustavo Teles', 'gustavo.teles@hotmail.com', '98888-3456', '451.328.760-77'),
+(18, 'Helena Duarte', 'helena.duarte@gmail.com', '99999-5678', '123.678.950-88'),
+(19, 'Igor Barbosa', 'igor.barbosa@hotmail.com', '91111-7890', '356.904.780-99'),
+(20, 'Juliana Pinto', 'juliana.pinto@gmail.com', '92222-1234', '579.360.820-00'),
+(21, 'Karen Ribeiro', 'karen.ribeiro@gmail.com', '93333-4567', '635.284.110-10'),
+(22, 'Leonardo Matos', 'leo.matos@hotmail.com', '94444-6789', '748.512.320-21'),
+(23, 'Marina Freitas', 'marina.freitas@gmail.com', '95555-9012', '869.340.590-32'),
+(24, 'Nelson Rocha', 'nelson.rocha@gmail.com', '96666-2345', '904.731.880-43'),
+(25, 'Olívia Martins', 'olivia.martins@gmail.com', '97777-6789', '152.607.310-54'),
+(26, 'Paulo Vieira', 'paulo.vieira@hotmail.com', '98888-1234', '213.408.960-65'),
+(27, 'Quésia Andrade', 'quesia.andrade@gmail.com', '99999-3456', '324.896.750-76'),
+(28, 'Rafael Nunes', 'rafael.nunes@gmail.com', '91111-5678', '487.615.320-87'),
+(29, 'Sabrina Lopes', 'sabrina.lopes@hotmail.com', '92222-7890', '546.931.480-98'),
+(30, 'Thiago Pires', 'thiago.pires@gmail.com', '93333-1234', '638.295.610-09'),
+(31, 'Ursula Melo', 'ursula.melo@gmail.com', '94444-3456', '702.486.920-10'),
+(32, 'Vinícius Cardoso', 'vinicius.cardoso@gmail.com', '95555-5678', '875.930.180-21'),
+(33, 'Wesley Cunha', 'wesley.cunha@gmail.com', '96666-7890', '918.760.240-32'),
+(34, 'Xênia Fernandes', 'xenia.fernandes@gmail.com', '97777-1234', '102.548.670-43'),
+(35, 'Yasmin Teixeira', 'yasmin.teixeira@hotmail.com', '98888-3456', '239.604.150-54'),
+(36, 'Zeca Camargo', 'zeca.camargo@gmail.com', '99999-5678', '316.870.390-65'),
+(37, 'Adriana Sales', 'adriana.sales@gmail.com', '91111-7890', '472.953.210-76'),
+(38, 'Breno Costa', 'breno.costa@gmail.com', '92222-1234', '635.781.020-87'),
+(39, 'Cássia Leal', 'cassia.leal@gmail.com', '93333-4567', '748.130.960-98'),
+(40, 'Davi Moura', 'davi.moura@gmail.com', '94444-7890', '859.261.430-09');
+
+
+SELECT * FROM clientes;
+
+INSERT INTO carros (id_carros, marca, modelo, tipo_combustivel, ano, cor, condicao, preco, sts, id_fornecedores) VALUES
+('1','Toyota', 'Corolla', 'Flex', 2024, 'Preto', 'Novo', 120000.00, 'Vendido', 1),
+('2','Toyota', 'SW4', 'Diesel', 2025, 'Branco', 'Novo', 405000.00, 'Vendido',1),
+('3','Toyota', 'CAMRY', 'Flex', 2016, 'Prata', 'Seminovo', 57000.00, 'Vendido', 1),
+('4','Toyota', 'Supra MK4', 'Flex', 2024, 'Laranja', 'Novo', 523000.00,'Disponível', 1),
+('5','Hyundai', 'Azera', 'Flex', 2025, 'Branco', 'Novo', 75000.00,'Disponível', 2),
+('6','Hyundai', 'Sonata', 'Flex', 2013, 'Preto', 'Seminovo', 45000.00,'Disponível', 2),
+('7','Hyundai', 'Creta', 'Flex', 2024, 'Prata', 'Novo', 153000.00, 'Vendido', 2),
+('8','Hyundai', 'Santa Fé', 'Flex', 2014, 'Branca', 'Seminovo', 94000.00,'Disponível', 2),
+('9','Ford', 'Mustang V8', 'Flex', 2020, 'Azul', 'Seminovo', 450000.00, 'Vendido', 3),
+('10','Ford', 'Fusion', 'Flex', 2017, 'Branco', 'Seminovo', 79000.00,'Disponível', 3),
+('11','Ford', 'Edge', 'Flex', 2025, 'Preto', 'Novo', 68000.00, 'Vendido', 3),
+('12','Ford', 'Ranger', 'Diesel', 2021, 'Azul', 'Novo', 160000.00,'Disponível', 3),
+('13','Chevrolet', 'Camaro V8', 'Flex', 2024, 'Amarelo', 'Novo', 399000.00, 'Vendido', 4),
+('14','Chevrolet', 'Cruze', 'Flex', 2024, 'Prata', 'Novo', 104000.00, 'Vendido', 4),
+('15','Chevrolet', 'Tracker', 'Flex', 2025, 'Vermelho', 'Novo', 103000.00, 'Vendido', 4),
+('16','Chevrolet', 'S10', 'Diesel', 2020, 'Preto', 'Seminovo', 108000.00,'Disponível', 4),
+('17','Volkswagen', 'Passat B8', 'Flex', 2023, 'Preto', 'Novo', 110000.00, 'Vendido', 5),
+('18','Volkswagen', 'Golf Gti', 'Flex', 2025, 'Branca', 'Novo', 190000.00,'Disponível', 5),
+('19','Volkswagen', 'Jetta Gli', 'Flex', 2023, 'Cinza Nardo', 'Novo', 201000.00,'Disponível', 5),
+('20','Volkswagen', 'Gol', 'Flex', 2014, 'Preto', 'Seminovo', 32000.00, 'Vendido', 5),
+('21','BMW', 'Bmw 428i', 'Flex', 2025, 'Branca', 'Novo', 134000.00,'Disponível', 6),
+('22','BMW', 'Bmw X6', 'Flex', 2024, 'Verde', 'Novo', 1000000.00, 'Vendido', 6),
+('23','BMW', 'Bmw M4', 'Flex', 2018, 'Preto', 'Seminovo', 473000.00, 'Vendido', 6),
+('24','BMW', 'Bmw i8', 'Flex', 2022, 'Vermelho', 'Novo', 770000.00,'Disponível', 6),
+('25','Fiat', 'Linea', 'Flex', 2015, 'Branca', 'Seminovo', 35000.00, 'Vendido', 7),
+('26','Fiat', 'Titano', 'Diesel', 2025, 'Vermelha', 'Novo', 259000.00,'Disponível', 7),
+('27','Fiat', 'Cronos', 'Flex', 2019, 'Prata', 'Seminovo', 103000.00,'Disponível', 7),
+('28','Fiat', 'Toro', 'Flex', 2025, 'Vermelha', 'Novo', 205000.00, 'Vendido', 7),
+('29', 'Subaru', 'Impreza', 'Flex', 2024, 'Cinza', 'Novo', 140000.00,'Disponível', 8),
+('30', 'Subaru', 'Outback', 'Flex', 2025, 'Preto', 'Novo', 180000.00,  'Vendido', 8),
+('31', 'Subaru', 'Forester', 'Flex', 2023, 'Branco', 'Novo', 170000.00,'Disponível', 8),
+('32', 'Subaru', 'WRX', 'Flex', 2022, 'Vermelho', 'Seminovo', 210000.00,'Disponível', 8),
+('33', 'Mitsubishi', 'Lancer', 'Flex', 2019, 'Preto', 'Seminovo', 85000.00, 'Vendido', 9),
+('34', 'Mitsubishi', 'Outlander', 'Flex', 2024, 'Branco', 'Novo', 160000.00,'Disponível', 9),
+('35', 'Mitsubishi', 'Eclipse Cross', 'Flex', 2023, 'Cinza', 'Novo', 155000.00,'Disponível', 9),
+('36', 'Mitsubishi', 'Triton', 'Diesel', 2025, 'Azul', 'Novo', 180000.00,'Disponível', 9),
+('37', 'Audi', 'A3', 'Flex', 2024, 'Preto', 'Novo', 220000.00,'Disponível', 10),
+('38', 'Audi', 'A4', 'Flex', 2025, 'Branco', 'Novo', 280000.00, 'Vendido', 10),
+('39', 'Audi', 'Q5', 'Flex', 2023, 'Cinza', 'Novo', 320000.00,'Disponível', 10),
+('40', 'Audi', 'RS7', 'Flex', 2022, 'Vermelho', 'Seminovo', 850000.00,'Disponível', 10),
+('41', 'Renault', 'Duster', 'Flex', 2024, 'Prata', 'Novo', 110000.00,'Disponível', 11),
+('42', 'Renault', 'Kwid', 'Flex', 2023, 'Branco', 'Novo', 60000.00,'Disponível', 11),
+('43', 'Renault', 'Captur', 'Flex', 2025, 'Vermelho', 'Novo', 130000.00,'Disponível', 11),
+('44', 'Renault', 'Sandero', 'Flex', 2022, 'Preto', 'Seminovo', 75000.00,'Disponível', 11),
+('45', 'Nissan', 'Versa', 'Flex', 2024, 'Azul', 'Novo', 90000.00, 'Vendido', 12),
+('46', 'Nissan', 'Kicks', 'Flex', 2023, 'Branco', 'Novo', 110000.00,'Disponível', 12),
+('47', 'Nissan', 'Sentra', 'Flex', 2025, 'Preto', 'Novo', 125000.00,'Disponível', 12),
+('48', 'Nissan', 'Frontier', 'Diesel', 2022, 'Cinza', 'Seminovo', 140000.00,'Disponível', 12),
+('49', 'Kia', 'Soul', 'Flex', 2024, 'Vermelho', 'Novo', 115000.00,'Disponível', 13),
+('50', 'Kia', 'Sportage', 'Flex', 2025, 'Branco', 'Novo', 150000.00, 'Vendido', 13),
+('51', 'Kia', 'Cerato', 'Flex', 2023, 'Preto', 'Novo', 100000.00,'Disponível', 13),
+('52', 'Kia', 'Seltos', 'Flex', 2022, 'Azul', 'Seminovo', 130000.00,'Disponível', 13);
+
+SELECT * FROM carros;
+
+INSERT INTO vendas (id_vendas, id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda) VALUES
+('1',1, 1, 7, 1, 120000.00),
+('2',2, 2, 11, 1, 405000.00),
+('3',23, 3, 14, 2, 473000.00),
+('4',28, 5, 16, 2, 205000.00), 
+('5',15, 6, 18, 3, 103000.00), 
+('6',11, 7, 20, 3, 68000.00), 
+('7',25, 8, 22, 4, 35000.00), 
+('8',20, 9, 24, 4, 32000.00), 
+('9',13, 10, 26, 5, 399000.00), 
+('10',7, 9, 28, 5, 153000.00),
+('11', 3, 4, 30, 6, 57000.00),
+('12', 9, 5, 32, 6, 450000.00),
+('13', 17, 6, 34, 7, 110000.00),
+('14', 30, 7,36, 7, 180000.00),
+('15', 38, 8, 31, 8, 280000.00),
+('16', 45, 10, 35, 8, 90000.00),
+('17', 50, 11, 29, 9, 150000.00),
+('18', 14, 12, 27, 9, 104000.00),
+('19', 22, 13, 25, 10, 1000000.00),
+('20', 33, 14, 23, 10, 85000.00);
+
+SELECT * FROM vendas;
+
+INSERT INTO forma_pagamento (id_forma_pagamento,metodo) VALUES 
+(1, 'Pix'),
+(2, 'Cartão de Débito'),
+(3, 'Cartão de Crédito'),
+(4, 'Cheque'),
+(5, 'Dinheiro');
+
+SELECT * FROM forma_pagamento;
+
+INSERT INTO registro (id_venda, id_forma_pagamento, valor, data_pagamento) VALUES 
+(1, '1', 120000.00, '2024-11-26 16:39:40'),
+(2, '2', 405000.00, '2025-09-22 08:39:28' ),
+(3, '5', 473000.00, '2024-05-29  11:28:19'),
+(4, '1', 205000.00, '2025-08-15 10:31:11'),
+(5, '2',103000.00, '2025-06-19 08:44:10'),
+(6, '4', 68000.00, '2025-04-22 13:51:14'),
+(7, '5', 35000.00, '2023-08-23 08:47:38'),
+(8, '5', 32000.00, '2025-04-16 14:48:01'),
+(9, '3', 399000.00, '2024-03-17 13:56:27'),
+(10, '4', 153000.00, '2025-01-20 14:40:41'),
+(11, '1', 57000.00, '2024-10-05 09:30:00'),
+(12, '3', 450000.00, '2025-02-14 15:22:10'),
+(13, '5', 110000.00, '2024-12-01 11:15:20'),
+(14, '1', 180000.00, '2025-03-18 10:45:00'),
+(15, '3', 280000.00, '2024-08-23 16:30:45'),
+(16, '4', 90000.00, '2025-05-10 13:10:05'),
+(17, '5', 150000.00, '2024-11-11 09:05:25'),
+(18, '1', 104000.00, '2025-07-20 12:40:00'),
+(19, '3', 1000000.00, '2024-09-29 14:55:30'),
+(20, '4', 85000.00, '2025-01-15 11:22:10');
+
+SELECT * FROM registro;
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE FROM carros
+WHERE (marca = 'Hyundai' AND modelo = 'Azera' AND tipo_combustivel = 'Flex' AND ano = 2025 AND cor = 'Branco' AND condicao = 'Novo' AND preco = 75000.00 AND sts = 'Disponivel' )
+   OR (marca = 'Ford' AND modelo = 'Fusion' AND tipo_combustivel = 'Flex'  AND ano = 2017 AND cor = 'Branco' AND condicao = 'Seminovo' AND preco = 79000.00 AND sts = 'Disponivel')
+   OR (marca = 'Renault' AND modelo = 'Sandero' AND tipo_combustivel = 'Flex' AND ano = 2022 AND cor = 'Preto'  AND condicao = 'Seminovo' AND preco = 75000.00 AND sts = 'Disponivel');
+
+DELETE FROM funcionarios
+WHERE id_funcionarios IN (17, 19, 21);
+
+DELETE FROM clientes
+WHERE id_clientes IN (26, 17, 25);
+
+select * from carros;
+select * from funcionarios;
+select * from clientes;
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE carros
+SET cor = 'Branca'
+WHERE cor = 'Branco';
+
+UPDATE carros
+SET cor = 'Vermelho'
+WHERE marca = 'Ford' AND modelo = 'Mustang V8';
+
+UPDATE carros
+SET preco = preco * 1.08
+WHERE tipo_combustivel = 'Diesel';
+
+UPDATE funcionarios
+JOIN loja l ON l.id_loja = 7
+SET cargo = 'Vendedor Sênior'
+WHERE cargo = 'Vendedor' AND id_funcionarios = 23;
+
+UPDATE carros
+JOIN (
+    SELECT id_carros
+    FROM carros
+    GROUP BY id_carros
+    HAVING AVG(preco) > 750000
+) AS carros_luxo USING (id_carros)
+SET carros.condicao = 'Luxo';
+
+UPDATE carros
+JOIN (
+    SELECT id_carros
+    FROM carros
+    GROUP BY id_carros
+    HAVING AVG(ano) < 2020
+) AS car_ant USING (id_carros)
+SET carros.condicao = 'Antigo';
+
+DELIMITER $$
+
+CREATE PROCEDURE rgstra_vndas_completa(
+    IN p_id_carros INT,
+    IN p_id_clientes INT,
+    IN p_id_funcionarios INT,
+    IN p_id_endereco INT,
+    IN p_preco_venda DECIMAL(10,2),
+    IN p_metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro'),
+    IN p_valor DECIMAL(10,2)
+)
+BEGIN
+    DECLARE v_id_venda INT;
+
+    INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda)
+    VALUES (p_id_carros, p_id_clientes, p_id_funcionarios, p_id_endereco, p_preco_venda);
+    SET v_id_venda = LAST_INSERT_ID();
+    INSERT INTO registro (id_venda, metodo_pagamento, valor, data_pagamento)
+    VALUES (v_id_venda, p_metodo_pagamento, p_valor, NOW());
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CALL rgstra_vndas_completa(
+    5,   2,    3,    1,    75000.00,  'Pix',   75000.00     
+);
+
+SELECT * FROM vendas ORDER BY id_vendas DESC LIMIT 1;
+SELECT * FROM registro ORDER BY id_registro DESC LIMIT 1;
+
+DELIMITER $$
+
+CREATE PROCEDURE car_por_fxa_preco(
+    IN p_preco_min DECIMAL(10,2),
+    IN p_preco_max DECIMAL(10,2)
+)
+BEGIN
+    SELECT * FROM carros
+    WHERE preco BETWEEN p_preco_min AND p_preco_max
+    ORDER BY preco ASC;
+END$$
+
+DELIMITER ;
+
+CALL car_por_fxa_preco(30000.00, 80000.00);
+CALL car_por_fxa_preco(20000.00, 40000.00);
+CALL car_por_fxa_preco(100000.00, 300000.00);
+
+DELIMITER $$
+
+CREATE PROCEDURE promov_funci_por_l(
+    IN p_id_loja INT,
+    IN p_carg_antigo VARCHAR(50),
+    IN p_carg_novo VARCHAR(50)
+)
+BEGIN
+    UPDATE funcionarios
+    SET cargo = p_carg_novo
+    WHERE id_loja = p_id_loja AND cargo = p_carg_antigo;
+END$$
+
+
+DELIMITER ;
+
+SELECT * FROM funcionarios WHERE id_loja = 1;
+CALL promov_funci_por_l(1, 'Vendedora', 'Gerente');
+SELECT * FROM funcionarios WHERE id_loja = 1;
+CALL promov_funci_por_l(2, 'Assistente', 'Supervisor');
+SELECT * FROM funcionarios WHERE id_loja = 2;
+
+
+DELIMITER $$
+
+CREATE FUNCTION vldr_cep(cep_input VARCHAR(9)) RETURNS INT
+BEGIN
+    IF cep_input REGEXP '^[0-9]{5}-[0-9]{3}$' THEN
+        RETURN 1; 
+    ELSE
+        RETURN 0; 
+    END IF;
+END $$
+
+DELIMITER ;
+
+DELIMITER $$
+
+CREATE FUNCTION verfca_stoq(id_carro INT) RETURNS INT
+BEGIN
+    DECLARE estoque INT;
+
+    SELECT COUNT(*) INTO estoque
+    FROM carros
+    WHERE id_carros = id_carro;
+
+    IF estoque > 0 THEN
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE FUNCTION contar_vnd_por_l(id_loja_input INT) RETURNS INT
+BEGIN
+    DECLARE total_vendas INT;
+
+    SELECT COUNT(*)
+    INTO total_vendas
+    FROM vendas v
+    JOIN endereco e ON v.id_endereco = e.id_endereco
+    WHERE e.id_loja = id_loja_input;
+
+    RETURN total_vendas;
+END $$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER isrt_forncd_cnpj
+BEFORE INSERT ON fornecedores
+FOR EACH ROW
+BEGIN
+  IF NEW.cnpj NOT REGEXP '^[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}$' THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'O CNPJ está inválido, Por favor tente novamente!';
+  END IF;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER isrt_vnds_car
+BEFORE INSERT ON vendas
+FOR EACH ROW
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM carros WHERE id_carros = NEW.id_carros) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'O carro inserido não existe, Por favor tente novamente!';
+  END IF;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER isrt_vnds_car_vnd
+BEFORE INSERT ON vendas
+FOR EACH ROW
+BEGIN
+  IF EXISTS (SELECT 1 FROM vendas WHERE id_carros = NEW.id_carros) THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Este carro foi vendido, Por favor tente novamente em alguns dias ou faça uma visita a loja.';
+  END IF;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER vldr_cpf_funci
+BEFORE INSERT ON funcionarios
+FOR EACH ROW
+BEGIN
+  IF NEW.cpf NOT REGEXP '^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$' THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'CPF inválido. Use o formato 000.000.000-00';
+  END IF;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER vldr_em_funci
+BEFORE INSERT ON funcionarios
+FOR EACH ROW
+BEGIN
+  IF NEW.email NOT REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$' THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'E-mail inválido';
+  END IF;
+END$$
+
+DELIMITER ;
+
+
+SELECT * FROM registro
+WHERE YEAR(data_pagamento) = 2025;
+
+CREATE VIEW v_car_preco_asc AS
+SELECT id_carros, modelo, marca, ano, preco
+FROM carros
+ORDER BY preco ASC;
+
+CREATE VIEW v_car_vend AS
+SELECT * FROM carros
+WHERE sts = 'Vendido';
+
+CREATE VIEW v_car_disp AS
+SELECT * FROM carros
+WHERE sts = 'Disponível';
+
+CREATE VIEW v_car_luxo AS
+SELECT * FROM carros
+WHERE sts = 'Luxo';
+
+CREATE VIEW v_car_ant AS
+SELECT * FROM carros
+WHERE sts = 'Antigo';
+
+CREATE VIEW v_total_car_m AS
+SELECT marca, COUNT(*) AS total_carros
+FROM carros
+GROUP BY marca;
+
+CREATE VIEW v_car_toyota AS
+SELECT * FROM carros
+WHERE marca = 'Toyota';
+
+CREATE VIEW v_car_hyundai AS
+SELECT * FROM carros
+WHERE marca = 'Hyundai';
+
+CREATE VIEW v_car_ford AS
+SELECT * FROM carros
+WHERE marca = 'Ford';
+
+CREATE VIEW v_car_chevrolet AS
+SELECT * FROM carros
+WHERE marca = 'Chevrolet';
+
+CREATE VIEW v_car_volkswagen AS
+SELECT * FROM carros
+WHERE marca = 'Volkswagen';
+
+CREATE VIEW v_car_bmw AS
+SELECT * FROM carros
+WHERE marca = 'BMW';
+
+CREATE VIEW v_car_fiat AS
+SELECT * FROM carros
+WHERE marca = 'Fiat';
+
+CREATE VIEW v_car_subaru AS
+SELECT * FROM carros
+WHERE marca = 'Subaru';
+
+CREATE VIEW v_car_mits AS
+SELECT * FROM carros
+WHERE marca = 'Mitsubishi';
+
+CREATE VIEW v_car_audi AS
+SELECT * FROM carros
+WHERE marca = 'Audi';
+
+CREATE VIEW v_car_renlt AS
+SELECT * FROM carros
+WHERE marca = 'Renault';
+
+CREATE VIEW v_car_nissan AS
+SELECT * FROM carros
+WHERE marca = 'Nissan';
+
+CREATE VIEW v_car_kia AS
+SELECT * FROM carros
+WHERE marca = 'Kia';
+
+CREATE VIEW v_car_caros AS
+SELECT * FROM carros
+WHERE preco >100000;
+
+CREATE VIEW v_car_2025 AS
+SELECT * FROM carros
+WHERE ano = 2025;
+
+CREATE VIEW v_car_semi AS
+SELECT * FROM carros
+WHERE condicao = 'Seminovo';
+
+CREATE VIEW v_car_novos AS
+SELECT * FROM carros
+WHERE condicao = 'Novo';
+
+CREATE VIEW v_car_preco_cres AS
+SELECT * FROM carros
+ORDER BY preco ASC;
+
+CREATE VIEW car_vend_marca AS
+SELECT marca, COUNT(*) AS total_vendidos
+FROM carros
+WHERE sts = 'Vendido'
+GROUP BY marca
+ORDER BY total_vendidos DESC;
+
+SELECT * FROM v_car_preco_asc;
+SELECT * FROM v_car_vend;
+SELECT * FROM v_car_disp;
+SELECT * FROM v_car_luxo;
+SELECT * FROM v_car_ant;
+SELECT * FROM v_total_car_m;
+SELECT * FROM v_car_toyota;
+SELECT * FROM v_car_hyundai;
+SELECT * FROM v_car_ford;
+SELECT * FROM v_car_chevrolet;
+SELECT * FROM v_car_volkswagen;
+SELECT * FROM v_car_bmw;
+SELECT * FROM v_car_fiat;
+SELECT * FROM v_car_fiat;
+SELECT * FROM v_car_subaru;
+SELECT * FROM v_car_mits;
+SELECT * FROM v_car_audi;
+SELECT * FROM v_car_renlt;
+SELECT * FROM v_car_nissan;
+SELECT * FROM v_car_kia;
+SELECT * FROM v_car_caros;
+SELECT * FROM v_car_2025 ;
+SELECT * FROM v_car_semi;
+SELECT * FROM v_car_novos;
+SELECT * FROM v_car_preco_cres;
+SELECT * FROM car_vend_marca;
+
+SELECT * FROM carros;
+
+CREATE VIEW v_funci_cargos AS
+SELECT nome, cargo FROM funcionarios;
+
+CREATE VIEW v_funci_alf AS
+SELECT nome FROM funcionarios
+ORDER BY nome ASC;
+
+CREATE VIEW v_funci_crg_n AS
+SELECT cargo, COUNT(*) AS numero
+FROM funcionarios
+GROUP BY cargo
+HAVING COUNT(*) >1;
+
+SELECT * FROM v_funci_cargos;
+SELECT * FROM v_funci_alf;
+SELECT * FROM v_funci_crg_n;
+
+CREATE VIEW v_ende_cep AS 
+SELECT id_endereco, id_loja, estado,cidade, rua, numero_loja, cep FROM endereco
+WHERE cep IS NOT NULL;
+
+SELECT * FROM v_ende_cep;
+
+CREATE VIEW v_forc_responsa AS
+SELECT nome AS fornecedor,  responsavel, email
+FROM fornecedores
+ORDER BY nome;
+  
+ SELECT * FROM v_forc_responsa; 
+  
+CREATE VIEW v_client_cpf AS
+SELECT id_clientes, nome, cpf FROM clientes
+WHERE cpf IS NOT NULL;
+
+CREATE VIEW v_client_tel_em AS
+SELECT id_clientes, nome, email, telefone
+FROM clientes;
+
+SELECT * FROM v_client_cpf;
+SELECT * FROM v_client_tel_em;
+
+CREATE VIEW v_f_paga AS
+SELECT id_forma_pagamento, metodo
+FROM forma_pagamento;
+
+SELECT * FROM v_f_paga;
+
+CREATE VIEW v_vlr_sentoevintek AS
+SELECT  r.id_venda,  r.valor,  r.data_pagamento
+FROM registro r
+WHERE r.valor > 120000;
+
+SELECT * FROM v_vlr_sentoevintek;
+SELECT * FROM carros;
