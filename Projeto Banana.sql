@@ -704,13 +704,6 @@ WHERE cep IS NOT NULL;
 
 SELECT * FROM v_ende_cep;
 
-CREATE VIEW v_forc_responsa AS
-SELECT nome AS fornecedor,  responsavel, email
-FROM fornecedores
-ORDER BY nome;
-  
- SELECT * FROM v_forc_responsa; 
-  
 CREATE VIEW v_client_cpf AS
 SELECT id_clientes, nome, cpf FROM clientes
 WHERE cpf IS NOT NULL;
@@ -773,3 +766,7 @@ ORDER BY nome ASC;
 SELECT  r.id_venda,  r.valor,  r.data_pagamento
 FROM registro r
 WHERE r.valor > 120000;
+
+SELECT nome AS fornecedor,  responsavel, email
+FROM fornecedores
+ORDER BY nome;
