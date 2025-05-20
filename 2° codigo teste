@@ -144,7 +144,7 @@ INSERT INTO funcionarios (id_funcionarios, id_loja, nome, email, telefone, cargo
 (10, 1, 'Juliana Costa', 'juliana.costa@email.com', '(11) 99999-0010', 'Vendedora', '012.345.678-99', '110'),
 (11, 1, 'Marcos Souza', 'marcos.souza@email.com', '(11) 99999-0011', 'Vendedor', '321.654.987-00', '111'),
 (12, 14, 'Amanda Almeida', 'amanda.almeida@email.com', '(11) 99999-0012', 'RH', '444.555.666-77', '112'),
-(13, 2, 'Ricardo Mendes', 'ricardo.mendes@email.com', '(11) 99999-0013', 'Vendedor', '555.666.777-88', '113'),
+(13, 2, 'Ricardo Mendes', 'ricardo.mendes@email.com', '(11) 99999-0013', 'Assistente', '555.666.777-88', '113'),
 (14, 2, 'Larissa Manoela', 'larissa.manoela@email.com', '(11) 99999-0014', 'Vendedora', '666.777.888-99', '114'),
 (15, 3, 'Pedro Gomes', 'pedro.gomes@email.com', '(11) 99999-0015', 'Vendedor', '777.888.999-00', '115'),
 (16, 3, 'Ana Paula', 'ana.paula@email.com', '(11) 99999-0016', 'Vendedora', '888.999.000-11', '116'),
@@ -374,10 +374,6 @@ JOIN (
 ) AS fornecd_luxo USING (id_fornecedores)
 SET carros.condicao = 'Luxo';
 
-
-
-
--- Apagar os 3 carros
 DELETE FROM carros
 WHERE (marca = 'Hyundai' AND modelo = 'Azera' AND ano = 2015 AND cor = 'Branco' AND preco = 75000.00)
    OR (marca = 'Ford' AND modelo = 'Mustang V8' AND ano = 2020 AND cor = 'Azul' AND preco = 450000.00)
@@ -390,13 +386,9 @@ DELETE FROM clientes
 WHERE id_clientes IN (26, 17, 25);
 
 
-
-
-
-
 DELIMITER $$
 
-CREATE PROCEDURE registrar_venda_completa(
+CREATE PROCEDURE rgstra_vndas_completa(
     IN p_id_carros INT,
     IN p_id_clientes INT,
     IN p_id_funcionarios INT,
@@ -410,9 +402,7 @@ BEGIN
 
     INSERT INTO vendas (id_carros, id_clientes, id_funcionarios, id_endereco, preco_venda)
     VALUES (p_id_carros, p_id_clientes, p_id_funcionarios, p_id_endereco, p_preco_venda);
-
     SET v_id_venda = LAST_INSERT_ID();
-
     INSERT INTO registro (id_venda, metodo_pagamento, valor, data_pagamento)
     VALUES (v_id_venda, p_metodo_pagamento, p_valor, NOW());
 END$$
@@ -421,14 +411,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-CALL registrar_venda_completa(
-    5,           -- id_carros
-    2,           -- id_clientes
-    3,           -- id_funcionarios
-    1,           -- id_endereco
-    75000.00,    -- preco_venda
-    'Pix',       -- metodo_pagamento
-    75000.00     -- valor
+CALL rgstra_vndas_completa(
+    5,   2,    3,    1,    75000.00,  'Pix',   75000.00     
 );
 
 SELECT * FROM vendas ORDER BY id_vendas DESC LIMIT 1;
@@ -436,7 +420,7 @@ SELECT * FROM registro ORDER BY id_registro DESC LIMIT 1;
 
 DELIMITER $$
 
-CREATE PROCEDURE carros_por_faixa_preco(
+CREATE PROCEDURE car_por_fxa_preco(
     IN p_preco_min DECIMAL(10,2),
     IN p_preco_max DECIMAL(10,2)
 )
@@ -448,51 +432,36 @@ END$$
 
 DELIMITER ;
 
-CALL carros_por_faixa_preco(30000.00, 80000.00);
-
--- Faixa de carros populares
-CALL carros_por_faixa_preco(20000.00, 40000.00);
-
--- Carros de luxo
-CALL carros_por_faixa_preco(100000.00, 300000.00);
+CALL car_por_fxa_preco(30000.00, 80000.00);
+CALL car_por_fxa_preco(20000.00, 40000.00);
+CALL car_por_fxa_preco(100000.00, 300000.00);
 
 DELIMITER $$
 
-CREATE PROCEDURE promover_funcionarios_por_loja(
+CREATE PROCEDURE promov_funci_por_l(
     IN p_id_loja INT,
-    IN p_cargo_antigo VARCHAR(50),
-    IN p_cargo_novo VARCHAR(50)
+    IN p_carg_antigo VARCHAR(50),
+    IN p_carg_novo VARCHAR(50)
 )
 BEGIN
     UPDATE funcionarios
-    SET cargo = p_cargo_novo
-    WHERE id_loja = p_id_loja AND cargo = p_cargo_antigo;
+    SET cargo = p_carg_novo
+    WHERE id_loja = p_id_loja AND cargo = p_carg_antigo;
 END$$
+
 
 DELIMITER ;
 
 SELECT * FROM funcionarios WHERE id_loja = 1;
-
-CALL promover_funcionarios_por_loja(1, 'Vendedor', 'Gerente');
-
+CALL promov_funci_por_l(1, 'Vendedora', 'Gerente');
 SELECT * FROM funcionarios WHERE id_loja = 1;
-
--- Verificar antes
+CALL promov_funci_por_l(2, 'Assistente', 'Supervisor');
 SELECT * FROM funcionarios WHERE id_loja = 2;
-
--- Promover
-CALL promover_funcionarios_por_loja(2, 'Assistente', 'Supervisor');
-
--- Verificar depois
-SELECT * FROM funcionarios WHERE id_loja = 2;
-
-
-
 
 
 DELIMITER $$
 
-CREATE FUNCTION validar_cep(cep_input VARCHAR(9)) RETURNS INT
+CREATE FUNCTION vldr_cep(cep_input VARCHAR(9)) RETURNS INT
 BEGIN
     IF cep_input REGEXP '^[0-9]{5}-[0-9]{3}$' THEN
         RETURN 1; -- CEP válido
@@ -505,7 +474,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-CREATE FUNCTION verificar_estoque(id_carro INT) RETURNS INT
+CREATE FUNCTION verfca_stoq(id_carro INT) RETURNS INT
 BEGIN
     DECLARE estoque INT;
 
@@ -522,9 +491,10 @@ END $$
 
 DELIMITER ;
 
+
 DELIMITER $$
 
-CREATE FUNCTION contar_vendas_por_loja(id_loja_input INT) RETURNS INT
+CREATE FUNCTION contar_vnd_por_l(id_loja_input INT) RETURNS INT
 BEGIN
     DECLARE total_vendas INT;
 
@@ -540,8 +510,6 @@ END $$
 DELIMITER ;
 
 
-
-
 DELIMITER $$
 
 CREATE TRIGGER isrt_forncd_cnpj
@@ -554,6 +522,7 @@ BEGIN
 END$$
 
 DELIMITER ;
+
 
 DELIMITER $$
 
@@ -568,6 +537,7 @@ END$$
 
 DELIMITER ;
 
+
 DELIMITER $$
 
 CREATE TRIGGER isrt_vnds_car_vnd
@@ -581,9 +551,10 @@ END$$
 
 DELIMITER ;
 
+
 DELIMITER $$
 
-CREATE TRIGGER validar_cpf_funcionario
+CREATE TRIGGER vldr_cpf_funci
 BEFORE INSERT ON funcionarios
 FOR EACH ROW
 BEGIN
@@ -596,9 +567,10 @@ END$$
 
 DELIMITER ;
 
+
 DELIMITER $$
 
-CREATE TRIGGER validar_email_funcionario
+CREATE TRIGGER vldr_em_funci
 BEFORE INSERT ON funcionarios
 FOR EACH ROW
 BEGIN
@@ -772,12 +744,12 @@ CREATE VIEW v_client_cpf AS
 SELECT id_clientes, nome, cpf FROM clientes
 WHERE cpf IS NOT NULL;
 
-CREATE VIEW v_client_tel_e AS
+CREATE VIEW v_client_tel_em AS
 SELECT id_clientes, nome, email, telefone
 FROM clientes;
 
 SELECT * FROM v_client_cpf;
-SELECT * FROM v_client_tel_e;
+SELECT * FROM v_client_tel_em;
 
 CREATE VIEW v_f_paga AS
 SELECT id_forma_pagamento, metodo
@@ -785,10 +757,10 @@ FROM forma_pagamento;
 
 SELECT * FROM v_f_paga;
 
-CREATE VIEW v_vlr_120k AS
+CREATE VIEW v_vlr_sentoevintek AS
 SELECT  r.id_venda,  r.valor,  r.data_pagamento
 FROM registro r
 WHERE r.valor > 120000;
 
-SELECT * FROM v_vlr_120k;
+SELECT * FROM v_vlr_sentoevintek;
 SELECT * FROM carros;
