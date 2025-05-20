@@ -419,6 +419,8 @@ END$$
 
 DELIMITER ;
 
+DELIMITER $$
+
 CALL registrar_venda_completa(
     5,           -- id_carros
     2,           -- id_clientes
