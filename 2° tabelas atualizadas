@@ -1,7 +1,3 @@
-CREATE DATABASE loja_automoveis;
-
-USE loja_automoveis;
-
 CREATE TABLE loja (
 id_loja INT PRIMARY KEY,
 nome_loja VARCHAR(50),
@@ -60,7 +56,7 @@ modelo VARCHAR(50)  NOT NULL,
 tipo_combustivel ENUM('Flex', 'Diesel') DEFAULT 'Flex' NOT NULL,
 ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
-condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
+condicao ENUM('Novo', 'Seminovo', 'Luxo', 'Antigo')NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
 sts ENUM('Disponível', 'Vendido') DEFAULT 'Disponível' NOT NULL,
 FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
