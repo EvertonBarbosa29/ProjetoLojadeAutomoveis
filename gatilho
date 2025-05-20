@@ -56,6 +56,7 @@ BEGIN
   END IF;
 END$$
 
+
 DELIMITER ;
 
 ----------------------------------------------
@@ -92,6 +93,37 @@ BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'O CNPJ está inválido, Por favor tente novamente!';
   END IF;
 END$$
+
+
+DELIMITER $$
+
+CREATE TRIGGER vldr_cpf_funci
+BEFORE INSERT ON funcionarios
+FOR EACH ROW
+BEGIN
+  -- Verifica se o CPF tem exatamente 14 caracteres no formato 000.000.000-00
+  IF NEW.cpf NOT REGEXP '^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$' THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'CPF inválido. Use o formato 000.000.000-00';
+  END IF;
+END$$
+
+DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE TRIGGER vldr_em_funci
+BEFORE INSERT ON funcionarios
+FOR EACH ROW
+BEGIN
+  IF NEW.email NOT REGEXP '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$' THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'E-mail inválido';
+  END IF;
+END$$
+
+DELIMITER ;
 
 DELIMITER ;
 
