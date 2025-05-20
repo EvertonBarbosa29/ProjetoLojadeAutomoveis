@@ -382,22 +382,12 @@ SET cargo = 'Vendedor Sênior'
 WHERE cargo = 'Vendedor' AND id_funcionarios = 23;
 
 UPDATE carros
-JOIN (
-    SELECT id_carros
-    FROM carros
-    GROUP BY id_carros
-    HAVING AVG(preco) > 750000
-) AS carros_luxo USING (id_carros)
-SET carros.condicao = 'Luxo';
+SET condicao = 'Luxo'
+WHERE preco > 750000;
 
 UPDATE carros
-JOIN (
-    SELECT id_carros
-    FROM carros
-    GROUP BY id_carros
-    HAVING AVG(ano) < 2020
-) AS car_ant USING (id_carros)
-SET carros.condicao = 'Antigo';
+SET condicao = 'Antigo'
+WHERE ano < 2020;
 
 DELIMITER $$
 
