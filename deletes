@@ -1,13 +1,10 @@
--- Apagar os 3 carros
 DELETE FROM carros
 WHERE (marca = 'Hyundai' AND modelo = 'Azera' AND ano = 2015 AND cor = 'Branco' AND preco = 75000.00)
    OR (marca = 'Ford' AND modelo = 'Mustang V8' AND ano = 2020 AND cor = 'Azul' AND preco = 450000.00)
    OR (marca = 'Chevrolet' AND modelo = 'Camaro V8' AND ano = 2016 AND cor = 'Amarelo' AND preco = 399000.00);
 
--- Apagar os 3 funcionários
 DELETE FROM funcionarios
-WHERE id_funcionarios IN (1, 2, 3);
+WHERE id_funcionarios IN (17, 19, 21);
 
--- Apagar os 3 clientes
 DELETE FROM clientes
-WHERE id_clientes IN (1, 2, 3);
+WHERE id_clientes IN (26, 17, 25);
