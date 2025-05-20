@@ -558,7 +558,6 @@ CREATE TRIGGER vldr_cpf_funci
 BEFORE INSERT ON funcionarios
 FOR EACH ROW
 BEGIN
-  -- Verifica se o CPF tem exatamente 14 caracteres no formato 000.000.000-00
   IF NEW.cpf NOT REGEXP '^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$' THEN
     SIGNAL SQLSTATE '45000'
     SET MESSAGE_TEXT = 'CPF inválido. Use o formato 000.000.000-00';
