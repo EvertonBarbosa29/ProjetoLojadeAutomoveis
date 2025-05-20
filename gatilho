@@ -77,3 +77,21 @@ DELIMITER ;
 
 ------------------------------------------------
 -- Luan
+
+
+
+certo
+
+DELIMITER $$
+
+CREATE TRIGGER isrt_forncd_cnpj
+BEFORE INSERT ON fornecedores
+FOR EACH ROW
+BEGIN
+  IF NEW.cnpj NOT REGEXP '^[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}$' THEN
+    SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'O CNPJ está inválido, Por favor tente novamente!';
+  END IF;
+END$$
+
+DELIMITER ;
+
