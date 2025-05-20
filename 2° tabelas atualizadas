@@ -3,13 +3,13 @@ CREATE DATABASE loja_automoveis;
 USE loja_automoveis;
 
 CREATE TABLE loja (
-id_loja INT PRIMARY KEY AUTO_INCREMENT,
+id_loja INT PRIMARY KEY,
 nome_loja VARCHAR(50),
 cnpj CHAR(18) NOT NULL
 );
 
 CREATE TABLE funcionarios (
-  id_funcionarios INT PRIMARY KEY AUTO_INCREMENT,
+  id_funcionarios INT PRIMARY KEY,
   id_loja INT,
   nome VARCHAR(200) NOT NULL UNIQUE KEY,
   email VARCHAR(200) NOT NULL UNIQUE KEY,
@@ -21,7 +21,7 @@ CREATE TABLE funcionarios (
 );
 
 CREATE TABLE clientes (
-id_clientes INT PRIMARY KEY AUTO_INCREMENT,
+id_clientes INT PRIMARY KEY,
 id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 email VARCHAR(200) NOT NULL UNIQUE KEY,
@@ -30,7 +30,7 @@ cpf CHAR(14) NOT NULL UNIQUE KEY
 );
 
 CREATE TABLE endereco (
-id_endereco INT PRIMARY KEY AUTO_INCREMENT,
+id_endereco INT PRIMARY KEY,
 id_loja INT,
 estado VARCHAR(100)  NOT NULL,
 cidade VARCHAR(100)  NOT NULL,
@@ -41,7 +41,7 @@ FOREIGN KEY (id_loja) REFERENCES loja(id_loja)
 );
 
 CREATE TABLE fornecedores (
-id_fornecedores INT PRIMARY KEY AUTO_INCREMENT,
+id_fornecedores INT PRIMARY KEY,
 id_endereco INT,
 nome VARCHAR(200) NOT NULL UNIQUE KEY,
 cnpj CHAR(18) NOT NULL UNIQUE KEY,
@@ -53,7 +53,7 @@ FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
 CREATE TABLE carros (
-id_carros INT PRIMARY KEY AUTO_INCREMENT,
+id_carros INT PRIMARY KEY,
 id_fornecedores INT,
 marca VARCHAR(50)  NOT NULL,
 modelo VARCHAR(50)  NOT NULL,
@@ -62,6 +62,7 @@ ano INT  NOT NULL,
 cor VARCHAR(30)  NOT NULL,
 condicao ENUM('Novo', 'Seminovo') DEFAULT 'Novo' NOT NULL,
 preco DECIMAL(10, 2)  NOT NULL,
+sts ENUM('Disponível', 'Vendido') DEFAULT 'Disponível' NOT NULL,
 FOREIGN KEY (id_fornecedores) REFERENCES fornecedores(id_fornecedores)
 );
 
@@ -79,16 +80,15 @@ FOREIGN KEY (id_funcionarios) REFERENCES funcionarios(id_funcionarios),
 FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco)
 );
 
-CREATE TABLE forma_pagamento (
-  id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-  metodo ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') NOT NULL
-);
+
+
 
 CREATE TABLE registro (
 id_registro INT PRIMARY KEY AUTO_INCREMENT,
 id_venda INT,
-metodo_pagamento ENUM('Pix', 'Cartão de Débito', 'Cartão de Crédito', 'Cheque', 'Dinheiro') DEFAULT 'Dinheiro' NOT NULL,
+id_forma_pagamento INT,
 valor DECIMAL(10, 2) NOT NULL,
 data_pagamento DATETIME,
-FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas)
+FOREIGN KEY (id_venda) REFERENCES vendas(id_vendas),
+FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento(id_forma_pagamento)
 );
